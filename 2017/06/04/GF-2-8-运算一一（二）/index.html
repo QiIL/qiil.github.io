@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="python,Centos,Ipython," />
+  <meta name="keywords" content="algorithm," />
 
 
 
@@ -42,22 +42,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="下载源码从python.org下载源码包有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xzPython-3.5.2.tar.xz 1cd Python-3.5.2.tar.xz 在文件夹中 12345./configuremakemake install #这里要用root权限 等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔  1python3 --">
-<meta name="keywords" content="python,Centos,Ipython">
+<meta name="description" content="具体的运算算法加法： 1//直接异或运算就ok了 乘法： 12345678910111213141516unsigned char GFmul(unsigned char a, unsigned char b)&amp;#123;	unsigned char result = 0;	if ((b&amp;amp;1)==1) result = a;	b = b &amp;gt;&amp;gt; 1;	for (int i = 0">
+<meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos安装python3.5.x与Ipython">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/03/Centos安装python3-5-x与Ipython/index.html">
+<meta property="og:title" content="GF(2^8)运算一一（二）">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（二）/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="下载源码从python.org下载源码包有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xzPython-3.5.2.tar.xz 1cd Python-3.5.2.tar.xz 在文件夹中 12345./configuremakemake install #这里要用root权限 等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔  1python3 --">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908200559535">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908201032567">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908201922462">
-<meta property="og:image" content="http://img.blog.csdn.net/20160908204913538">
-<meta property="og:updated_time" content="2017-06-03T16:01:08.668Z">
+<meta property="og:description" content="具体的运算算法加法： 1//直接异或运算就ok了 乘法： 12345678910111213141516unsigned char GFmul(unsigned char a, unsigned char b)&amp;#123;	unsigned char result = 0;	if ((b&amp;amp;1)==1) result = a;	b = b &amp;gt;&amp;gt; 1;	for (int i = 0">
+<meta property="og:updated_time" content="2017-06-03T16:09:05.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Centos安装python3.5.x与Ipython">
-<meta name="twitter:description" content="下载源码从python.org下载源码包有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xzPython-3.5.2.tar.xz 1cd Python-3.5.2.tar.xz 在文件夹中 12345./configuremakemake install #这里要用root权限 等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔  1python3 --">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20160908200559535">
+<meta name="twitter:title" content="GF(2^8)运算一一（二）">
+<meta name="twitter:description" content="具体的运算算法加法： 1//直接异或运算就ok了 乘法： 12345678910111213141516unsigned char GFmul(unsigned char a, unsigned char b)&amp;#123;	unsigned char result = 0;	if ((b&amp;amp;1)==1) result = a;	b = b &amp;gt;&amp;gt; 1;	for (int i = 0">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -67,7 +62,7 @@
   };
 </script>
 
-  <title> Centos安装python3.5.x与Ipython | Qill </title>
+  <title> GF(2^8)运算一一（二） | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -317,7 +312,7 @@
           
           
             
-              Centos安装python3.5.x与Ipython
+              GF(2^8)运算一一（二）
             
           
         </h1>
@@ -326,26 +321,11 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-03T23:18:06+08:00" content="2017-06-03">
-            2017-06-03
+          <time itemprop="dateCreated" datetime="2017-06-04T00:06:47+08:00" content="2017-06-04">
+            2017-06-04
           </time>
         </span>
 
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; In
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/python/" itemprop="url" rel="index">
-                  <span itemprop="name">python</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
         
 
         
@@ -360,25 +340,18 @@
       
 
       
-        <span itemprop="articleBody"><p>下载源码<br>从python.org下载源码包<br>有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xz<br>Python-3.5.2.tar.xz</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd Python-3.5.2.tar.xz</div></pre></td></tr></table></figure>
-<p>在文件夹中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line"></div><div class="line">make</div><div class="line"></div><div class="line">make install #这里要用root权限</div></pre></td></tr></table></figure>
-<p>等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔</p>
-<p><img src="http://img.blog.csdn.net/20160908200559535" alt="这里写图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 --version #就能看到python的版本啦</div></pre></td></tr></table></figure>
-<p>接下来是ipython了<br>ipython源码下载页面：<br><a href="https://pypi.python.org/pypi/ipython" target="_blank" rel="external">https://pypi.python.org/pypi/ipython</a><br>或者去Git上下载：<br><a href="https://github.com/ipython/ipython/downloads" target="_blank" rel="external">https://github.com/ipython/ipython/downloads</a><br><img src="http://img.blog.csdn.net/20160908201032567" alt="这里写图片描述"><br>下好了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tar -zxvf ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">cd ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
-<p>在终端输入ipython就可以用啦</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ipython</div></pre></td></tr></table></figure>
-<p><img src="http://img.blog.csdn.net/20160908201922462" alt="这里写图片描述"><br>竟然出来这东东，吓死我了。最后一句说的是缺少一个traitlets这个模块，那就安装呗。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install traitlets</div></pre></td></tr></table></figure>
-<p>后来又缺少了各种模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install xxx #就行了</div></pre></td></tr></table></figure></p>
-<p>安装失败的话还有可能是因为pip的版本不够高</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install --upgrade pip #升级一下</div></pre></td></tr></table></figure>
-<p>升级有可能会失败的，那就重新安装pip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate</div><div class="line"></div><div class="line">python3 get-pip.py</div></pre></td></tr></table></figure>
-<p>安装了各个模块之后，就可以用啦<img src="http://img.blog.csdn.net/20160908204913538" alt="这里写图片描述"><br>BINGO！</p>
+        <span itemprop="articleBody"><p><strong>具体的运算算法</strong><br><strong>加法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//直接异或运算就ok了</div></pre></td></tr></table></figure>
+<p><strong>乘法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">unsigned char GFmul(unsigned char a, unsigned char b)&#123;</div><div class="line">	unsigned char result = 0;</div><div class="line">	if ((b&amp;1)==1) result = a;</div><div class="line">	b = b &gt;&gt; 1;</div><div class="line">	for (int i = 0; i &lt; 8; i++)&#123;</div><div class="line">		if ((a&gt;127))</div><div class="line">			a = (a &lt;&lt; 1) ^ 0x1b;</div><div class="line">		else </div><div class="line">			a = a &lt;&lt; 1;</div><div class="line">		if((b&amp;1) == 1)&#123;</div><div class="line">            result ^= a;</div><div class="line">        &#125;</div><div class="line">        b &gt;&gt;= 1;</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析一下乘法原理：</strong><br>总共要循环8次，每一次循环都需要判断b的最低位是否为1，a的最高位是否为1。如果b的最低位为1，那么就结果result就要与a进行异或运算。再判断a最高位是否为1，如果是的话那么a在左移之后还要异或 1B。大概差不多了吧。</p>
+<p><strong>乘法逆元：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//生成逆元表函数</div><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">//查表函数</div><div class="line">unsigned char inverse(unsigned char b)&#123;</div><div class="line">	//初始化 </div><div class="line">	unsigned char result;</div><div class="line">	if (b == 0)&#123;</div><div class="line">		cout &lt;&lt; (int)b &lt;&lt; &quot;没有逆元&quot; &lt;&lt;endl; //0没有逆元</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		for (int i = 1; i &lt; 256; i++)&#123;</div><div class="line">			if (Inverse[i] == b) &#123;</div><div class="line">				result = Inverse[255-i];</div><div class="line">				return result;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>乘法逆元原理：</strong><br>在GF(2^8)这个群里如果有g^x <em> g^y == 1（g是其中一个生成元）那么就会有x+y == 255。回到函数里面，第一个我利用生成元：3做254次乘法（第一个元素是0第二个元素是3）得到了一个以3为生成元重新排列的群。第二个就是查表函数了。暴力搜索出b所在的位置，然后<em>*255-b所在的位置的元素</em></em>就是b的逆元。</p>
+<p><strong>离散对数：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含有所有生成元的文件，可以自己生成，也可以上网找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div><div class="line"></div><div class="line">int genrator(unsigned char a, unsigned char b)&#123; </div><div class="line">	if (b == 0)&#123;</div><div class="line">		cout &lt;&lt; (int)b &lt;&lt; &quot;没有离散对数！&quot; &lt;&lt;endl; </div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		//多次使用乘法直到找到为止；</div><div class="line">		unsigned char mi = 1; </div><div class="line">		int y = 0;</div><div class="line">		while(1)&#123;</div><div class="line">			mi = GFmul(mi, a); </div><div class="line">			y++;</div><div class="line">			if(mi == b) return y;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>离散对数原理：</strong><br>这里需要用户输入一个“生成元”和一个X，首先要保证用户输入的生成元是一个真实的生成元。所以需要加一个判断。之后就是利用生成元做多次乘法做到值为X为止，循环次数就是离散对数了。</p>
+<p><em>最后：仅是学生党随意写的用于交流学习，不喜勿喷，谢谢驻足的各位</em></p>
 </span>
       
     </div>
@@ -387,11 +360,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
-          
-            <a href="/tags/Centos/" rel="tag">#Centos</a>
-          
-            <a href="/tags/Ipython/" rel="tag">#Ipython</a>
+            <a href="/tags/algorithm/" rel="tag">#algorithm</a>
           
         </div>
       
@@ -400,13 +369,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/04/ubuntu下安装gmp一些问题与解决方案/" rel="prev">ubuntu下安装gmp一些问题与解决方案</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/03/hello-world/" rel="next">Hello World</a>
+              <a href="/2017/06/04/GF-2-8-运算一一（一）/" rel="next">GF(2^8)运算一一（一）</a>
             
           </div>
         </div>

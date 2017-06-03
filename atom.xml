@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-03T16:01:08.668Z</updated>
+  <updated>2017-06-03T16:09:05.201Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,100 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GF(2^8)运算一一（二）</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-%E8%BF%90%E7%AE%97%E4%B8%80%E4%B8%80%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（二）/</id>
+    <published>2017-06-03T16:06:47.000Z</published>
+    <updated>2017-06-03T16:09:05.201Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>具体的运算算法</strong><br><strong>加法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">//直接异或运算就ok了</div></pre></td></tr></table></figure>
+<p><strong>乘法：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">unsigned char GFmul(unsigned char a, unsigned char b)&#123;</div><div class="line">	unsigned char result = 0;</div><div class="line">	if ((b&amp;1)==1) result = a;</div><div class="line">	b = b &gt;&gt; 1;</div><div class="line">	for (int i = 0; i &lt; 8; i++)&#123;</div><div class="line">		if ((a&gt;127))</div><div class="line">			a = (a &lt;&lt; 1) ^ 0x1b;</div><div class="line">		else </div><div class="line">			a = a &lt;&lt; 1;</div><div class="line">		if((b&amp;1) == 1)&#123;</div><div class="line">            result ^= a;</div><div class="line">        &#125;</div><div class="line">        b &gt;&gt;= 1;</div><div class="line">	&#125;</div><div class="line">	return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>分析一下乘法原理：</strong><br>总共要循环8次，每一次循环都需要判断b的最低位是否为1，a的最高位是否为1。如果b的最低位为1，那么就结果result就要与a进行异或运算。再判断a最高位是否为1，如果是的话那么a在左移之后还要异或 1B。大概差不多了吧。</p>
+<p><strong>乘法逆元：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//生成逆元表函数</div><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">//查表函数</div><div class="line">unsigned char inverse(unsigned char b)&#123;</div><div class="line">	//初始化 </div><div class="line">	unsigned char result;</div><div class="line">	if (b == 0)&#123;</div><div class="line">		cout &lt;&lt; (int)b &lt;&lt; &quot;没有逆元&quot; &lt;&lt;endl; //0没有逆元</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		for (int i = 1; i &lt; 256; i++)&#123;</div><div class="line">			if (Inverse[i] == b) &#123;</div><div class="line">				result = Inverse[255-i];</div><div class="line">				return result;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>乘法逆元原理：</strong><br>在GF(2^8)这个群里如果有g^x <em> g^y == 1（g是其中一个生成元）那么就会有x+y == 255。回到函数里面，第一个我利用生成元：3做254次乘法（第一个元素是0第二个元素是3）得到了一个以3为生成元重新排列的群。第二个就是查表函数了。暴力搜索出b所在的位置，然后<em>*255-b所在的位置的元素</em></em>就是b的逆元。</p>
+<p><strong>离散对数：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含有所有生成元的文件，可以自己生成，也可以上网找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div><div class="line"></div><div class="line">int genrator(unsigned char a, unsigned char b)&#123; </div><div class="line">	if (b == 0)&#123;</div><div class="line">		cout &lt;&lt; (int)b &lt;&lt; &quot;没有离散对数！&quot; &lt;&lt;endl; </div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		//多次使用乘法直到找到为止；</div><div class="line">		unsigned char mi = 1; </div><div class="line">		int y = 0;</div><div class="line">		while(1)&#123;</div><div class="line">			mi = GFmul(mi, a); </div><div class="line">			y++;</div><div class="line">			if(mi == b) return y;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>离散对数原理：</strong><br>这里需要用户输入一个“生成元”和一个X，首先要保证用户输入的生成元是一个真实的生成元。所以需要加一个判断。之后就是利用生成元做多次乘法做到值为X为止，循环次数就是离散对数了。</p>
+<p><em>最后：仅是学生党随意写的用于交流学习，不喜勿喷，谢谢驻足的各位</em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;具体的运算算法&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;加法：&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;
+    
+    </summary>
+    
+    
+      <category term="algorithm" scheme="https://qiil.github.io/qill.github.io/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GF(2^8)运算一一（一）</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-%E8%BF%90%E7%AE%97%E4%B8%80%E4%B8%80%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/</id>
+    <published>2017-06-03T16:06:37.000Z</published>
+    <updated>2017-06-03T16:08:27.818Z</updated>
+    
+    <content type="html"><![CDATA[<p>任务:<br>        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。</p>
+<p>首先分析一下思路：<br>加法思路：对每一位进行异或操作</p>
+<p>乘法：<br>①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结果，最后得出结果。<br>②利用无符号字符类型解释整形创建一个过度变量为result，然后根据字符b的最后一位决定结果值，如果b的最后一位是0则result等于上一个循环的result值，若b的最后一位是1，result值等于result异或a。需要做八次循环，每次循环一开始都要判断a是否大于127如果大于127则a需要左移一位并且异或1B，else a只需要左移一位。</p>
+<p>乘法逆元思路：<br>首先规定生成元是3（00000011，当然用其他生成元也可以，随便）然后生成一个以3为生成元的逆元表，然后查询用户输入的x查询到x之后利用255减去x所在位置那个位置的元素即为x的乘法逆元y</p>
+<p>离散对数思路：<br>用户输入生成元与X，多次调用乘法，调用乘法的次数则为所求的离散对数</p>
+<p>我大概用到的函数定义（忽略界面函数，输入输出函数等与算法无关的函数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;fstream&gt; </div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void set_genrator();           //用于开始设置生成元数组 </div><div class="line">void set_Inverse();           //用于开始设置逆元表</div><div class="line">unsigned char GFsum(unsigned char a, unsigned char b); //求和 </div><div class="line">unsigned char GFmul(unsigned char a, unsigned char b); //乘法 </div><div class="line">unsigned char inverse(unsigned char b);  //乘法逆元 </div><div class="line">bool judge_genrator(unsigned char a); //判断用户输入的生成元是否为生成元 </div><div class="line">int logarithm(unsigned char a, unsigned char b);  //离散对数</div><div class="line">int Genrator[256];           //保存生成元信息</div><div class="line">unsigned char Inverse[256];      //保存以3为生成元的逆元表</div></pre></td></tr></table></figure></p>
+<p>用于设置生成元数组用来判断用户输入的生成元是否为一个真实的生成元：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含所有生成元的记录文件，可以自己生成也可以网上去找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>生成逆元表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;任务:&lt;br&gt;        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。&lt;/p&gt;
+&lt;p&gt;首先分析一下思路：&lt;br&gt;加法思路：对每一
+    
+    </summary>
+    
+    
+      <category term="algorithm" scheme="https://qiil.github.io/qill.github.io/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu下安装gmp一些问题与解决方案</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/04/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85gmp%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/04/ubuntu下安装gmp一些问题与解决方案/</id>
+    <published>2017-06-03T16:04:36.000Z</published>
+    <updated>2017-06-03T16:05:49.927Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.ubuntu下安装gmp遇到 configure:error:no usable m4 in$path or /user/5bin解决方案:</p>
+<p>其实很简单，是因为你没有m4，安装它就OK了。</p>
+<p>sudo apt-get install m4</p>
+<p>done.</p>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.ubuntu下安装gmp遇到 configure:error:no usable m4 in$path or /user/5bin解决方案:&lt;/p&gt;
+&lt;p&gt;其实很简单，是因为你没有m4，安装它就OK了。&lt;/p&gt;
+&lt;p&gt;sudo apt-get install m4&lt;/p
+    
+    </summary>
+    
+      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
+    
+    
+      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
+    
+      <category term="gmp" scheme="https://qiil.github.io/qill.github.io/tags/gmp/"/>
+    
+  </entry>
   
   <entry>
     <title>Centos安装python3.5.x与Ipython</title>
