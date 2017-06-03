@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Hexo</title>
   
-  <link href="/Blog/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://qiil.github.io/qill.github.io/"/>
   <updated>2017-06-03T06:31:07.290Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
     <name>John Doe</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2017/06/03/hello-world/"/>
-    <id>http://yoursite.com/2017/06/03/hello-world/</id>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/03/hello-world/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/03/hello-world/</id>
     <published>2017-06-03T06:31:07.290Z</published>
     <updated>2017-06-03T06:31:07.290Z</updated>
     
