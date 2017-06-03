@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qiil.github.io/qill.github.io/categories/index.html</loc>
+    
+    <lastmod>2017-06-03T15:15:39.355Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qiil.github.io/qill.github.io/tags/index.html</loc>
+    
+    <lastmod>2017-06-03T15:14:02.471Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://qiil.github.io/qill.github.io/2017/06/03/hello-world/</loc>
     
     <lastmod>2017-06-03T06:31:07.290Z</lastmod>
