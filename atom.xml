@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
-  
+  <title>Qill</title>
+  <subtitle>Qill</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
@@ -9,7 +9,7 @@
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Qill</name>
     
   </author>
   
