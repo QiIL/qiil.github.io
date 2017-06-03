@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-03T06:31:07.290Z</updated>
+  <updated>2017-06-03T15:57:54.165Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos安装python3.5.x与Ipython</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/03/Centos%E5%AE%89%E8%A3%85python3-5-x%E4%B8%8EIpython/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/03/Centos安装python3-5-x与Ipython/</id>
+    <published>2017-06-03T15:18:06.000Z</published>
+    <updated>2017-06-03T15:57:54.165Z</updated>
+    
+    <content type="html"><![CDATA[<p>下载源码<br>从python.org下载源码包<br>有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xz<br>Python-3.5.2.tar.xz</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd Python-3.5.2.tar.xz</div></pre></td></tr></table></figure>
+<p>在文件夹中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">./configure</div><div class="line"></div><div class="line">make</div><div class="line"></div><div class="line">make install #这里要用root权限</div></pre></td></tr></table></figure>
+<p>等完就是成功啦，它顺便就帮我安装了pip-8.1.1了呢省下一笔</p>
+<p><img src="http://img.blog.csdn.net/20160908200559535" alt="这里写图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python3 --version #就能看到python的版本啦</div></pre></td></tr></table></figure>
+<p>接下来是ipython了<br>ipython源码下载页面：<br><a href="https://pypi.python.org/pypi/ipython" target="_blank" rel="external">https://pypi.python.org/pypi/ipython</a><br>或者去Git上下载：<br><a href="https://github.com/ipython/ipython/downloads" target="_blank" rel="external">https://github.com/ipython/ipython/downloads</a><br><img src="http://img.blog.csdn.net/20160908201032567" alt="这里写图片描述"><br>下好了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tar -zxvf ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">cd ipython-5.1.0.tar.gz</div><div class="line"></div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
+<p>在终端输入ipython就可以用啦</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ipython</div></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20160908201922462" alt="这里写图片描述"><br>竟然出来这东东，吓死我了。最后一句说的是缺少一个traitlets这个模块，那就安装呗。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install traitlets</div></pre></td></tr></table></figure>
+<p>后来又缺少了各种模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install xxx #就行了</div></pre></td></tr></table></figure></p>
+<p>安装失败的话还有可能是因为pip的版本不够高</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install --upgrade pip #升级一下</div></pre></td></tr></table></figure>
+<p>升级有可能会失败的，那就重新安装pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate</div><div class="line"></div><div class="line">python3 get-pip.py</div></pre></td></tr></table></figure>
+<p>安装了各个模块之后，就可以用啦<img src="http://img.blog.csdn.net/20160908204913538" alt="这里写图片描述"><br>BINGO！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下载源码&lt;br&gt;从python.org下载源码包&lt;br&gt;有一个是tgz结尾的，有一个是tar.xz结尾的随便你下，我下载的是tar.xz&lt;br&gt;Python-3.5.2.tar.xz&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://qiil.github.io/qill.github.io/tags/python/"/>
+    
+      <category term="Centos" scheme="https://qiil.github.io/qill.github.io/tags/Centos/"/>
+    
+      <category term="Ipython" scheme="https://qiil.github.io/qill.github.io/tags/Ipython/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
