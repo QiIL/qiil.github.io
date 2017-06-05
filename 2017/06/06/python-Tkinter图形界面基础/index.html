@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="algorithm," />
+  <meta name="keywords" content="python,Tkinter," />
 
 
 
@@ -42,17 +42,20 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
-<meta name="keywords" content="algorithm">
+<meta name="description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 ####函数简介                         函数            功能                            .askopenfile             在指定目录打开相应文件">
+<meta name="keywords" content="python,Tkinter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GF(2^8)运算一一（一）">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/index.html">
+<meta property="og:title" content="python tkFileDialog模块简介">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
-<meta property="og:updated_time" content="2017-06-03T16:08:27.818Z">
+<meta property="og:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 ####函数简介                         函数            功能                            .askopenfile             在指定目录打开相应文件">
+<meta property="og:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg">
+<meta property="og:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png">
+<meta property="og:updated_time" content="2017-06-05T17:12:08.356Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GF(2^8)运算一一（一）">
-<meta name="twitter:description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
+<meta name="twitter:title" content="python tkFileDialog模块简介">
+<meta name="twitter:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 ####函数简介                         函数            功能                            .askopenfile             在指定目录打开相应文件">
+<meta name="twitter:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +65,7 @@
   };
 </script>
 
-  <title> GF(2^8)运算一一（一） | Qill </title>
+  <title> python tkFileDialog模块简介 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -312,7 +315,7 @@
           
           
             
-              GF(2^8)运算一一（一）
+              python tkFileDialog模块简介
             
           
         </h1>
@@ -321,19 +324,34 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-04T00:06:37+08:00" content="2017-06-04">
-            2017-06-04
+          <time itemprop="dateCreated" datetime="2017-06-06T00:43:36+08:00" content="2017-06-06">
+            2017-06-06
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/python/" itemprop="url" rel="index">
+                  <span itemprop="name">python</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/04/GF-2-8-运算一一（一）/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/04/GF-2-8-运算一一（一）/" itemprop="commentsCount"></span>
+            <a href="/2017/06/06/python-Tkinter图形界面基础/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/06/python-Tkinter图形界面基础/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -347,15 +365,34 @@
       
 
       
-        <span itemprop="articleBody"><p>任务:<br>        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。</p>
-<p>首先分析一下思路：<br>加法思路：对每一位进行异或操作</p>
-<p>乘法：<br>①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结果，最后得出结果。<br>②利用无符号字符类型解释整形创建一个过度变量为result，然后根据字符b的最后一位决定结果值，如果b的最后一位是0则result等于上一个循环的result值，若b的最后一位是1，result值等于result异或a。需要做八次循环，每次循环一开始都要判断a是否大于127如果大于127则a需要左移一位并且异或1B，else a只需要左移一位。</p>
-<p>乘法逆元思路：<br>首先规定生成元是3（00000011，当然用其他生成元也可以，随便）然后生成一个以3为生成元的逆元表，然后查询用户输入的x查询到x之后利用255减去x所在位置那个位置的元素即为x的乘法逆元y</p>
-<p>离散对数思路：<br>用户输入生成元与X，多次调用乘法，调用乘法的次数则为所求的离散对数</p>
-<p>我大概用到的函数定义（忽略界面函数，输入输出函数等与算法无关的函数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;fstream&gt; </div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void set_genrator();           //用于开始设置生成元数组 </div><div class="line">void set_Inverse();           //用于开始设置逆元表</div><div class="line">unsigned char GFsum(unsigned char a, unsigned char b); //求和 </div><div class="line">unsigned char GFmul(unsigned char a, unsigned char b); //乘法 </div><div class="line">unsigned char inverse(unsigned char b);  //乘法逆元 </div><div class="line">bool judge_genrator(unsigned char a); //判断用户输入的生成元是否为生成元 </div><div class="line">int logarithm(unsigned char a, unsigned char b);  //离散对数</div><div class="line">int Genrator[256];           //保存生成元信息</div><div class="line">unsigned char Inverse[256];      //保存以3为生成元的逆元表</div></pre></td></tr></table></figure></p>
-<p>用于设置生成元数组用来判断用户输入的生成元是否为一个真实的生成元：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含所有生成元的记录文件，可以自己生成也可以网上去找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>生成逆元表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><p>tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。</p>
+<p>####函数简介</p>
+<center><br>    <table style="text-align:center;"><br>        <thead><br>            </thead><td>函数</td><br>            <td>功能</td><br>        <br>        <tr><br>            <td>.askopenfile </td><br>            <td>在指定目录打开相应文件</td><br>        </tr><br>        <tr><br>            <td>.asksaveasfilename </td><br>            <td>保存文件到指定目录</td><br>        </tr><br>        <tr><br>            <td>.askdirectory </td><br>            <td>打开一个文件夹</td><br>        </tr><br>    </table><br></center>
+
+<p>####利用askopenfile打开文件<br>askopenfile函数会创建一个文件对话框对象。</p>
+<p>#####Python2.7版本用法<br>    from Tkinter import <em>from Tkinter import </em><br>    import Tkinter, Tkconstants, tkFileDialog</p>
+<pre><code>root = Tk()
+root.filename = tkFileDialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
+<pre><code>root = Tk()
+root.filename =  filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg" alt="打开文件对话框"></center>
+
+<p>####利用asksaveasfilename保存文件<br>asksaveasfilename提供一个保存文件的对话框</p>
+<p>#####Python2.7版本用法<br>    from Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog</p>
+<pre><code>root = Tk()
+root.filename = tkFileDialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
+<pre><code>root = Tk()
+root.filename =  filedialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><p>####利用askdirectory打开文件夹</p>
+<p>#####Python2.7与Pyhon3用法一样，如下：<br>    from  Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog<br>    root = Tk()<br>    root.directory = tkFileDialog.askdirectory()<br>    print (root.directory)</p>
+<center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
+
 </span>
       
     </div>
@@ -364,7 +401,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithm/" rel="tag">#algorithm</a>
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/Tkinter/" rel="tag">#Tkinter</a>
           
         </div>
       
@@ -373,13 +412,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/04/GF-2-8-运算一一（二）/" rel="prev">GF(2^8)运算一一（二）</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/04/ubuntu下安装gmp一些问题与解决方案/" rel="next">ubuntu下安装gmp一些问题与解决方案</a>
+              <a href="/2017/06/04/hello-world/" rel="next">Hello World</a>
             
           </div>
         </div>
@@ -648,9 +685,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/04/GF-2-8-运算一一（一）/';
-    var disqus_title = 'GF(2^8)运算一一（一）';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/';
+    var disqus_identifier = '2017/06/06/python-Tkinter图形界面基础/';
+    var disqus_title = 'python tkFileDialog模块简介';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');

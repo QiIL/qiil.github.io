@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-04T14:27:41.524Z</updated>
+  <updated>2017-06-05T17:12:08.356Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python tkFileDialog模块简介</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/</id>
+    <published>2017-06-05T16:43:36.000Z</published>
+    <updated>2017-06-05T17:12:08.356Z</updated>
+    
+    <content type="html"><![CDATA[<p>tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。</p>
+<p>####函数简介</p>
+<center><br>    <table style="text-align:center;"><br>        <thead><br>            </thead><td>函数</td><br>            <td>功能</td><br>        <br>        <tr><br>            <td>.askopenfile </td><br>            <td>在指定目录打开相应文件</td><br>        </tr><br>        <tr><br>            <td>.asksaveasfilename </td><br>            <td>保存文件到指定目录</td><br>        </tr><br>        <tr><br>            <td>.askdirectory </td><br>            <td>打开一个文件夹</td><br>        </tr><br>    </table><br></center>
+
+<p>####利用askopenfile打开文件<br>askopenfile函数会创建一个文件对话框对象。</p>
+<p>#####Python2.7版本用法<br>    from Tkinter import <em>from Tkinter import </em><br>    import Tkinter, Tkconstants, tkFileDialog</p>
+<pre><code>root = Tk()
+root.filename = tkFileDialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
+<pre><code>root = Tk()
+root.filename =  filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg" alt="打开文件对话框"></center>
+
+<p>####利用asksaveasfilename保存文件<br>asksaveasfilename提供一个保存文件的对话框</p>
+<p>#####Python2.7版本用法<br>    from Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog</p>
+<pre><code>root = Tk()
+root.filename = tkFileDialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
+<pre><code>root = Tk()
+root.filename =  filedialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
+print (root.filename)
+</code></pre><p>####利用askdirectory打开文件夹</p>
+<p>#####Python2.7与Pyhon3用法一样，如下：<br>    from  Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog<br>    root = Tk()<br>    root.directory = tkFileDialog.askdirectory()<br>    print (root.directory)</p>
+<center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。&lt;/p&gt;
+&lt;p&gt;####函数简介&lt;/p&gt;
+&lt;center&gt;&lt;br&gt;    &lt;table style=&quot;text-a
+    
+    </summary>
+    
+      <category term="python" scheme="https://qiil.github.io/qill.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://qiil.github.io/qill.github.io/tags/python/"/>
+    
+      <category term="Tkinter" scheme="https://qiil.github.io/qill.github.io/tags/Tkinter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/04/hello-world/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/04/hello-world/</id>
+    <published>2017-06-04T14:36:35.499Z</published>
+    <updated>2017-06-04T14:36:35.499Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>《to the moon》游玩后有感</title>
@@ -248,33 +329,6 @@
       <category term="Centos" scheme="https://qiil.github.io/qill.github.io/tags/Centos/"/>
     
       <category term="Ipython" scheme="https://qiil.github.io/qill.github.io/tags/Ipython/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://qiil.github.io/qill.github.io/2017/06/03/hello-world/"/>
-    <id>https://qiil.github.io/qill.github.io/2017/06/03/hello-world/</id>
-    <published>2017-06-03T06:31:07.290Z</published>
-    <updated>2017-06-03T06:31:07.290Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
     
   </entry>
   
