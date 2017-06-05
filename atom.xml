@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-05T17:12:08.356Z</updated>
+  <updated>2017-06-05T17:25:10.050Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -20,43 +20,96 @@
     <link href="https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80/"/>
     <id>https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/</id>
     <published>2017-06-05T16:43:36.000Z</published>
-    <updated>2017-06-05T17:12:08.356Z</updated>
+    <updated>2017-06-05T17:25:10.050Z</updated>
     
     <content type="html"><![CDATA[<p>tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。</p>
-<p>####函数简介</p>
-<center><br>    <table style="text-align:center;"><br>        <thead><br>            </thead><td>函数</td><br>            <td>功能</td><br>        <br>        <tr><br>            <td>.askopenfile </td><br>            <td>在指定目录打开相应文件</td><br>        </tr><br>        <tr><br>            <td>.asksaveasfilename </td><br>            <td>保存文件到指定目录</td><br>        </tr><br>        <tr><br>            <td>.askdirectory </td><br>            <td>打开一个文件夹</td><br>        </tr><br>    </table><br></center>
+<h4>函数简介</h4>
 
-<p>####利用askopenfile打开文件<br>askopenfile函数会创建一个文件对话框对象。</p>
-<p>#####Python2.7版本用法<br>    from Tkinter import <em>from Tkinter import </em><br>    import Tkinter, Tkconstants, tkFileDialog</p>
-<pre><code>root = Tk()
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.askopenfile</td>
+<td>在指定目录打开相应文件</td>
+</tr>
+<tr>
+<td>.asksaveasfilename</td>
+<td>保存文件到指定目录</td>
+</tr>
+<tr>
+<td>.askdirectory</td>
+<td>打开一个指定的文件夹</td>
+</tr>
+</tbody>
+</table>
+<h4>利用askopenfile打开文件</h4>
+
+<p>askopenfile函数会创建一个文件对话框对象。</p>
+<h5>Python2.7版本用法:</h5>
+
+<pre><code>from Tkinter import *from Tkinter import *
+import Tkinter, Tkconstants, tkFileDialog
+
+root = Tk()
 root.filename = tkFileDialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
-</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
-<pre><code>root = Tk()
+</code></pre><h5>Python3本分用法:</h5>
+
+<pre><code>from tkinter import filedialog
+from tkinter import *
+
+root = Tk()
 root.filename =  filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
 </code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg" alt="打开文件对话框"></center>
 
-<p>####利用asksaveasfilename保存文件<br>asksaveasfilename提供一个保存文件的对话框</p>
-<p>#####Python2.7版本用法<br>    from Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog</p>
-<pre><code>root = Tk()
+<h4>利用asksaveasfilename保存文件</h4>
+
+<p>asksaveasfilename提供一个保存文件的对话框</p>
+<h5>Python2.7版本用法:</h5>
+
+<pre><code>from Tkinter import *
+import Tkinter, Tkconstants, tkFileDialog
+
+root = Tk()
 root.filename = tkFileDialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
-</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
-<pre><code>root = Tk()
+</code></pre><h5>Python3本分用法:</h5>
+
+<pre><code>from tkinter import filedialog
+from tkinter import *
+
+root = Tk()
 root.filename =  filedialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
-</code></pre><p>####利用askdirectory打开文件夹</p>
-<p>#####Python2.7与Pyhon3用法一样，如下：<br>    from  Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog<br>    root = Tk()<br>    root.directory = tkFileDialog.askdirectory()<br>    print (root.directory)</p>
-<center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
+</code></pre><h4>利用askdirectory打开文件夹</h4>
+
+<h5>Python2.7与Pyhon3用法一样，如下：</h5>
+
+<pre><code>from  Tkinter import *
+import Tkinter, Tkconstants, tkFileDialog
+root = Tk()
+root.directory = tkFileDialog.askdirectory()
+print (root.directory)
+</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
 
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。&lt;/p&gt;
-&lt;p&gt;####函数简介&lt;/p&gt;
-&lt;center&gt;&lt;br&gt;    &lt;table style=&quot;text-a
+&lt;h4&gt;函数简介&lt;/h4&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;函数&lt;/th&gt;
+&lt;th&gt;
     
     </summary>
     
@@ -101,7 +154,7 @@ print (root.filename)
     <link href="https://qiil.github.io/qill.github.io/2017/06/04/%E3%80%8Ato-the-moon%E3%80%8B%E6%B8%B8%E7%8E%A9%E5%90%8E%E6%9C%89%E6%84%9F/"/>
     <id>https://qiil.github.io/qill.github.io/2017/06/04/《to-the-moon》游玩后有感/</id>
     <published>2017-06-04T09:41:40.000Z</published>
-    <updated>2017-06-04T14:27:41.524Z</updated>
+    <updated>2017-06-05T17:14:00.698Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://cdn.steamstatic.com.8686c.com/steam/apps/206440/ss_1ad788262b8d672b5fd70299320c5c2323ba15ef.1920x1080.jpg" alt=""></p>
 <blockquote>
@@ -110,14 +163,17 @@ print (root.filename)
 <p>在我看来没有其他方法比解出里面的“谜题”更好了</p>
 <p>故事简介：<br>&emsp;&emsp;故事是主角们利用一个记忆改造机的东西去帮助一位即将去世的叫John的老爷爷完成一个去月亮的梦想。主角需要从John的老年-&gt;中年-&gt;青年-&gt;童年一直往下走然后改造John的记忆。把John爷爷从小培养成为了月球而努力的人，从而在长大之后变成一名宇航员然后坐上火箭去月球。主角们在寻找记忆标签的时候有一个很奇怪的现象：John一点都不想去月球！John满脑子只有他亡故的妻子–小溪。。。</p>
 <p>去月亮游记的“谜题”：</p>
-<p>#####兔子，灯塔，鸭嘴兽。<br>《序章》</p>
+<h5>兔子，灯塔，鸭嘴兽。</h5>
+
+<p>《序章》</p>
 <ol>
 <li>为什么JOHN要去月亮？</li>
 <li>为什么灯塔上面放了一只兔子？ –听到主题曲《to the moon》</li>
 <li>为什么兔子是蓝色加黄色的？</li>
 <li>为什么鸭嘴兽在地下室，而且很脏？</li>
 </ol>
-<p>#####ACT 1 其实我一直认为他们是灯塔。</p>
+<h5>ACT 1 其实我一直认为他们是灯塔。</h5>
+
 <ol>
 <li>为什么小溪一直闷闷不乐在折兔子，她看着John很烦躁，她不着急吗？</li>
 <li>为什么要在这座灯塔附近建屋子？</li>
@@ -129,7 +185,8 @@ print (root.filename)
 <li>为什么小溪说两个人在同一间放映室看电影就等于一起看电影？不应该坐一起？</li>
 <li>为什么John完全没有去月亮的意思？</li>
 </ol>
-<p>#####ACT 2 和 ACT 3基本用来解密了，然后就不用多说了。</p>
+<h5>ACT 2 和 ACT 3基本用来解密了，然后就不用多说了。</h5>
+
 <p>1.John去月亮就是因为想去（或许这样说会有点奇怪但是我认为这应该是没错的），在John一个人的时候，想必他已经把和小溪的点点滴滴回忆了一遍又一遍吧，所以我相信他已经想到了从前，如果我的假设没错的话那么他是回忆了多少次才能够做到不放过这些细节呢？</p>
 <p>2&amp;3.我一直认为他们是灯塔，这篇星空下有一只以月亮作为肚子的兔子呢，天是蓝蓝的，月亮也是黄黄的，那么兔子就是蓝色加黄色啦，放在灯塔上估计是John想要告诉小溪他已经知道她不停折兔子时的内心想法了。</p>
 <p>4.这是我唯一不知道怎么回答的问题了，如果John已经回忆起所有的东西了，不应该会漏掉鸭嘴兽吧？所以我只能归类为他老了，童年的东西已经不能记得很清楚了（感慨岁月蹉跎），但是鸭嘴兽是陪伴小溪一辈子的玩偶，不可能这都想不到吧？是因为曾经服用药物强制失忆的原因？</p>

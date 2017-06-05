@@ -42,19 +42,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 ####函数简介                         函数            功能                            .askopenfile             在指定目录打开相应文件">
+<meta name="description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 函数简介     函数 功能     .askopenfile 在指定目录打开相应文件   .asksaveasfilename 保存文件到指定目录   .askdirectory 打开一个指定的文件夹    利用askopenfile打">
 <meta name="keywords" content="python,Tkinter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python tkFileDialog模块简介">
 <meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/06/python-Tkinter图形界面基础/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 ####函数简介                         函数            功能                            .askopenfile             在指定目录打开相应文件">
+<meta property="og:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 函数简介     函数 功能     .askopenfile 在指定目录打开相应文件   .asksaveasfilename 保存文件到指定目录   .askdirectory 打开一个指定的文件夹    利用askopenfile打">
 <meta property="og:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg">
 <meta property="og:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png">
-<meta property="og:updated_time" content="2017-06-05T17:12:08.356Z">
+<meta property="og:updated_time" content="2017-06-05T17:25:10.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python tkFileDialog模块简介">
-<meta name="twitter:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 ####函数简介                         函数            功能                            .askopenfile             在指定目录打开相应文件">
+<meta name="twitter:description" content="tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。 函数简介     函数 功能     .askopenfile 在指定目录打开相应文件   .asksaveasfilename 保存文件到指定目录   .askdirectory 打开一个指定的文件夹    利用askopenfile打">
 <meta name="twitter:image" content="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg">
 
 
@@ -366,32 +366,80 @@
 
       
         <span itemprop="articleBody"><p>tkFileDialog是一个通过GUI来实现打开文件或文件加功能的python模块。其用户界面虽然和Win32的很不一样，不过还是挺友好的嘛，还是可以看一看。</p>
-<p>####函数简介</p>
-<center><br>    <table style="text-align:center;"><br>        <thead><br>            </thead><td>函数</td><br>            <td>功能</td><br>        <br>        <tr><br>            <td>.askopenfile </td><br>            <td>在指定目录打开相应文件</td><br>        </tr><br>        <tr><br>            <td>.asksaveasfilename </td><br>            <td>保存文件到指定目录</td><br>        </tr><br>        <tr><br>            <td>.askdirectory </td><br>            <td>打开一个文件夹</td><br>        </tr><br>    </table><br></center>
+<h4>函数简介</h4>
 
-<p>####利用askopenfile打开文件<br>askopenfile函数会创建一个文件对话框对象。</p>
-<p>#####Python2.7版本用法<br>    from Tkinter import <em>from Tkinter import </em><br>    import Tkinter, Tkconstants, tkFileDialog</p>
-<pre><code>root = Tk()
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.askopenfile</td>
+<td>在指定目录打开相应文件</td>
+</tr>
+<tr>
+<td>.asksaveasfilename</td>
+<td>保存文件到指定目录</td>
+</tr>
+<tr>
+<td>.askdirectory</td>
+<td>打开一个指定的文件夹</td>
+</tr>
+</tbody>
+</table>
+<h4>利用askopenfile打开文件</h4>
+
+<p>askopenfile函数会创建一个文件对话框对象。</p>
+<h5>Python2.7版本用法:</h5>
+
+<pre><code>from Tkinter import *from Tkinter import *
+import Tkinter, Tkconstants, tkFileDialog
+
+root = Tk()
 root.filename = tkFileDialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
-</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
-<pre><code>root = Tk()
+</code></pre><h5>Python3本分用法:</h5>
+
+<pre><code>from tkinter import filedialog
+from tkinter import *
+
+root = Tk()
 root.filename =  filedialog.askopenfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
 </code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkfiledialog.jpeg" alt="打开文件对话框"></center>
 
-<p>####利用asksaveasfilename保存文件<br>asksaveasfilename提供一个保存文件的对话框</p>
-<p>#####Python2.7版本用法<br>    from Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog</p>
-<pre><code>root = Tk()
+<h4>利用asksaveasfilename保存文件</h4>
+
+<p>asksaveasfilename提供一个保存文件的对话框</p>
+<h5>Python2.7版本用法:</h5>
+
+<pre><code>from Tkinter import *
+import Tkinter, Tkconstants, tkFileDialog
+
+root = Tk()
 root.filename = tkFileDialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
-</code></pre><p>#####Python3本分用法<br>    from tkinter import filedialog<br>    from tkinter import *</p>
-<pre><code>root = Tk()
+</code></pre><h5>Python3本分用法:</h5>
+
+<pre><code>from tkinter import filedialog
+from tkinter import *
+
+root = Tk()
 root.filename =  filedialog.asksaveasfilename(initialdir = &quot;/&quot;,title = &quot;Select file&quot;,filetypes = ((&quot;jpeg files&quot;,&quot;*.jpg&quot;),(&quot;all files&quot;,&quot;*.*&quot;)))
 print (root.filename)
-</code></pre><p>####利用askdirectory打开文件夹</p>
-<p>#####Python2.7与Pyhon3用法一样，如下：<br>    from  Tkinter import *<br>    import Tkinter, Tkconstants, tkFileDialog<br>    root = Tk()<br>    root.directory = tkFileDialog.askdirectory()<br>    print (root.directory)</p>
-<center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
+</code></pre><h4>利用askdirectory打开文件夹</h4>
+
+<h5>Python2.7与Pyhon3用法一样，如下：</h5>
+
+<pre><code>from  Tkinter import *
+import Tkinter, Tkconstants, tkFileDialog
+root = Tk()
+root.directory = tkFileDialog.askdirectory()
+print (root.directory)
+</code></pre><center><img src="https://pythonspot.com/wp-content/uploads/2015/05/tkinter-askdirectory-e1457134678396.png" alt="打开文件夹对话框"></center>
 
 </span>
       
@@ -632,7 +680,7 @@ print (root.filename)
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">函数简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">利用askopenfile打开文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Python2.7版本用法:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Python3本分用法:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">利用asksaveasfilename保存文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">Python2.7版本用法:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">Python3本分用法:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">利用askdirectory打开文件夹</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">Python2.7与Pyhon3用法一样，如下：</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
