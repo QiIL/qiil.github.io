@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-06T03:22:21.365Z</updated>
+  <updated>2017-06-06T04:56:12.601Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu 16.04 阿里源</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/06/Ubuntu-16-04-%E9%98%BF%E9%87%8C%E6%BA%90/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/06/Ubuntu-16-04-阿里源/</id>
+    <published>2017-06-06T04:52:55.000Z</published>
+    <updated>2017-06-06T04:56:12.601Z</updated>
+    
+    <content type="html"><![CDATA[<p>###操作步骤<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">添加阿里云源到如下列表中</div><div class="line">$ sudo vim /etc/apt/sources.list.d/aliyun.list <span class="comment">#修改</span></div><div class="line">更新列表</div><div class="line">$ sudo apt-get update</div></pre></td></tr></table></figure></p>
+<p>###阿里源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###操作步骤&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class
+    
+    </summary>
+    
+      <category term="linux琐碎事" scheme="https://qiil.github.io/qill.github.io/categories/linux%E7%90%90%E7%A2%8E%E4%BA%8B/"/>
+    
+    
+      <category term="ubuntu" scheme="https://qiil.github.io/qill.github.io/tags/ubuntu/"/>
+    
+      <category term="sources.list" scheme="https://qiil.github.io/qill.github.io/tags/sources-list/"/>
+    
+  </entry>
   
   <entry>
     <title>《情书》读后感</title>
@@ -150,7 +176,7 @@ print (root.directory)
     <link href="https://qiil.github.io/qill.github.io/2017/06/04/%E3%80%8Ato-the-moon%E3%80%8B%E6%B8%B8%E7%8E%A9%E5%90%8E%E6%9C%89%E6%84%9F/"/>
     <id>https://qiil.github.io/qill.github.io/2017/06/04/《to-the-moon》游玩后有感/</id>
     <published>2017-06-04T09:41:40.000Z</published>
-    <updated>2017-06-05T17:30:30.254Z</updated>
+    <updated>2017-06-06T03:18:47.444Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://cdn.steamstatic.com.8686c.com/steam/apps/206440/ss_1ad788262b8d672b5fd70299320c5c2323ba15ef.1920x1080.jpg" alt=""></p>
 <blockquote>
