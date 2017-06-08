@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-07T17:10:53.337Z</updated>
+  <updated>2017-06-08T15:35:43.614Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node.js阻塞与非阻塞</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/08/node-js%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/08/node-js阻塞与非阻塞/</id>
+    <published>2017-06-08T15:22:30.000Z</published>
+    <updated>2017-06-08T15:35:43.614Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先从区分两段代码开始:</p>
+<h3 id="php-代码"><a href="#php-代码" class="headerlink" title="php 代码"></a>php 代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">print</span> (<span class="string">'hello'</span>);</div><div class="line">$ sleep(<span class="number">5</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'world'</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'thanks'</span>);</div></pre></td></tr></table></figure>
+<h3 id="Node-代码"><a href="#Node-代码" class="headerlink" title="Node 代码"></a>Node 代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</div><div class="line">$ setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'world'</span>)</div><div class="line">&#125;&#125;, <span class="number">5000</span>)</div><div class="line">$ <span class="built_in">console</span>.log(<span class="string">'thanks'</span>)</div></pre></td></tr></table></figure>
+<p>第一段脚本会输出：</p>
+<blockquote>
+<p>hello<br>world<br>thanks</p>
+</blockquote>
+<p>第二段脚本会输出：</p>
+<blockquote>
+<p>hello<br>thanks<br>world</p>
+</blockquote>
+<p>可以看出区别了，Node.js使用了事件论调机制，所以称它是非阻塞的。<br>事件论调意味着，Node会注册事件，然后不断地询问内核这些事件是否已经分发。当事件分发时，对应的回调函数就会触发完成相应事件，然后继续执行后续语句。<br>反观PHP代码中的sleep一旦执行，执行会被阻塞一段时间，并且在阻塞时间未达到设定时间之前是不会有任何操作的，也就是同步的。与阻塞相反，setTimeout只是注册了一个事件，而程序会继续执行，所以这是异步的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先从区分两段代码开始:&lt;/p&gt;
+&lt;h3 id=&quot;php-代码&quot;&gt;&lt;a href=&quot;#php-代码&quot; class=&quot;headerlink&quot; title=&quot;php 代码&quot;&gt;&lt;/a&gt;php 代码&lt;/h3&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node.js" scheme="https://qiil.github.io/qill.github.io/tags/node-js/"/>
+    
+      <category term="io" scheme="https://qiil.github.io/qill.github.io/tags/io/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 16.04 阿里源</title>

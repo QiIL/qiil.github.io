@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="ubuntu,sources.list," />
+  <meta name="keywords" content="node.js,io," />
 
 
 
@@ -42,17 +42,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="操作步骤1234添加阿里云源到如下列表中$ sudo vim /etc/apt/sources.list.d/aliyun.list #修改更新列表$ sudo apt-get update 阿里源12345678910deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiversedeb http:/">
-<meta name="keywords" content="ubuntu,sources.list">
+<meta name="description" content="首先从区分两段代码开始: php 代码1234$ print (&apos;hello&apos;);$ sleep(5);$ print (&apos;world&apos;);$ print (&apos;thanks&apos;); Node 代码12345$ console.log(&apos;hello&apos;)$ setTimeout(function() &amp;#123;	console.log(&apos;world&apos;)&amp;#125;&amp;#125;, 5000)$ cons">
+<meta name="keywords" content="node.js,io">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu 16.04 阿里源">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/06/Ubuntu-16-04-阿里源/index.html">
+<meta property="og:title" content="node.js阻塞与非阻塞">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/08/node-js阻塞与非阻塞/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="操作步骤1234添加阿里云源到如下列表中$ sudo vim /etc/apt/sources.list.d/aliyun.list #修改更新列表$ sudo apt-get update 阿里源12345678910deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiversedeb http:/">
-<meta property="og:updated_time" content="2017-06-07T17:10:53.337Z">
+<meta property="og:description" content="首先从区分两段代码开始: php 代码1234$ print (&apos;hello&apos;);$ sleep(5);$ print (&apos;world&apos;);$ print (&apos;thanks&apos;); Node 代码12345$ console.log(&apos;hello&apos;)$ setTimeout(function() &amp;#123;	console.log(&apos;world&apos;)&amp;#125;&amp;#125;, 5000)$ cons">
+<meta property="og:updated_time" content="2017-06-08T15:35:43.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu 16.04 阿里源">
-<meta name="twitter:description" content="操作步骤1234添加阿里云源到如下列表中$ sudo vim /etc/apt/sources.list.d/aliyun.list #修改更新列表$ sudo apt-get update 阿里源12345678910deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiversedeb http:/">
+<meta name="twitter:title" content="node.js阻塞与非阻塞">
+<meta name="twitter:description" content="首先从区分两段代码开始: php 代码1234$ print (&apos;hello&apos;);$ sleep(5);$ print (&apos;world&apos;);$ print (&apos;thanks&apos;); Node 代码12345$ console.log(&apos;hello&apos;)$ setTimeout(function() &amp;#123;	console.log(&apos;world&apos;)&amp;#125;&amp;#125;, 5000)$ cons">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +62,7 @@
   };
 </script>
 
-  <title> Ubuntu 16.04 阿里源 | Qill </title>
+  <title> node.js阻塞与非阻塞 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -312,7 +312,7 @@
           
           
             
-              Ubuntu 16.04 阿里源
+              node.js阻塞与非阻塞
             
           
         </h1>
@@ -321,8 +321,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-06T12:52:55+08:00" content="2017-06-06">
-            2017-06-06
+          <time itemprop="dateCreated" datetime="2017-06-08T23:22:30+08:00" content="2017-06-08">
+            2017-06-08
           </time>
         </span>
 
@@ -331,8 +331,8 @@
             &nbsp; | &nbsp; In
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/linux琐碎事/" itemprop="url" rel="index">
-                  <span itemprop="name">linux琐碎事</span>
+                <a href="/categories/Node-js之路/" itemprop="url" rel="index">
+                  <span itemprop="name">Node.js之路</span>
                 </a>
               </span>
 
@@ -347,8 +347,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/06/Ubuntu-16-04-阿里源/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/06/Ubuntu-16-04-阿里源/" itemprop="commentsCount"></span>
+            <a href="/2017/06/08/node-js阻塞与非阻塞/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/08/node-js阻塞与非阻塞/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -362,8 +362,19 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">添加阿里云源到如下列表中</div><div class="line">$ sudo vim /etc/apt/sources.list.d/aliyun.list <span class="comment">#修改</span></div><div class="line">更新列表</div><div class="line">$ sudo apt-get update</div></pre></td></tr></table></figure>
-<h3 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line">deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><p>首先从区分两段代码开始:</p>
+<h3 id="php-代码"><a href="#php-代码" class="headerlink" title="php 代码"></a>php 代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">print</span> (<span class="string">'hello'</span>);</div><div class="line">$ sleep(<span class="number">5</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'world'</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'thanks'</span>);</div></pre></td></tr></table></figure>
+<h3 id="Node-代码"><a href="#Node-代码" class="headerlink" title="Node 代码"></a>Node 代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</div><div class="line">$ setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'world'</span>)</div><div class="line">&#125;&#125;, <span class="number">5000</span>)</div><div class="line">$ <span class="built_in">console</span>.log(<span class="string">'thanks'</span>)</div></pre></td></tr></table></figure>
+<p>第一段脚本会输出：</p>
+<blockquote>
+<p>hello<br>world<br>thanks</p>
+</blockquote>
+<p>第二段脚本会输出：</p>
+<blockquote>
+<p>hello<br>thanks<br>world</p>
+</blockquote>
+<p>可以看出区别了，Node.js使用了事件论调机制，所以称它是非阻塞的。<br>事件论调意味着，Node会注册事件，然后不断地询问内核这些事件是否已经分发。当事件分发时，对应的回调函数就会触发完成相应事件，然后继续执行后续语句。<br>反观PHP代码中的sleep一旦执行，执行会被阻塞一段时间，并且在阻塞时间未达到设定时间之前是不会有任何操作的，也就是同步的。与阻塞相反，setTimeout只是注册了一个事件，而程序会继续执行，所以这是异步的。</p>
+</span>
       
     </div>
 
@@ -371,9 +382,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ubuntu/" rel="tag">#ubuntu</a>
+            <a href="/tags/node-js/" rel="tag">#node.js</a>
           
-            <a href="/tags/sources-list/" rel="tag">#sources.list</a>
+            <a href="/tags/io/" rel="tag">#io</a>
           
         </div>
       
@@ -382,13 +393,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/08/node-js阻塞与非阻塞/" rel="prev">node.js阻塞与非阻塞</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/06/《情书》读后感/" rel="next">《情书》读后感</a>
+              <a href="/2017/06/06/Ubuntu-16-04-阿里源/" rel="next">Ubuntu 16.04 阿里源</a>
             
           </div>
         </div>
@@ -604,7 +613,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作步骤"><span class="nav-number">1.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阿里源"><span class="nav-number">2.</span> <span class="nav-text">阿里源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php-代码"><span class="nav-number">1.</span> <span class="nav-text">php 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-代码"><span class="nav-number">2.</span> <span class="nav-text">Node 代码</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -657,9 +666,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/06/Ubuntu-16-04-阿里源/';
-    var disqus_title = 'Ubuntu 16.04 阿里源';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/06/Ubuntu-16-04-阿里源/';
+    var disqus_identifier = '2017/06/08/node-js阻塞与非阻塞/';
+    var disqus_title = 'node.js阻塞与非阻塞';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/08/node-js阻塞与非阻塞/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
