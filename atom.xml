@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-12T09:29:19.907Z</updated>
+  <updated>2017-06-12T14:42:59.610Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Node事件论调与错误处理</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/12/Node%E4%BA%8B%E4%BB%B6%E8%AE%BA%E8%B0%83%E4%B8%8E%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/12/Node事件论调与错误处理/</id>
+    <published>2017-06-12T13:52:56.000Z</published>
+    <updated>2017-06-12T14:42:59.610Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//test.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	b()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	a()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</div><div class="line">    &#125;, <span class="number">10</span>)</div><div class="line">&#125;</div><div class="line">a()</div></pre></td></tr></table></figure></p>
+<p>输出大概像这样（等待1秒）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">throw new Error(<span class="string">'error'</span>)</div><div class="line">Error: error</div><div class="line">    at Timeout._onTimeout (/home/qill/node_learning/test.js:30:9</div><div class="line">)</div><div class="line">    at ontimeout (timers.js:488:11)</div><div class="line">    at tryOnTimeout (timers.js:323:5)</div><div class="line">    at Timer.listOnTimeout (timers.js:283:5)</div></pre></td></tr></table></figure></p>
+<p>可以看到是没有堆栈追踪信息输出的。为什么呢，因为想要捕获一个未来才会执行到的函数的错误是不可能的，这会直接抛出未捕获的异常。那么我们就认证一下，是否真的如此<br>我们改一改代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//test.js</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  setTimeout (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    reject(<span class="string">'error'</span>)</div><div class="line">  &#125;, <span class="number">1000</span>);</div><div class="line">&#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">  <span class="built_in">console</span>.log(err.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果我们能够捕获这个异常的话应该会输出 error。运行结果（等待1秒后获得的输出）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">reject(<span class="string">'error'</span>)</div><div class="line">    ^</div><div class="line">ReferenceError: reject is not defined</div><div class="line">    at Timeout.setTimeout [as _onTimeout] (/home/qill/node_learn</div><div class="line">ing/test.js:21:5)</div><div class="line">    at ontimeout (timers.js:488:11)</div><div class="line">    at tryOnTimeout (timers.js:323:5)</div><div class="line">    at Timer.listOnTimeout (timers.js:283:5)</div></pre></td></tr></table></figure></p>
+<p>可见仍然是未捕获的异常，catch代码没有运行，因为try，catch是同步的而setTimeout是异步的try并不能捕获未来一秒后的异常。如果想要捕获这个异常要怎么办呢，办法是有的。<br>首先安装这个模块<br><code>$ npm i co</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> co = <span class="built_in">require</span>(<span class="string">'co'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutError</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>))</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">co(<span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">yield</span> timeoutError()</div><div class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">    <span class="built_in">console</span>.log(err.message)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>把setTimeout封装成一个promise，然后用co模块去获取promise返回的错误对象，然后输出然后输出这个错误对象的信息就可以了。运行结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">&gt; error</div></pre></td></tr></table></figure></p>
+<center>完。</center>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>Node单线程的世界</title>

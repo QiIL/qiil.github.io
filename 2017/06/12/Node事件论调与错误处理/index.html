@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="node,io," />
+  <meta name="keywords" content="node," />
 
 
 
@@ -42,17 +42,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="首先从区分两段代码开始: php 代码1234$ print (&apos;hello&apos;);$ sleep(5);$ print (&apos;world&apos;);$ print (&apos;thanks&apos;); Node 代码12345$ console.log(&apos;hello&apos;)$ setTimeout(function() &amp;#123;	console.log(&apos;world&apos;)&amp;#125;&amp;#125;, 5000)$ cons">
-<meta name="keywords" content="node,io">
+<meta name="description" content="我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：12345678910111213//test.jsfunction c ()&amp;#123;	b()&amp;#125;function b ()&amp;#123;	a()&amp;#125;function a ()&amp;#123;	setTimeout(function ()&amp;#123;		throw new Error(&apos;error">
+<meta name="keywords" content="node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node.js阻塞与非阻塞">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/08/node-js阻塞与非阻塞/index.html">
+<meta property="og:title" content="Node事件论调与错误处理">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/12/Node事件论调与错误处理/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="首先从区分两段代码开始: php 代码1234$ print (&apos;hello&apos;);$ sleep(5);$ print (&apos;world&apos;);$ print (&apos;thanks&apos;); Node 代码12345$ console.log(&apos;hello&apos;)$ setTimeout(function() &amp;#123;	console.log(&apos;world&apos;)&amp;#125;&amp;#125;, 5000)$ cons">
-<meta property="og:updated_time" content="2017-06-12T08:53:05.606Z">
+<meta property="og:description" content="我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：12345678910111213//test.jsfunction c ()&amp;#123;	b()&amp;#125;function b ()&amp;#123;	a()&amp;#125;function a ()&amp;#123;	setTimeout(function ()&amp;#123;		throw new Error(&apos;error">
+<meta property="og:updated_time" content="2017-06-12T14:42:59.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node.js阻塞与非阻塞">
-<meta name="twitter:description" content="首先从区分两段代码开始: php 代码1234$ print (&apos;hello&apos;);$ sleep(5);$ print (&apos;world&apos;);$ print (&apos;thanks&apos;); Node 代码12345$ console.log(&apos;hello&apos;)$ setTimeout(function() &amp;#123;	console.log(&apos;world&apos;)&amp;#125;&amp;#125;, 5000)$ cons">
+<meta name="twitter:title" content="Node事件论调与错误处理">
+<meta name="twitter:description" content="我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：12345678910111213//test.jsfunction c ()&amp;#123;	b()&amp;#125;function b ()&amp;#123;	a()&amp;#125;function a ()&amp;#123;	setTimeout(function ()&amp;#123;		throw new Error(&apos;error">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +62,7 @@
   };
 </script>
 
-  <title> node.js阻塞与非阻塞 | Qill </title>
+  <title> Node事件论调与错误处理 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -312,7 +312,7 @@
           
           
             
-              node.js阻塞与非阻塞
+              Node事件论调与错误处理
             
           
         </h1>
@@ -321,8 +321,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-08T23:22:30+08:00" content="2017-06-08">
-            2017-06-08
+          <time itemprop="dateCreated" datetime="2017-06-12T21:52:56+08:00" content="2017-06-12">
+            2017-06-12
           </time>
         </span>
 
@@ -347,8 +347,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/08/node-js阻塞与非阻塞/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/08/node-js阻塞与非阻塞/" itemprop="commentsCount"></span>
+            <a href="/2017/06/12/Node事件论调与错误处理/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/12/Node事件论调与错误处理/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -362,19 +362,13 @@
       
 
       
-        <span itemprop="articleBody"><p>首先从区分两段代码开始:</p>
-<h3 id="php-代码"><a href="#php-代码" class="headerlink" title="php 代码"></a>php 代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">print</span> (<span class="string">'hello'</span>);</div><div class="line">$ sleep(<span class="number">5</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'world'</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'thanks'</span>);</div></pre></td></tr></table></figure>
-<h3 id="Node-代码"><a href="#Node-代码" class="headerlink" title="Node 代码"></a>Node 代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</div><div class="line">$ setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'world'</span>)</div><div class="line">&#125;&#125;, <span class="number">5000</span>)</div><div class="line">$ <span class="built_in">console</span>.log(<span class="string">'thanks'</span>)</div></pre></td></tr></table></figure>
-<p>第一段脚本会输出：</p>
-<blockquote>
-<p>hello<br>world<br>thanks</p>
-</blockquote>
-<p>第二段脚本会输出：</p>
-<blockquote>
-<p>hello<br>thanks<br>world</p>
-</blockquote>
-<p>可以看出区别了，Node.js使用了事件论调机制，所以称它是非阻塞的。<br>事件论调意味着，Node会注册事件，然后不断地询问内核这些事件是否已经分发。当事件分发时，对应的回调函数就会触发完成相应事件，然后继续执行后续语句。<br>反观PHP代码中的sleep一旦执行，执行会被阻塞一段时间，并且在阻塞时间未达到设定时间之前是不会有任何操作的，也就是同步的。与阻塞相反，setTimeout只是注册了一个事件，而程序会继续执行，所以这是异步的。</p>
-</span>
+        <span itemprop="articleBody"><p>我们知道，Node出错信息是能够看到堆栈追踪信息的，但是引入事件轮调后就很不一样了例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//test.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	b()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	a()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>)</div><div class="line">    &#125;, <span class="number">10</span>)</div><div class="line">&#125;</div><div class="line">a()</div></pre></td></tr></table></figure></p>
+<p>输出大概像这样（等待1秒）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">throw new Error(<span class="string">'error'</span>)</div><div class="line">Error: error</div><div class="line">    at Timeout._onTimeout (/home/qill/node_learning/test.js:30:9</div><div class="line">)</div><div class="line">    at ontimeout (timers.js:488:11)</div><div class="line">    at tryOnTimeout (timers.js:323:5)</div><div class="line">    at Timer.listOnTimeout (timers.js:283:5)</div></pre></td></tr></table></figure></p>
+<p>可以看到是没有堆栈追踪信息输出的。为什么呢，因为想要捕获一个未来才会执行到的函数的错误是不可能的，这会直接抛出未捕获的异常。那么我们就认证一下，是否真的如此<br>我们改一改代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//test.js</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  setTimeout (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    reject(<span class="string">'error'</span>)</div><div class="line">  &#125;, <span class="number">1000</span>);</div><div class="line">&#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">  <span class="built_in">console</span>.log(err.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果我们能够捕获这个异常的话应该会输出 error。运行结果（等待1秒后获得的输出）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">reject(<span class="string">'error'</span>)</div><div class="line">    ^</div><div class="line">ReferenceError: reject is not defined</div><div class="line">    at Timeout.setTimeout [as _onTimeout] (/home/qill/node_learn</div><div class="line">ing/test.js:21:5)</div><div class="line">    at ontimeout (timers.js:488:11)</div><div class="line">    at tryOnTimeout (timers.js:323:5)</div><div class="line">    at Timer.listOnTimeout (timers.js:283:5)</div></pre></td></tr></table></figure></p>
+<p>可见仍然是未捕获的异常，catch代码没有运行，因为try，catch是同步的而setTimeout是异步的try并不能捕获未来一秒后的异常。如果想要捕获这个异常要怎么办呢，办法是有的。<br>首先安装这个模块<br><code>$ npm i co</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> co = <span class="built_in">require</span>(<span class="string">'co'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutError</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>))</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">co(<span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">yield</span> timeoutError()</div><div class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">    <span class="built_in">console</span>.log(err.message)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>把setTimeout封装成一个promise，然后用co模块去获取promise返回的错误对象，然后输出然后输出这个错误对象的信息就可以了。运行结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node test.js</div><div class="line">&gt; error</div></pre></td></tr></table></figure></p>
+<center>完。</center></span>
       
     </div>
 
@@ -384,8 +378,6 @@
           
             <a href="/tags/node/" rel="tag">#node</a>
           
-            <a href="/tags/io/" rel="tag">#io</a>
-          
         </div>
       
 
@@ -393,13 +385,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/12/Node单线程的世界/" rel="prev">Node单线程的世界</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/06/Ubuntu-16-04-阿里源/" rel="next">Ubuntu 16.04 阿里源</a>
+              <a href="/2017/06/12/Node单线程的世界/" rel="next">Node单线程的世界</a>
             
           </div>
         </div>
@@ -615,7 +605,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php-代码"><span class="nav-number">1.</span> <span class="nav-text">php 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-代码"><span class="nav-number">2.</span> <span class="nav-text">Node 代码</span></a></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -668,9 +658,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/08/node-js阻塞与非阻塞/';
-    var disqus_title = 'node.js阻塞与非阻塞';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/08/node-js阻塞与非阻塞/';
+    var disqus_identifier = '2017/06/12/Node事件论调与错误处理/';
+    var disqus_title = 'Node事件论调与错误处理';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/12/Node事件论调与错误处理/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
