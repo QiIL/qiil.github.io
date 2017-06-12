@@ -49,7 +49,7 @@
 <meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/12/Node单线程的世界/index.html">
 <meta property="og:site_name" content="Qill">
 <meta property="og:description" content="Node 是单线程的。何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。 证明代码： 1234567891011&quot;single_thread.js&quot;var start = Date.now()setTimeout(function () &amp;#123;	console.log(Date.now() - start);	for (var i = 0; i &amp;lt; 555">
-<meta property="og:updated_time" content="2017-06-12T09:28:31.525Z">
+<meta property="og:updated_time" content="2017-06-12T09:29:19.907Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node单线程的世界">
 <meta name="twitter:description" content="Node 是单线程的。何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。 证明代码： 1234567891011&quot;single_thread.js&quot;var start = Date.now()setTimeout(function () &amp;#123;	console.log(Date.now() - start);	for (var i = 0; i &amp;lt; 555">
@@ -375,7 +375,7 @@
 <li>setTimeout()方法，但是需要等待2000毫秒的回调函数调用</li>
 <li><strong>距离第一个setTimeout()方法1000毫秒过后，回调函数执行</strong>，输出时间差。</li>
 <li>执行第一个函数的for语句</li>
-<li>距离第二个setTimeout()方法2000毫秒过后，回调函数执行，<strong>但是上一个setTimeout()方法并没有执行完成，==所以回调函数被JavaScript阻塞==</strong></li>
+<li>距离第二个setTimeout()方法2000毫秒过后，回调函数执行，<strong>但是上一个setTimeout()方法并没有执行完成，所以回调函数被JavaScript阻塞</strong></li>
 <li><strong>当第一个setTimeout()方法中的for语句执行完后，第二个setTimeout()方法的回调函数可以执行了，然后输出时间差</strong></li>
 </ol>
 <p>由此可见，Node是单线程的（在一个函数执行时，不可能有第二个函数同时也在执行）。</p>

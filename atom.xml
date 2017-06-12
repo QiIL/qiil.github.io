@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-12T09:28:31.525Z</updated>
+  <updated>2017-06-12T09:29:19.907Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://qiil.github.io/qill.github.io/2017/06/12/Node%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%96%E7%95%8C/"/>
     <id>https://qiil.github.io/qill.github.io/2017/06/12/Node单线程的世界/</id>
     <published>2017-06-12T08:52:02.000Z</published>
-    <updated>2017-06-12T09:28:31.525Z</updated>
+    <updated>2017-06-12T09:29:19.907Z</updated>
     
     <content type="html"><![CDATA[<p>Node 是单线程的。<br>何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。</p>
 <p>证明代码：</p>
@@ -35,7 +35,7 @@
 <li>setTimeout()方法，但是需要等待2000毫秒的回调函数调用</li>
 <li><strong>距离第一个setTimeout()方法1000毫秒过后，回调函数执行</strong>，输出时间差。</li>
 <li>执行第一个函数的for语句</li>
-<li>距离第二个setTimeout()方法2000毫秒过后，回调函数执行，<strong>但是上一个setTimeout()方法并没有执行完成，==所以回调函数被JavaScript阻塞==</strong></li>
+<li>距离第二个setTimeout()方法2000毫秒过后，回调函数执行，<strong>但是上一个setTimeout()方法并没有执行完成，所以回调函数被JavaScript阻塞</strong></li>
 <li><strong>当第一个setTimeout()方法中的for语句执行完后，第二个setTimeout()方法的回调函数可以执行了，然后输出时间差</strong></li>
 </ol>
 <p>由此可见，Node是单线程的（在一个函数执行时，不可能有第二个函数同时也在执行）。</p>
