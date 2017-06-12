@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-08T15:35:43.614Z</updated>
+  <updated>2017-06-12T09:25:06.655Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -16,11 +16,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Node单线程的世界</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/12/Node%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%96%E7%95%8C/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/12/Node单线程的世界/</id>
+    <published>2017-06-12T08:52:02.000Z</published>
+    <updated>2017-06-12T09:25:06.655Z</updated>
+    
+    <content type="html"><![CDATA[<p>Node 是单线程的。<br>何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。</p>
+<p>证明代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="string">"single_thread.js"</span></div><div class="line"><span class="keyword">var</span> start = <span class="built_in">Date</span>.now()</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">Date</span>.now() - start);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5555555555</span>; i++)&#123;&#125;</div><div class="line">&#125;, <span class="number">1000</span>);</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">Date</span>.now() - start);</div><div class="line">&#125;, <span class="number">2000</span>);</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ node single_thread.js</div><div class="line">&gt; 1009</div><div class="line">&gt; 6597</div></pre></td></tr></table></figure>
+<p>首先说明代码要做的事：第一个setTimeout()方法会在1000毫秒后调用回调函数从而执行函数内容–输出调用该函数与开始程序的时间差。第二个setTimeout()方法会在2000毫秒后调用回调函数执行相应函数内容–输出调用该函数与开始程序的时间差。</p>
+<p>观察输出可以得到，第一个输出：1009其中9毫秒用在调用函数上，有一点时间上的差别是可以接受的。但是第二个输出：6597就太夸张了，因为，代码设定上他应该输出一个2000毫秒多一点的值才对，但是程序输出的却是一个6000多毫秒的值。为什么？我们不妨从头开始跑一下我们的程序。</p>
+<ol>
+<li>首先start变量获取到了开始时间。</li>
+<li>setTimeout()方法，但是需要等带1000毫秒的回调函数调用</li>
+<li>setTimeout()方法，但是需要等待2000毫秒的回调函数调用</li>
+<li><strong>距离第一个setTimeout()方法1000毫秒过后，回调函数执行</strong>，输出时间差。</li>
+<li>执行第一个函数的for语句</li>
+<li>距离第二个setTimeout()方法2000毫秒过后，回调函数执行，<strong>但是上一个setTimeout()方法并没有执行完成，++所以回调函数被JavaScript阻塞++</strong></li>
+<li><strong>当第一个setTimeout()方法中的for语句执行完后，第二个setTimeout()方法的回调函数可以执行了，然后输出时间差</strong></li>
+</ol>
+<p>由此可见，Node是单线程的（在一个函数执行时，不可能有第二个函数同时也在执行）。</p>
+<p>当然了，这样的行为方式是不理想的，事件轮调是Node IO的基础核心。既然超时可以延迟，那HTTP请求以及其他形式的的IO也可以如此。也就意味着，HTTP服务器每秒处理的请求数量减少了，效率也降低了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Node 是单线程的。&lt;br&gt;何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。&lt;/p&gt;
+&lt;p&gt;证明代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutte
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
     <title>node.js阻塞与非阻塞</title>
     <link href="https://qiil.github.io/qill.github.io/2017/06/08/node-js%E9%98%BB%E5%A1%9E%E4%B8%8E%E9%9D%9E%E9%98%BB%E5%A1%9E/"/>
     <id>https://qiil.github.io/qill.github.io/2017/06/08/node-js阻塞与非阻塞/</id>
     <published>2017-06-08T15:22:30.000Z</published>
-    <updated>2017-06-08T15:35:43.614Z</updated>
+    <updated>2017-06-12T08:53:05.606Z</updated>
     
     <content type="html"><![CDATA[<p>首先从区分两段代码开始:</p>
 <h3 id="php-代码"><a href="#php-代码" class="headerlink" title="php 代码"></a>php 代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">print</span> (<span class="string">'hello'</span>);</div><div class="line">$ sleep(<span class="number">5</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'world'</span>);</div><div class="line">$ <span class="keyword">print</span> (<span class="string">'thanks'</span>);</div></pre></td></tr></table></figure>
@@ -46,7 +88,7 @@
       <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
     
     
-      <category term="node.js" scheme="https://qiil.github.io/qill.github.io/tags/node-js/"/>
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
     
       <category term="io" scheme="https://qiil.github.io/qill.github.io/tags/io/"/>
     

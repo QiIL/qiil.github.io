@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="algorithm," />
+  <meta name="keywords" content="node," />
 
 
 
@@ -42,17 +42,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
-<meta name="keywords" content="algorithm">
+<meta name="description" content="Node 是单线程的。何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。 证明代码： 1234567891011&quot;single_thread.js&quot;var start = Date.now()setTimeout(function () &amp;#123;	console.log(Date.now() - start);	for (var i = 0; i &amp;lt; 555">
+<meta name="keywords" content="node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GF(2^8)运算一一（一）">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/index.html">
+<meta property="og:title" content="Node单线程的世界">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/12/Node单线程的世界/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
-<meta property="og:updated_time" content="2017-06-03T16:08:27.818Z">
+<meta property="og:description" content="Node 是单线程的。何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。 证明代码： 1234567891011&quot;single_thread.js&quot;var start = Date.now()setTimeout(function () &amp;#123;	console.log(Date.now() - start);	for (var i = 0; i &amp;lt; 555">
+<meta property="og:updated_time" content="2017-06-12T09:25:06.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GF(2^8)运算一一（一）">
-<meta name="twitter:description" content="任务:        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。 首先分析一下思路：加法思路：对每一位进行异或操作 乘法：①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结">
+<meta name="twitter:title" content="Node单线程的世界">
+<meta name="twitter:description" content="Node 是单线程的。何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。 证明代码： 1234567891011&quot;single_thread.js&quot;var start = Date.now()setTimeout(function () &amp;#123;	console.log(Date.now() - start);	for (var i = 0; i &amp;lt; 555">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -62,7 +62,7 @@
   };
 </script>
 
-  <title> GF(2^8)运算一一（一） | Qill </title>
+  <title> Node单线程的世界 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -312,7 +312,7 @@
           
           
             
-              GF(2^8)运算一一（一）
+              Node单线程的世界
             
           
         </h1>
@@ -321,19 +321,34 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-04T00:06:37+08:00" content="2017-06-04">
-            2017-06-04
+          <time itemprop="dateCreated" datetime="2017-06-12T16:52:02+08:00" content="2017-06-12">
+            2017-06-12
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Node-js之路/" itemprop="url" rel="index">
+                  <span itemprop="name">Node.js之路</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/04/GF-2-8-运算一一（一）/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/04/GF-2-8-运算一一（一）/" itemprop="commentsCount"></span>
+            <a href="/2017/06/12/Node单线程的世界/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/12/Node单线程的世界/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -347,15 +362,24 @@
       
 
       
-        <span itemprop="articleBody"><p>任务:<br>        用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y == 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y == x)。</p>
-<p>首先分析一下思路：<br>加法思路：对每一位进行异或操作</p>
-<p>乘法：<br>①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结果，最后得出结果。<br>②利用无符号字符类型解释整形创建一个过度变量为result，然后根据字符b的最后一位决定结果值，如果b的最后一位是0则result等于上一个循环的result值，若b的最后一位是1，result值等于result异或a。需要做八次循环，每次循环一开始都要判断a是否大于127如果大于127则a需要左移一位并且异或1B，else a只需要左移一位。</p>
-<p>乘法逆元思路：<br>首先规定生成元是3（00000011，当然用其他生成元也可以，随便）然后生成一个以3为生成元的逆元表，然后查询用户输入的x查询到x之后利用255减去x所在位置那个位置的元素即为x的乘法逆元y</p>
-<p>离散对数思路：<br>用户输入生成元与X，多次调用乘法，调用乘法的次数则为所求的离散对数</p>
-<p>我大概用到的函数定义（忽略界面函数，输入输出函数等与算法无关的函数）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;fstream&gt; </div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void set_genrator();           //用于开始设置生成元数组 </div><div class="line">void set_Inverse();           //用于开始设置逆元表</div><div class="line">unsigned char GFsum(unsigned char a, unsigned char b); //求和 </div><div class="line">unsigned char GFmul(unsigned char a, unsigned char b); //乘法 </div><div class="line">unsigned char inverse(unsigned char b);  //乘法逆元 </div><div class="line">bool judge_genrator(unsigned char a); //判断用户输入的生成元是否为生成元 </div><div class="line">int logarithm(unsigned char a, unsigned char b);  //离散对数</div><div class="line">int Genrator[256];           //保存生成元信息</div><div class="line">unsigned char Inverse[256];      //保存以3为生成元的逆元表</div></pre></td></tr></table></figure></p>
-<p>用于设置生成元数组用来判断用户输入的生成元是否为一个真实的生成元：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">void set_genrator()&#123;</div><div class="line">	memset(Genrator, 0, sizeof(Genrator));</div><div class="line">	string buf;</div><div class="line">	int a;</div><div class="line">	ifstream GEN(&quot;一个包含所有生成元的记录文件，可以自己生成也可以网上去找&quot;);</div><div class="line">	while (!GEN.eof())&#123;</div><div class="line">		GEN &gt;&gt; buf;</div><div class="line">		a = change_int(buf);</div><div class="line">		Genrator[a] = 1;</div><div class="line">	&#125;</div><div class="line">	GEN.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>生成逆元表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">void set_Inverse()&#123;</div><div class="line">	unsigned char gen = 3;</div><div class="line">	Inverse[0] = 0;</div><div class="line">	Inverse[1] = 3;</div><div class="line">	for (int i = 2; i &lt; 256; i++)&#123;</div><div class="line">		Inverse[i] = GFmul(Inverse[i-1], gen);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><p>Node 是单线程的。<br>何为单线程： 简单的理解就是，在一个函数执行时，是不可能有第二个函数也在执行的。</p>
+<p>证明代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="string">"single_thread.js"</span></div><div class="line"><span class="keyword">var</span> start = <span class="built_in">Date</span>.now()</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">Date</span>.now() - start);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5555555555</span>; i++)&#123;&#125;</div><div class="line">&#125;, <span class="number">1000</span>);</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">Date</span>.now() - start);</div><div class="line">&#125;, <span class="number">2000</span>);</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ node single_thread.js</div><div class="line">&gt; 1009</div><div class="line">&gt; 6597</div></pre></td></tr></table></figure>
+<p>首先说明代码要做的事：第一个setTimeout()方法会在1000毫秒后调用回调函数从而执行函数内容–输出调用该函数与开始程序的时间差。第二个setTimeout()方法会在2000毫秒后调用回调函数执行相应函数内容–输出调用该函数与开始程序的时间差。</p>
+<p>观察输出可以得到，第一个输出：1009其中9毫秒用在调用函数上，有一点时间上的差别是可以接受的。但是第二个输出：6597就太夸张了，因为，代码设定上他应该输出一个2000毫秒多一点的值才对，但是程序输出的却是一个6000多毫秒的值。为什么？我们不妨从头开始跑一下我们的程序。</p>
+<ol>
+<li>首先start变量获取到了开始时间。</li>
+<li>setTimeout()方法，但是需要等带1000毫秒的回调函数调用</li>
+<li>setTimeout()方法，但是需要等待2000毫秒的回调函数调用</li>
+<li><strong>距离第一个setTimeout()方法1000毫秒过后，回调函数执行</strong>，输出时间差。</li>
+<li>执行第一个函数的for语句</li>
+<li>距离第二个setTimeout()方法2000毫秒过后，回调函数执行，<strong>但是上一个setTimeout()方法并没有执行完成，++所以回调函数被JavaScript阻塞++</strong></li>
+<li><strong>当第一个setTimeout()方法中的for语句执行完后，第二个setTimeout()方法的回调函数可以执行了，然后输出时间差</strong></li>
+</ol>
+<p>由此可见，Node是单线程的（在一个函数执行时，不可能有第二个函数同时也在执行）。</p>
+<p>当然了，这样的行为方式是不理想的，事件轮调是Node IO的基础核心。既然超时可以延迟，那HTTP请求以及其他形式的的IO也可以如此。也就意味着，HTTP服务器每秒处理的请求数量减少了，效率也降低了。</p>
 </span>
       
     </div>
@@ -364,7 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithm/" rel="tag">#algorithm</a>
+            <a href="/tags/node/" rel="tag">#node</a>
           
         </div>
       
@@ -373,13 +397,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/04/GF-2-8-运算一一（二）/" rel="prev">GF(2^8)运算一一（二）</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/04/ubuntu下安装gmp一些问题与解决方案/" rel="next">ubuntu下安装gmp一些问题与解决方案</a>
+              <a href="/2017/06/08/node-js阻塞与非阻塞/" rel="next">node.js阻塞与非阻塞</a>
             
           </div>
         </div>
@@ -648,9 +670,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/04/GF-2-8-运算一一（一）/';
-    var disqus_title = 'GF(2^8)运算一一（一）';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/04/GF-2-8-运算一一（一）/';
+    var disqus_identifier = '2017/06/12/Node单线程的世界/';
+    var disqus_title = 'Node单线程的世界';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/12/Node单线程的世界/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
