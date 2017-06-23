@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="python,tiny,grammer_tree," />
+  <meta name="keywords" content="node," />
 
 
 
@@ -42,19 +42,20 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="###功能 用户按照Tiny语法编辑源程序（打开源程序文件：.tny文件）后生成改程序的语法树。 ###Github项目连接：https://github.com/QiIL/tiny-Grammar-analysis ###项目中的文件解释  .tny文件：根据文法规则编辑的样例程序 tree.py：定义多子树的树结构 tiny_analisis.py：自上而下的递归子程序分析程序 analisy">
-<meta name="keywords" content="python,tiny,grammer_tree">
+<meta name="description" content="###Github项目链接：https://github.com/QiIL/tcp-chat ###程序简介首先用到的是 net 模块1var net = require(&apos;net&apos;) ###服务器的具体细节：1.有新的成员连接需要需要保存该成员，连接数加12.监听3000端口3.监听断开连接事件，连接数减1，把该成员移除4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内">
+<meta name="keywords" content="node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tiny语言语法树的生成">
-<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/23/Tiny语言语法树的生成/index.html">
+<meta property="og:title" content="用node做一个基于TCP的聊天程序">
+<meta property="og:url" content="https://qiil.github.io/qill.github.io/2017/06/23/用node做一个基于TCP的聊天程序/index.html">
 <meta property="og:site_name" content="Qill">
-<meta property="og:description" content="###功能 用户按照Tiny语法编辑源程序（打开源程序文件：.tny文件）后生成改程序的语法树。 ###Github项目连接：https://github.com/QiIL/tiny-Grammar-analysis ###项目中的文件解释  .tny文件：根据文法规则编辑的样例程序 tree.py：定义多子树的树结构 tiny_analisis.py：自上而下的递归子程序分析程序 analisy">
-<meta property="og:image" content="http://oqzgtjqen.bkt.clouddn.com/2017-06-23%2010-09-33%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
-<meta property="og:updated_time" content="2017-06-23T08:27:37.260Z">
+<meta property="og:description" content="###Github项目链接：https://github.com/QiIL/tcp-chat ###程序简介首先用到的是 net 模块1var net = require(&apos;net&apos;) ###服务器的具体细节：1.有新的成员连接需要需要保存该成员，连接数加12.监听3000端口3.监听断开连接事件，连接数减1，把该成员移除4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内">
+<meta property="og:image" content="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png">
+<meta property="og:image" content="http://oqzgtjqen.bkt.clouddn.com/tcp-chat2.png">
+<meta property="og:updated_time" content="2017-06-23T09:51:34.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tiny语言语法树的生成">
-<meta name="twitter:description" content="###功能 用户按照Tiny语法编辑源程序（打开源程序文件：.tny文件）后生成改程序的语法树。 ###Github项目连接：https://github.com/QiIL/tiny-Grammar-analysis ###项目中的文件解释  .tny文件：根据文法规则编辑的样例程序 tree.py：定义多子树的树结构 tiny_analisis.py：自上而下的递归子程序分析程序 analisy">
-<meta name="twitter:image" content="http://oqzgtjqen.bkt.clouddn.com/2017-06-23%2010-09-33%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta name="twitter:title" content="用node做一个基于TCP的聊天程序">
+<meta name="twitter:description" content="###Github项目链接：https://github.com/QiIL/tcp-chat ###程序简介首先用到的是 net 模块1var net = require(&apos;net&apos;) ###服务器的具体细节：1.有新的成员连接需要需要保存该成员，连接数加12.监听3000端口3.监听断开连接事件，连接数减1，把该成员移除4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内">
+<meta name="twitter:image" content="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +65,7 @@
   };
 </script>
 
-  <title> Tiny语言语法树的生成 | Qill </title>
+  <title> 用node做一个基于TCP的聊天程序 | Qill </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -314,7 +315,7 @@
           
           
             
-              Tiny语言语法树的生成
+              用node做一个基于TCP的聊天程序
             
           
         </h1>
@@ -323,7 +324,7 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2017-06-23T10:01:03+08:00" content="2017-06-23">
+          <time itemprop="dateCreated" datetime="2017-06-23T17:21:01+08:00" content="2017-06-23">
             2017-06-23
           </time>
         </span>
@@ -333,8 +334,8 @@
             &nbsp; | &nbsp; In
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
+                <a href="/categories/Node-js之路/" itemprop="url" rel="index">
+                  <span itemprop="name">Node.js之路</span>
                 </a>
               </span>
 
@@ -349,8 +350,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2017/06/23/Tiny语言语法树的生成/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/23/Tiny语言语法树的生成/" itemprop="commentsCount"></span>
+            <a href="/2017/06/23/用node做一个基于TCP的聊天程序/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/06/23/用node做一个基于TCP的聊天程序/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -364,20 +365,10 @@
       
 
       
-        <span itemprop="articleBody"><p>###功能</p>
-<p>用户按照Tiny语法编辑源程序（打开源程序文件：.tny文件）后生成改程序的语法树。</p>
-<p>###Github项目连接：<br><a href="https://github.com/QiIL/tiny-Grammar-analysis" target="_blank" rel="external">https://github.com/QiIL/tiny-Grammar-analysis</a></p>
-<p>###项目中的文件解释</p>
-<ol>
-<li>.tny文件：根据文法规则编辑的样例程序</li>
-<li>tree.py：定义多子树的树结构</li>
-<li>tiny_analisis.py：自上而下的递归子程序分析程序</li>
-<li>analisy_gui.py：程序界面相关</li>
-</ol>
-<p>###文法规则</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="formula">$ program -&gt; stmt-sequence</span></div><div class="line">$ stmt-sequence -&gt; statement &#123;; statement&#125;</div><div class="line"><span class="formula">$ statement -&gt; if-stmt | repeat-stmt | assign-stmt | read-stmt | write-stmt | return-stmt</span></div><div class="line">$ While-stmt --&gt; while  exp  do  stmt-sequence  endwhile</div><div class="line">Dowhile-stmt--&gt;do  stmt-sequence  while  exp </div><div class="line"><span class="formula">$ for-stmt--&gt;for identifier:=simple-exp  to  simple-exp  do  stmt-sequence enddo    步长递增1</span></div><div class="line">$ for-stmt--&gt;for identifier:=simple-exp  downto  simple-exp  do  stmt-sequence enddo    步长递减1</div><div class="line"><span class="formula">$ if-stmt -&gt; if exp then stmt-sequence [else stmt-sequence] end</span></div><div class="line">$ repeat-stmt -&gt; repeat stmt-sequence until exp</div><div class="line"><span class="formula">$ assign-stmt -&gt; identifier := exp</span></div><div class="line">$ read-stmt -&gt; read identifier</div><div class="line"><span class="formula">$ write-stmt -&gt; write exp</span></div><div class="line">$ return-stmt -&gt; return simple-exp</div><div class="line"><span class="formula">$ exp -&gt; simple-exp [comparison-op simple-exp]</span></div><div class="line">$ comparison-op -&gt; &lt; | =</div><div class="line"><span class="formula">$ simple-exp -&gt; term &#123;addop term&#125;</span></div><div class="line">$ adddop -&gt; + | -</div><div class="line"><span class="formula">$ term -&gt; factor &#123;mulop factor&#125;</span></div><div class="line">$ mulop -&gt; * | /</div><div class="line"><span class="formula">$ factor -&gt; ( exp ) | number | identifier</span></div></pre></td></tr></table></figure>
-<p>###运行程序<br>使用了tkinter模块，所以请先安装tkinter模块，安装方法（ubuntu16.04）及运行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo install python-tk</div><div class="line">$ python analisy_gui.py</div></pre></td></tr></table></figure></p>
-<p>程序大概像这样：<br><img src="http://oqzgtjqen.bkt.clouddn.com/2017-06-23%2010-09-33%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
+        <span itemprop="articleBody"><p>###Github项目链接：<br><a href="https://github.com/QiIL/tcp-chat" target="_blank" rel="external">https://github.com/QiIL/tcp-chat</a></p>
+<p>###程序简介<br>首先用到的是 net 模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>)</div></pre></td></tr></table></figure></p>
+<p>###服务器的具体细节：<br>1.有新的成员连接需要需要保存该成员，连接数加1<br>2.监听3000端口<br>3.监听断开连接事件，连接数减1，把该成员移除<br>4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所有人推送内容</p>
+<p>样例：<br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png" alt=""><br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat2.png" alt=""></p>
 <center>完。</center></span>
       
     </div>
@@ -386,11 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag">#python</a>
-          
-            <a href="/tags/tiny/" rel="tag">#tiny</a>
-          
-            <a href="/tags/grammer-tree/" rel="tag">#grammer_tree</a>
+            <a href="/tags/node/" rel="tag">#node</a>
           
         </div>
       
@@ -399,13 +386,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/23/用node做一个基于TCP的聊天程序/" rel="prev">用node做一个基于TCP的聊天程序</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/18/搏击俱乐部-关于精神病的一些思考/" rel="next">搏击俱乐部-关于精神病的一些思考</a>
+              <a href="/2017/06/23/Tiny语言语法树的生成/" rel="next">Tiny语言语法树的生成</a>
             
           </div>
         </div>
@@ -674,9 +659,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'qill';
-    var disqus_identifier = '2017/06/23/Tiny语言语法树的生成/';
-    var disqus_title = 'Tiny语言语法树的生成';
-    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/23/Tiny语言语法树的生成/';
+    var disqus_identifier = '2017/06/23/用node做一个基于TCP的聊天程序/';
+    var disqus_title = '用node做一个基于TCP的聊天程序';
+    var disqus_url = 'https://qiil.github.io/qill.github.io/2017/06/23/用node做一个基于TCP的聊天程序/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');

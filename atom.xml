@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-23T08:27:37.260Z</updated>
+  <updated>2017-06-23T09:51:34.366Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用node做一个基于TCP的聊天程序</title>
+    <link href="https://qiil.github.io/qill.github.io/2017/06/23/%E7%94%A8node%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8ETCP%E7%9A%84%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/"/>
+    <id>https://qiil.github.io/qill.github.io/2017/06/23/用node做一个基于TCP的聊天程序/</id>
+    <published>2017-06-23T09:21:01.000Z</published>
+    <updated>2017-06-23T09:51:34.366Z</updated>
+    
+    <content type="html"><![CDATA[<p>###Github项目链接：<br><a href="https://github.com/QiIL/tcp-chat" target="_blank" rel="external">https://github.com/QiIL/tcp-chat</a></p>
+<p>###程序简介<br>首先用到的是 net 模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>)</div></pre></td></tr></table></figure></p>
+<p>###服务器的具体细节：<br>1.有新的成员连接需要需要保存该成员，连接数加1<br>2.监听3000端口<br>3.监听断开连接事件，连接数减1，把该成员移除<br>4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所有人推送内容</p>
+<p>样例：<br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png" alt=""><br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat2.png" alt=""></p>
+<center>完。</center>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###Github项目链接：&lt;br&gt;&lt;a href=&quot;https://github.com/QiIL/tcp-chat&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/QiIL/tcp-chat&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;#
+    
+    </summary>
+    
+      <category term="Node.js之路" scheme="https://qiil.github.io/qill.github.io/categories/Node-js%E4%B9%8B%E8%B7%AF/"/>
+    
+    
+      <category term="node" scheme="https://qiil.github.io/qill.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>Tiny语言语法树的生成</title>
