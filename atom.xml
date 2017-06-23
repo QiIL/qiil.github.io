@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiil.github.io/qill.github.io/"/>
-  <updated>2017-06-23T09:54:06.747Z</updated>
+  <updated>2017-06-23T09:57:09.854Z</updated>
   <id>https://qiil.github.io/qill.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://qiil.github.io/qill.github.io/2017/06/23/%E7%94%A8node%E5%81%9A%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8ETCP%E7%9A%84%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/"/>
     <id>https://qiil.github.io/qill.github.io/2017/06/23/用node做一个基于TCP的聊天程序/</id>
     <published>2017-06-23T09:21:01.000Z</published>
-    <updated>2017-06-23T09:54:06.747Z</updated>
+    <updated>2017-06-23T09:57:09.854Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Github项目链接："><a href="#Github项目链接：" class="headerlink" title="Github项目链接："></a>Github项目链接：</h3><p><a href="https://github.com/QiIL/tcp-chat" target="_blank" rel="external">https://github.com/QiIL/tcp-chat</a></p>
+    <content type="html"><![CDATA[<h3 id="Github项目链接"><a href="#Github项目链接" class="headerlink" title="Github项目链接"></a>Github项目链接</h3><p><a href="https://github.com/QiIL/tcp-chat" target="_blank" rel="external">https://github.com/QiIL/tcp-chat</a></p>
 <h3 id="程序简介"><a href="#程序简介" class="headerlink" title="程序简介"></a>程序简介</h3><p>首先用到的是 net 模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>)</div></pre></td></tr></table></figure></p>
 <h3 id="服务器的具体细节："><a href="#服务器的具体细节：" class="headerlink" title="服务器的具体细节："></a>服务器的具体细节：</h3><p>1.有新的成员连接需要需要保存该成员，连接数加1<br>2.监听3000端口<br>3.监听断开连接事件，连接数减1，把该成员移除<br>4.监听输入事件，第一个输入需要输入一个nickname，其他输入视为聊天内容向除了自己意外的所有人推送内容</p>
 <p>样例：<br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat1.png" alt=""><br><img src="http://oqzgtjqen.bkt.clouddn.com/tcp-chat2.png" alt=""></p>
@@ -30,7 +30,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Github项目链接：&quot;&gt;&lt;a href=&quot;#Github项目链接：&quot; class=&quot;headerlink&quot; title=&quot;Github项目链接：&quot;&gt;&lt;/a&gt;Github项目链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/QiIL/t
+      &lt;h3 id=&quot;Github项目链接&quot;&gt;&lt;a href=&quot;#Github项目链接&quot; class=&quot;headerlink&quot; title=&quot;Github项目链接&quot;&gt;&lt;/a&gt;Github项目链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/QiIL/tcp-c
     
     </summary>
     
@@ -46,7 +46,7 @@
     <link href="https://qiil.github.io/qill.github.io/2017/06/23/Tiny%E8%AF%AD%E8%A8%80%E8%AF%AD%E6%B3%95%E6%A0%91%E7%9A%84%E7%94%9F%E6%88%90/"/>
     <id>https://qiil.github.io/qill.github.io/2017/06/23/Tiny语言语法树的生成/</id>
     <published>2017-06-23T02:01:03.000Z</published>
-    <updated>2017-06-23T09:54:44.227Z</updated>
+    <updated>2017-06-23T09:57:18.342Z</updated>
     
     <content type="html"><![CDATA[<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>用户按照Tiny语法编辑源程序（打开源程序文件：.tny文件）后生成改程序的语法树。</p>
 <h3 id="Github项目连接："><a href="#Github项目连接：" class="headerlink" title="Github项目连接："></a>Github项目连接：</h3><p><a href="https://github.com/QiIL/tiny-Grammar-analysis" target="_blank" rel="external">https://github.com/QiIL/tiny-Grammar-analysis</a></p>
