@@ -1,0 +1,862 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QILL_gloden_black_circle.png">
+  <link rel="icon" href="/img/QILL_gloden_black_circle.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="QSY">
+  <meta name="keywords" content="QSY qill">
+  
+    <meta name="description" content="安装SVNyum install svn  创建仓库 分别创建目录和以目录创建对应仓库  mkdir -p ~&#x2F;svn&#x2F;test svnadmin create ~&#x2F;svn&#x2F;test ls -al ~&#x2F;svn&#x2F;test total 8 drwxr-xr-x. 8 root root 112 May 10 14:25 . drwxr-xr-x. 4 root root  36 May 10 11:2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN服务器部署">
+<meta property="og:url" content="https://qiil.github.io/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">
+<meta property="og:site_name" content="一起闷声发大财吧">
+<meta property="og:description" content="安装SVNyum install svn  创建仓库 分别创建目录和以目录创建对应仓库  mkdir -p ~&#x2F;svn&#x2F;test svnadmin create ~&#x2F;svn&#x2F;test ls -al ~&#x2F;svn&#x2F;test total 8 drwxr-xr-x. 8 root root 112 May 10 14:25 . drwxr-xr-x. 4 root root  36 May 10 11:2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qiil.github.io/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/reop_browser.png">
+<meta property="og:image" content="https://qiil.github.io/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/url_input.png">
+<meta property="og:image" content="https://qiil.github.io/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/link_repo.png">
+<meta property="og:image" content="https://qiil.github.io/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/virtual_net_problem.png">
+<meta property="article:published_time" content="2021-06-28T06:34:48.000Z">
+<meta property="article:modified_time" content="2022-12-08T06:34:48.000Z">
+<meta property="article:author" content="QSY">
+<meta property="article:tag" content="SVN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://qiil.github.io/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/reop_browser.png">
+  
+  
+  
+  <title>SVN服务器部署 - 一起闷声发大财吧</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"qiil.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 30vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>秋天的世界人人都爱摸鱼</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SVN服务器部署"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-06-28 14:34" pubdate>
+          2021年6月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="编程其他"
+        id="heading-fad2eb8c682b827ff8137cac8c1ef9bc" role="tab" data-toggle="collapse" href="#collapse-fad2eb8c682b827ff8137cac8c1ef9bc"
+        aria-expanded="true"
+      >
+        编程其他
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-fad2eb8c682b827ff8137cac8c1ef9bc"
+           role="tabpanel" aria-labelledby="heading-fad2eb8c682b827ff8137cac8c1ef9bc">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" title="SVN服务器部署"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">SVN服务器部署</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/06/29/SVN%E9%92%A9%E5%AD%90/" title="SVN钩子"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SVN钩子</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/08/12/Windows%E4%B8%8B%E7%BB%99%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%AB%AF%E5%8F%A3%E4%BB%A3%E7%90%86/" title="Windows下给虚拟机的端口代理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Windows下给虚拟机的端口代理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SVN服务器部署</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="安装SVN"><a href="#安装SVN" class="headerlink" title="安装SVN"></a>安装SVN</h3><div class="code-wrapper"><pre><code class="hljs Bash">yum install svn</code></pre></div>
+
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ul>
+<li>分别创建目录和以目录创建对应仓库</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-built_in">mkdir</span> -p ~/svn/test
+svnadmin create ~/svn/test
+<span class="hljs-built_in">ls</span> -al ~/svn/test
+total 8
+drwxr-xr-x. 8 root root 112 May 10 14:25 .
+drwxr-xr-x. 4 root root  36 May 10 11:25 ..
+drwxr-xr-x. 2 root root  54 Jun 28 10:07 conf
+drwxr-sr-x. 6 root root 253 Jun 28 15:34 db
+-r--r--r--. 1 root root   2 May 10 10:44 format
+drwxr-xr-x. 2 root root 226 Jun 28 14:09 hooks
+drwxr-xr-x. 2 root root  41 May 10 10:44 locks
+-rw-r--r--. 1 root root 229 May 10 10:44 README.txt
+drwxr-xr-x. 2 root root   6 May 10 11:52 server
+drwxr-xr-x. 4 root root  75 May 10 14:25 .svn</code></pre></div>
+<ul>
+<li>conf目录是svn服务器的配置目录</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash">-rw-r--r--. 1 root root 1080 1月 30 13:26 authz      <span class="hljs-comment">#权限控制</span>
+-rw-r--r--. 1 root root 309 1月 30 13:26 passwd      <span class="hljs-comment">#密码管理</span>
+-rw-r--r--. 1 root root 3090 1月 30 13:26 svnserve.conf    <span class="hljs-comment">#SVN服务进程配置</span></code></pre></div>
+
+<h3 id="配配置"><a href="#配配置" class="headerlink" title="配配置"></a>配配置</h3><ul>
+<li>权限配置：<code>~/svn/test/conf/authz</code></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment">#用户分组(root-&gt;管理员,developer -&gt;开发 other-&gt;其他)</span>
+[<span class="hljs-built_in">groups</span>]
+root = qill  <span class="hljs-comment">#管理员用户qill</span>
+developer = fon,jdom  <span class="hljs-comment">#开发用户fon,jdom</span>
+other = ceshi,cehua    <span class="hljs-comment">#其他用户ceshi,cehua</span>
+<span class="hljs-comment">#权限配置</span>
+[/]
+@admin = rw  <span class="hljs-comment">#管理员读写权限</span>
+@development = rw  <span class="hljs-comment">#开发读写权限</span>
+@other = r        <span class="hljs-comment">#其他读权限</span>
+test6 = rw        <span class="hljs-comment">#test7用户读写权限</span></code></pre></div>
+<ul>
+<li>密码：<code>~/svn/test/conf/passwd</code></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment">#密码配置,格式为用户名=密码，密码为明文</span>
+[<span class="hljs-built_in">users</span>]
+qill = 123
+fon = 123
+jdom = 234
+ceshi = 456
+cehua = 789
+test6 = 12341234xiangshouge
+</code></pre></div>
+<ul>
+<li>svn服务配置：<code>~svn/test/conf/svnserve.conf</code></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash">[general]
+anon-access = none <span class="hljs-comment"># 匿名用户无权访问</span>
+auth-access = write <span class="hljs-comment"># 认证用户可读写</span>
+password-db = passwd <span class="hljs-comment"># 指定用户认证密码文件</span>
+authz-db = authz <span class="hljs-comment"># 指定权限配置文件</span>
+<span class="hljs-comment">### This option specifies the authentication realm of the repository.</span>
+<span class="hljs-comment">### If two repositories have the same authentication realm, they should</span>
+<span class="hljs-comment">### have the same password database, and vice versa.  The default realm</span>
+<span class="hljs-comment">### is repository&#x27;s uuid.</span>
+realm = /root/svn_test/test <span class="hljs-comment">## 仓库描述，设置成对应目录就好</span>
+<span class="hljs-comment">### The force-username-case option causes svnserve to case-normalize</span>
+<span class="hljs-comment">### usernames before comparing them against the authorization rules in the</span>
+<span class="hljs-comment">### authz-db file configured above.  Valid values are &quot;upper&quot; (to upper-</span>
+<span class="hljs-comment">### case the usernames), &quot;lower&quot; (to lowercase the usernames), and</span>
+<span class="hljs-comment">### &quot;none&quot; (to compare usernames as-is without case conversion, which</span>
+<span class="hljs-comment">### is the default behavior).</span>
+</code></pre></div>
+
+<h3 id="启动服务和连接"><a href="#启动服务和连接" class="headerlink" title="启动服务和连接"></a>启动服务和连接</h3><ul>
+<li>启动服务</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash">svnserve -d -r ~/svn/test --listen-port 3690</code></pre></div>
+<ul>
+<li><p>连接服务</p>
+<ol>
+<li><p>windows客户端选择浏览仓库</p>
+  <img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/reop_browser.png" srcset="/img/loading.gif" lazyload class="" title="浏览仓库">
+</li>
+<li><p>输入对应url，svn:&#x2F;&#x2F;ip:端口&#x2F;仓库目录名</p>
+  <img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/url_input.png" srcset="/img/loading.gif" lazyload class="" title="输入url">
+</li>
+<li><p>连接成功，可以看到一个新的空仓库</p>
+  <img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/link_repo.png" srcset="/img/loading.gif" lazyload class="" title="新的仓库"></li>
+</ol>
+</li>
+</ul>
+<p> 4.后续就是对应的检出、提交等流程就不写了。</p>
+<p>至此服务已经搭建完成。有一些其他的事项需要注意。</p>
+<h3 id="或许会遇到的蛋疼的问题"><a href="#或许会遇到的蛋疼的问题" class="headerlink" title="或许会遇到的蛋疼的问题"></a>或许会遇到的蛋疼的问题</h3><ul>
+<li>windows的svn客户端连接svn会卡死的check list<ol>
+<li>windows的防火墙关了没有</li>
+<li>服务器的防火墙关了或者设置了没有</li>
+<li>如果服务器是虚拟机，虚拟机的网卡是否用了NAT模式</li>
+</ol>
+</li>
+<li>linux关防火墙</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash">1：关闭防火墙
+
+systemctl stop firewalld
+2：开启指定防火墙
+<span class="hljs-comment">#开启3690端口</span>
+firewall-cmd --zone=public --add-port=3690/tcp --permanent
+<span class="hljs-comment">#刷新配置</span>
+firewall-cmd --reload</code></pre></div>
+<ul>
+<li>虚拟机的虚拟网卡NAT模式<img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/virtual_net_problem.png" srcset="/img/loading.gif" lazyload class="" title="NAT模式">
+</li>
+</ul>
+<h3 id="自动检出"><a href="#自动检出" class="headerlink" title="自动检出"></a>自动检出</h3><ul>
+<li>svn的做法是将提交的存入数据库中，所以如果想要直接看到对应的提交可以编写<code>post-commit</code>脚本来做自动检出</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash">svn checkout svn://127.0.0.1/test /data/test <span class="hljs-comment">#svn://127.0.0.1/test表示需要检出的仓库地址 /data/test表示需要检出到哪个目录下</span></code></pre></div>
+<ul>
+<li>自动检出配置: <code>/var/project/test/hooks</code>目录下新建一个<code>post-commit</code>文件，<code>post-commit</code>文件添加内容为：</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-meta">#!/bin/sh</span>
+REPOS=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>      <span class="hljs-comment">#仓库</span>
+REV=<span class="hljs-string">&quot;2&quot;</span>        <span class="hljs-comment">#版本号</span>
+export.UTF-8      <span class="hljs-comment">#编码</span>
+SVN=/usr/bin/svn  <span class="hljs-comment">#svn地址</span>
+WEB=/data/test  <span class="hljs-comment">#要更新的项目目录</span>
+SVN update <span class="hljs-variable">$WEB</span> --username qill --password 123 <span class="hljs-comment">#--username qill表示设置用户名 --password 123表示设置密码</span>
+<span class="hljs-comment"># 将post-commit设置为可执行</span>
+<span class="hljs-built_in">chmod</span> +x /var/project/test/hooks/post-commit
+</code></pre></div>
+
+<p>到此自动检出配置完成，不过注意，第一次的时候需要手动检出，之后就不需要了,到此linux搭建svn服务器完成</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%85%B6%E4%BB%96/" class="category-chain-item">编程其他</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SVN/">#SVN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SVN服务器部署</div>
+      <div>https://qiil.github.io/2021/06/28/SVN服务器部署/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>QSY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年6月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/29/SVN%E9%92%A9%E5%AD%90/" title="SVN钩子">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SVN钩子</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/05/%E5%AE%89%E8%A3%85windows%E5%92%8Coffice/" title="安装windows和office">
+                        <span class="hidden-mobile">安装windows和office</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> Qill <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

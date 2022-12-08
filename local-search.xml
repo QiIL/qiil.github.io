@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>个人所得税计算方法</title>
+    <link href="/2022/12/08/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/"/>
+    <url>/2022/12/08/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h3 id="法律规定"><a href="#法律规定" class="headerlink" title="法律规定"></a>法律规定</h3><p>累计预扣法的计算公式： 本期应预扣预缴税额&#x3D;（累计预扣预缴应纳税所得额×税率 - 速算扣除数 ）- 累计减<br>免税 额-累计已预扣预缴税额 累计预扣预缴应纳税所得额&#x3D;累计收入-累计减免收入- 累计基本减除费用 - 累计<br>专项扣除 -累计专项附加扣除-累计依法确定的其他扣除 其中，累计基本减除费用，按照 5000 元&#x2F;月乘以纳税<br>人当年在本单位的任职受雇工作月份 数计算。</p><p>例 1：某职员 2015 年入职，2019 年每月应发工资均为 10000 元，每月减除费用 5000 元，“三险一金”等专<br>项扣除为 1500 元，从 1 月起享受子女教育专项附加扣除 1000 元，假设没有减免收入及减免税额等情况。<br>以前三个月为例，应当按照以下方法计算预扣预缴税额：<br>1 月份：(10000-5000-1500-1000）&#x3D;2500×3% &#x3D;75 元；</p><p>2 月份：(10000×2-5000×2-1500×2-1000×2）×3%-75 &#x3D;5000×3%-75 &#x3D;150-75&#x3D;75元；</p><p>3 月份：(10000×3-5000×3-1500×3-1000×3）×3%-75-75 &#x3D;7500×3%-75-75&#x3D;75 元；</p><p>例 2：某职员 2015 年入职，2019 年每月应发工资均为 30000 元，每月减除费用 5000 元，“三险一金”等专<br>项扣除为 4500 元，享受子女教育、赡养老人两项专项附加 扣除共计 2000 元，假设没有减免收入及减免税<br>额等情况。<br>1 月份：(30000–5000-4500-2000）&#x3D;18500×3% &#x3D; 555 元；</p><p>2 月份：(30000×2-5000×2-4500×2-2000×2）&#x3D;37000×10%-2520-555 &#x3D;625 元；</p><p>3 月份：(30000×3-5000×3-4500×3-2000×3）&#x3D;55500×10%-2520-555-625 &#x3D;1850元；<br>上述计算结果表明，由于 2 月份累计预扣预缴应纳税所得额为 37000 元，已适用 10%的税率，因此 2 月份<br>和 3 月份应预扣预缴税款有所增加。</p><h3 id="如果你看到这里了"><a href="#如果你看到这里了" class="headerlink" title="如果你看到这里了"></a>如果你看到这里了</h3><p>其实我已经做好了一个excel，填一下就可以知道自己扣多少税了:D</p><a href="/2022/12/08/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/%E4%B8%AA%E7%A8%8E%E8%AE%A1%E7%AE%97.xlsx" title="个税计算">个税计算</a>]]></content>
+    
+    
+    <categories>
+      
+      <category>经济知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>经济</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Erlang安装</title>
+    <link href="/2022/12/08/Erlang%E5%AE%89%E8%A3%85/"/>
+    <url>/2022/12/08/Erlang%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装前置"><a href="#安装前置" class="headerlink" title="安装前置"></a>安装前置</h3><ul><li>gcc, g++: <a href="/2022/08/05/Centos7%E5%AE%89%E8%A3%85GCC/" title="gcc安装看这">gcc安装看这</a></li><li>其他必要库：</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">yum install libtool libtool-ltdl-devel svn libevent-devel lua-devel openssl-devel flex mysql-devel ncurses-devel wget lrzsz</code></pre></div><ul><li>expat工具库</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">yum install expat-devel</code></pre></div><ul><li>erlang（需要上面的工具库）</li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-built_in">cd</span> /dist/dist/wget http://erlang.org/download/otp_src_23.3.tar.gztar -xvf otp_src_23.3.tar.gz<span class="hljs-built_in">cd</span> otp_src_23.3./configure --prefix=/usr/local/lib <span class="hljs-comment">## 指定安装在/usr/local/lib</span>make &amp;&amp; make intall<span class="hljs-comment">## 理论上上面能成功就安装完了，中间有报错再百度吧</span></code></pre></div><div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">## 创建软链直接添加命令</span><span class="hljs-built_in">ln</span> -s /usr/local/bin/erl /usr/lib/erlang/bin/erl<span class="hljs-built_in">ln</span> -s /usr/local/bin/erlc /usr/lib/erlang/bin/erlc<span class="hljs-built_in">ln</span> -s /usr/local/bin/escript /usr/lib/erlang/bin/escript<span class="hljs-built_in">ln</span> -s /usr/local/bin/ct_run/usr/lib/erlang/bin/ct_run<span class="hljs-built_in">ln</span> -s /usr/local/bin/dialyzer /usr/lib/erlang/bin/dialyzer<span class="hljs-built_in">ln</span> -s /usr/local/bin/run_erl /usr/lib/erlang/bin/run_erl<span class="hljs-built_in">ln</span> -s /usr/local/bin/to_erl /usr/lib/erlang/bin/to_erl<span class="hljs-built_in">ln</span> -s /usr/local/bin/epmd /usr/lib/erlang/bin/epmd</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Erlang sys.config与sys.config.src的用法</title>
+    <link href="/2022/10/18/Erlang-sys-config%E4%B8%8Esys-config-src%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <url>/2022/10/18/Erlang-sys-config%E4%B8%8Esys-config-src%E7%9A%84%E7%94%A8%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h3 id="配置方式："><a href="#配置方式：" class="headerlink" title="配置方式："></a>配置方式：</h3><p>支持两种配置：</p><ul><li>配置引用的配置文件（一般不会用到）</li><li>配置application下的<code>key-value</code></li></ul><p>例如：</p><div class="code-wrapper"><pre><code class="hljs Erlang"><span class="hljs-comment">%% sys.config</span>[<span class="hljs-string">&quot;./config/other_app/config.config&quot;</span>, <span class="hljs-comment">% 引用其他文件</span>  &#123;mnesia, [ <span class="hljs-comment">% application 为mnesia，该app下只有一个key配置就是dir</span>    &#123;dir, <span class="hljs-string">&quot;/data/database/app/mnesia&quot;</span>&#125;   ]&#125;,  &#123;config, [ <span class="hljs-comment">% application 为config，下面有三个配置</span>    &#123;port, <span class="hljs-number">8080</span>&#125;,    &#123;link, <span class="hljs-number">20000</span>&#125;,    &#123;mode, super&#125;  ]]</code></pre></div><h3 id="加载方式："><a href="#加载方式：" class="headerlink" title="加载方式："></a>加载方式：</h3><p>erlang启动时需要在<code>erl</code>命令后面跟上<code>-config config目录</code>来加载<code>sys.config</code>配置内容。</p><h3 id="读取方式："><a href="#读取方式：" class="headerlink" title="读取方式："></a>读取方式：</h3><p>在代码中，使用<code>application:get_env(1/2)</code>来读取配置的内容。</p><p>例如：</p><div class="code-wrapper"><pre><code class="hljs Erlang"><span class="hljs-number">1</span>&gt; application:get_env(mnesia, dir).<span class="hljs-string">&quot;/data/database/app/mnesia&quot;</span><span class="hljs-number">2</span>&gt; application:get_env(config, port).<span class="hljs-number">8080</span><span class="hljs-number">3</span>&gt; application:get_env(config, not_exist_key).undfeined</code></pre></div><h3 id="sys-config-src"><a href="#sys-config-src" class="headerlink" title="sys.config.src"></a>sys.config.src</h3><p><code>sys.config</code>只能配置静态变量，所以引用目录或者根据不同的节点，定制一些不同的策略很难实现。<code>sys.config.src</code>增加了一个功能，就是可以引用变量。</p><p>需要搭配shell脚本使用，需要在shell中export变量，然后在<code>sys.config.src</code>中引用才可以。</p><p>例如：</p><div class="code-wrapper"><pre><code class="hljs Erlang"><span class="hljs-comment">% sys.config.src</span>&#123;  &#123;my_app, [&#123;port, $&#123;PORT&#125;&#125;]&#125; <span class="hljs-comment">% port是环境变量，写法跟Shell 一样</span>&#125;</code></pre></div><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment"># CTRL</span><span class="hljs-built_in">export</span> PORT=8080<span class="hljs-built_in">export</span> <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> <span class="hljs-keyword">in</span>  <span class="hljs-string">&quot;start&quot;</span>)     ./bin/my_app console <span class="hljs-variable">$@</span>   ;;  <span class="hljs-string">&quot;*&quot;</span>)     <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;start 交互式启动（同时打开erlang shell）&quot;</span>   ;;<span class="hljs-keyword">esac</span><span class="hljs-comment"># shell </span>bash ctrl start</code></pre></div><div class="code-wrapper"><pre><code class="hljs Erlang"><span class="hljs-comment">%% erlang shell</span>&gt; application:get_env(my_app, port).<span class="hljs-number">8080</span></code></pre></div><h3 id="进阶用法，在变量中运行更多命令"><a href="#进阶用法，在变量中运行更多命令" class="headerlink" title="进阶用法，在变量中运行更多命令"></a>进阶用法，在变量中运行更多命令</h3><div class="code-wrapper"><pre><code class="hljs Bash">./├── apps│   └── ...├── _build│   └── ...├── config│   ├── sys.config.src│   ├── sys.env <span class="hljs-comment"># 环境变量导出</span>│   └── vm.args.src├── ctrl <span class="hljs-comment"># 引用sys.env导出的环境变量</span>├── rebar.config ├── script│   └── get_common_setting.es <span class="hljs-comment"># 读取setting配置的脚本</span>├── setting│   └── service.config└── src    └── ...</code></pre></div><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment"># sys.env</span><span class="hljs-comment">## ============ base ================= </span>CUR_DIR=$(<span class="hljs-built_in">cd</span> $(<span class="hljs-built_in">dirname</span> <span class="hljs-variable">$&#123;BASH_SOURCE[0]&#125;</span>); <span class="hljs-built_in">pwd</span>)ROOT_DIR=$(<span class="hljs-built_in">cd</span> <span class="hljs-variable">$&#123;CUR_DIR&#125;</span>/../; <span class="hljs-built_in">pwd</span>)<span class="hljs-built_in">export</span> ERL=$(<span class="hljs-built_in">readlink</span> -f /usr/local/bin/erl)<span class="hljs-built_in">export</span> ESCRIPT=$(<span class="hljs-built_in">readlink</span> -f /usr/local/bin/escript)<span class="hljs-comment">## ============ 私人定制 ===============</span><span class="hljs-comment"># 节点相关</span>ALL_ARGS_ARRAY=$(<span class="hljs-variable">$&#123;ESCRIPT&#125;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;ROOT_DIR&#125;</span>/script/get_setting.es game_id&quot;</span>)<span class="hljs-built_in">export</span> GAME_ID=<span class="hljs-variable">$&#123;ALL_ARG_ARRAY[0]&#125;</span></code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>这算不算夕阳无限好？</title>
+    <link href="/2022/09/05/%E9%9A%8F%E7%AC%94/"/>
+    <url>/2022/09/05/%E9%9A%8F%E7%AC%94/</url>
+    
+    <content type="html"><![CDATA[<p>上周五公司对面新开了一家公司，他们的门口摆了很多花架。但每次我出门上厕所都会问到一股很难闻的香味。我当时还觉得这些花怎么这么“臭”?</p><p>今天我早上回来，他们的花架还没挪走，花也有一点枯，但味道却出奇地让我觉得很舒服。轻轻的香味，闻起来觉得很清新，这香味跟花的外表一点都不匹配，我觉得那是属于花“年轻”时候的香味，而她们现在“有点老了”。</p><p>或许是因为这样，上周他们争奇斗艳，每一朵花都用尽全力去散发自己最美最香的一面。但混合起来却有一种不和谐甚至冲突的感觉。而今天，她们气力不足但散发的是最自然的香味，却让人舒服。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Centos7修改ip地址</title>
+    <link href="/2022/08/15/Centos7%E4%BF%AE%E6%94%B9ip%E5%9C%B0%E5%9D%80/"/>
+    <url>/2022/08/15/Centos7%E4%BF%AE%E6%94%B9ip%E5%9C%B0%E5%9D%80/</url>
+    
+    <content type="html"><![CDATA[<h3 id="查看ip地址"><a href="#查看ip地址" class="headerlink" title="查看ip地址"></a>查看ip地址</h3><div class="code-wrapper"><pre><code class="hljs bash">ifconfig <span class="hljs-comment"># 方式1</span><span class="hljs-comment">## 这个名字的文件是我们需要修改的</span>ens32: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500        inet 192.168.100.172  netmask 255.255.255.0  broadcast 192.168.100.255        inet6 fe80::4b9b:8d53:fba3:3964  prefixlen 64  scopeid 0x20&lt;<span class="hljs-built_in">link</span>&gt;        ether 00:50:56:86:41:b4  txqueuelen 1000  (Ethernet)        RX packets 5829  bytes 752184 (734.5 KiB)        RX errors 0  dropped 0  overruns 0  frame 0        TX packets 434  bytes 59083 (57.6 KiB)        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536        inet 127.0.0.1  netmask 255.0.0.0        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;        loop  txqueuelen 1000  (Local Loopback)        RX packets 72458  bytes 23024000 (21.9 MiB)        RX errors 0  dropped 0  overruns 0  frame 0        TX packets 72458  bytes 23024000 (21.9 MiB)        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255        ether 52:54:00:11:12:2b  txqueuelen 1000  (Ethernet)        RX packets 0  bytes 0 (0.0 B)        RX errors 0  dropped 0  overruns 0  frame 0        TX packets 0  bytes 0 (0.0 B)        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0ip addr <span class="hljs-comment"># 方式2</span>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000    <span class="hljs-built_in">link</span>/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00    inet 127.0.0.1/8 scope host lo       valid_lft forever preferred_lft forever    inet6 ::1/128 scope host       valid_lft forever preferred_lft forever2: ens32: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000    <span class="hljs-built_in">link</span>/ether 00:50:56:86:41:b4 brd ff:ff:ff:ff:ff:ff    inet 192.168.100.42/24 brd 192.168.100.255 scope global noprefixroute ens32       valid_lft forever preferred_lft forever    inet6 fe80::4b9b:8d53:fba3:3964/64 scope <span class="hljs-built_in">link</span> noprefixroute       valid_lft forever preferred_lft forever3: virbr0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc noqueue state DOWN group default qlen 1000    <span class="hljs-built_in">link</span>/ether 52:54:00:11:12:2b brd ff:ff:ff:ff:ff:ff    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0       valid_lft forever preferred_lft forever4: virbr0-nic: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc pfifo_fast master virbr0 state DOWN group default qlen 1000    <span class="hljs-built_in">link</span>/ether 52:54:00:11:12:2b brd ff:ff:ff:ff:ff:ff</code></pre></div><h3 id="修改配置文件："><a href="#修改配置文件：" class="headerlink" title="修改配置文件："></a>修改配置文件：</h3><div class="code-wrapper"><pre><code class="hljs Bash">vim /etc/sysconfig/network-scripts/ifcfg-ens32 <span class="hljs-comment"># 文件名来源于上面</span></code></pre></div><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment">## 文件中修改或者添加以下内容</span>BOOTPROTO=<span class="hljs-string">&quot;static&quot;</span> <span class="hljs-comment">#dhcp改为static </span>ONBOOT=<span class="hljs-string">&quot;yes&quot;</span> <span class="hljs-comment">#开机启用本配置</span>IPADDR=192.168.7.106 <span class="hljs-comment">#静态IP</span>GATEWAY=192.168.7.1 <span class="hljs-comment">#默认网关</span>NETMASK=255.255.255.0 <span class="hljs-comment">#子网掩码</span>DNS1=192.168.7.1 <span class="hljs-comment">#DNS 配置 </span></code></pre></div><h3 id="重启网络服务："><a href="#重启网络服务：" class="headerlink" title="重启网络服务："></a>重启网络服务：</h3><div class="code-wrapper"><pre><code class="hljs Bash">service network restart</code></pre></div><h3 id="看看能不能上网："><a href="#看看能不能上网：" class="headerlink" title="看看能不能上网："></a>看看能不能上网：</h3><div class="code-wrapper"><pre><code class="hljs Bash">ping baidu.com <span class="hljs-comment"># 如果成功则ok了。不成功就得检查一下配置</span></code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Centos7</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Centos7安装使用remi库</title>
+    <link href="/2022/08/12/Centos7%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8remi%E5%BA%93/"/>
+    <url>/2022/08/12/Centos7%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8remi%E5%BA%93/</url>
+    
+    <content type="html"><![CDATA[<h3 id="查看库"><a href="#查看库" class="headerlink" title="查看库"></a>查看库</h3><p><a href="https://dl.fedoraproject.org/pub/epel/">点我查看epel库</a></p><img src="/2022/08/12/Centos7%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8remi%E5%BA%93/epel.png" class="" title="epel"><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>以 epel-release-latest-7.noarch.rpm 为例</p><div class="code-wrapper"><pre><code class="hljs bash">wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpmrpm -ivh epel-release-latest-7.noarch.rpm<span class="hljs-comment">## 或者用这个</span>yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</code></pre></div><h3 id="验证安装："><a href="#验证安装：" class="headerlink" title="验证安装："></a>验证安装：</h3><div class="code-wrapper"><pre><code class="hljs bash">yum repolist<span class="hljs-comment">## 结果有remi库就可以了</span>Loaded plugins: fastestmirror, langpacksLoading mirror speeds from cached hostfile * base: ftp.sjtu.edu.cn * epel: mirror.sjtu.edu.cn * extras: ftp.sjtu.edu.cn * remi-safe: ftp.riken.jp * updates: ftp.sjtu.edu.cnrepo <span class="hljs-built_in">id</span>                                      repo name                                                                               statusbase/7/x86_64                                CentOS-7 - Base                                                                         10,072epel/x86_64                                  Extra Packages <span class="hljs-keyword">for</span> Enterprise Linux 7 - x86_64                                          13,756extras/7/x86_64                              CentOS-7 - Extras                                                                          512remi-safe                                    Safe Remi<span class="hljs-string">&#x27;s RPM repository for Enterprise Linux 7 - x86_64                               4,853</span><span class="hljs-string">updates/7/x86_64                             CentOS-7 - Updates                                                                       4,101</span><span class="hljs-string">repolist: 33,294</span></code></pre></div><h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><p>其实就是yum 命令中带上—enablerepo&#x3D;remi，例子：</p><div class="code-wrapper"><pre><code class="hljs bash">yum list redis --enablerepo=remi  * updates: ftp.sjtu.edu.cn * remi-safe: ftp.riken.jp * remi: ftp.riken.jpredis.x86_64                       7.0.4-1.el7.remi                        remiredis.x86_64                       7.0.4-1.el7.remi                        @remiredis.x86_64                       7.0.3-1.el7.remi                        remiredis.x86_64                       6.2.7-1.el7.remi                        remiredis.x86_64                       6.2.6-1.el7.remi                        remiredis.x86_64                       6.0.16-1.el7.remi                       remiredis.x86_64                       6.0.15-1.el7.remi                       remiredis.x86_64                       5.0.14-1.el7.remi                       remiredis.x86_64                       5.0.13-1.el7.remi                       remiredis.x86_64                       3.2.12-2.el7                            epelyum install redis-6.2.7 --enablerepo=remi yum search redis --enablerepo=remi</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Centos7</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows下给虚拟机的端口代理</title>
+    <link href="/2022/08/12/Windows%E4%B8%8B%E7%BB%99%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%AB%AF%E5%8F%A3%E4%BB%A3%E7%90%86/"/>
+    <url>/2022/08/12/Windows%E4%B8%8B%E7%BB%99%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%AB%AF%E5%8F%A3%E4%BB%A3%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<p>新建一个.bat文件，然后复制下面的内容保存后双击运行</p><div class="code-wrapper"><pre><code class="hljs Bash">netsh interface portproxy delete v4tov4 listenaddress=本机IP listenport=本机端口netsh interface portproxy add v4tov4 listenaddress=本机IP listenport=本机端口 connectaddress=其他机器ip connectport=其他机器端口上面可以多行复制netsh interface portproxy show allpause</code></pre></div><p>例子：</p><div class="code-wrapper"><pre><code class="hljs Bash">netsh interface portproxy delete v4tov4 listenaddress=192.168.100.115 listenport=8051netsh interface portproxy add v4tov4 listenaddress=192.168.100.115 listenport=8051 connectaddress=192.168.195.129 connectport=8051netsh interface portproxy delete v4tov4 listenaddress=192.168.100.115 listenport=8052netsh interface portproxy add v4tov4 listenaddress=192.168.100.115 listenport=8052 connectaddress=192.168.195.129 connectport=8052netsh interface portproxy show allpause</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Windows</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Centos7安装GCC</title>
+    <link href="/2022/08/05/Centos7%E5%AE%89%E8%A3%85GCC/"/>
+    <url>/2022/08/05/Centos7%E5%AE%89%E8%A3%85GCC/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h3><a href="/2022/08/12/Centos7%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8remi%E5%BA%93/" title="下面用到remi库请看这">下面用到remi库请看这</a><div class="code-wrapper"><pre><code class="hljs Bash">yum install centos-release-sclyum list devtoolset-7-gcc* --enablerepo=remiLoaded plugins: fastestmirror, langpacksLoading mirror speeds from cached hostfile * base: ftp.sjtu.edu.cn * centos-sclo-rh: ftp.sjtu.edu.cn * centos-sclo-sclo: ftp.sjtu.edu.cn * epel: mirrors.bfsu.edu.cn * extras: ftp.sjtu.edu.cn * remi: mirrors.tuna.tsinghua.edu.cn * remi-safe: mirrors.tuna.tsinghua.edu.cn * updates: ftp.sjtu.edu.cnAvailable Packagesdevtoolset-7-gcc.x86_64                                                  7.3.1-5.16.el7                                      centos-sclo-rhdevtoolset-7-gcc-c++.x86_64                                              7.3.1-5.16.el7                                      centos-sclo-rhdevtoolset-7-gcc-gdb-plugin.x86_64                                       7.3.1-5.16.el7                                      centos-sclo-rhdevtoolset-7-gcc-gfortran.x86_64                                         7.3.1-5.16.el7                                      centos-sclo-rhdevtoolset-7-gcc-plugin-devel.x86_64                                     7.3.1-5.16.el7                                      centos-sclo-rh<span class="hljs-comment">## 版本最低为7，截止写文时最新是11</span>yum install devtoolset-7-gcc* <span class="hljs-comment"># 直接全部安装</span></code></pre></div><h3 id="启动和检查："><a href="#启动和检查：" class="headerlink" title="启动和检查："></a>启动和检查：</h3><div class="code-wrapper"><pre><code class="hljs Bash">scl <span class="hljs-built_in">enable</span> devtoolset-7 bash<span class="hljs-built_in">which</span> gcc/opt/rh/devtoolset-7/root/usr/bin/gccgcc --versiongcc (GCC) 7.3.1 20180303 (Red Hat 7.3.1-5)Copyright (C) 2017 Free Software Foundation, Inc.This is free software; see the <span class="hljs-built_in">source</span> <span class="hljs-keyword">for</span> copying conditions.  There is NOwarranty; not even <span class="hljs-keyword">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Centos7</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>贷款的手续费换算利率</title>
+    <link href="/2021/08/03/%E8%B4%B7%E6%AC%BE%E7%9A%84%E6%89%8B%E7%BB%AD%E8%B4%B9%E6%8D%A2%E7%AE%97%E5%88%A9%E7%8E%87/"/>
+    <url>/2021/08/03/%E8%B4%B7%E6%AC%BE%E7%9A%84%E6%89%8B%E7%BB%AD%E8%B4%B9%E6%8D%A2%E7%AE%97%E5%88%A9%E7%8E%87/</url>
+    
+    <content type="html"><![CDATA[<p>一般4S店会告诉客户我们的车贷是没有利息的，只会收取一定的手续费。这种情况下大家都能反应过来其实手续费就是等同于利息。但是，对于车贷利率却容易掉入错误计算的陷阱。举例说明一下更为清晰。  </p><p>  假设贷款金额8万，期限2年，手续费4千。根据利率等于利息除以本金的公式，我们一般会计算出这笔贷款的年利率为2.5%。（&#x3D;<a href="tel:4000/80000">4000&#x2F;80000</a>&#x2F;2）  </p><p>  乍一看会觉得这个超便宜，想着自己随便把钱拿来买个银行理财收益率都比这个高，然后果断决定捡这个馅饼！那么，我们到底错在哪里呢？  </p><p>来说说正确的思考：1⃣️如果按照第一段计算方法，对应的还款方式应该是到期一次性还本。也就是2年后贷款到期，我们一次性偿还这8万本金。可是，实际情况是手续费（即利息）是在办理贷款手续时一次性付清了，后面2年每月等额偿还本金8万。这里的陷阱在于其实你支付了占用2年8万本金的成本4千元，却并没有将这8万本金占用到足额的2年。2⃣️实际的计算方式是用4000除以24个月，计算出平摊到每个月要还的利息，约等于166.667。用8万除以24个月，计算出每月万还的本金，约等于3333.333。  </p><p>第一个月利率等于166.667&#x2F;80000,  </p><p>第二个月利率等于166.667&#x2F;(80000－3333.333)，  </p><p>第三个月利率等于166.667&#x2F;(80000-3333.333-3333.333)  </p><p>后面以此类推（以上计算过程可借助excel）最后将24个月的月利率加总除以2，算出2年的平均年利率约为18%</p><p>我自己做的excel </p><a href="/2021/08/03/%E8%B4%B7%E6%AC%BE%E7%9A%84%E6%89%8B%E7%BB%AD%E8%B4%B9%E6%8D%A2%E7%AE%97%E5%88%A9%E7%8E%87/%E8%B4%B7%E6%AC%BE%E6%89%8B%E7%BB%AD%E8%B4%B9%E6%8D%A2%E7%AE%97%E5%88%A9%E7%8E%87.xlsx" title="贷款手续费换算利率">贷款手续费换算利率</a>]]></content>
+    
+    
+    <categories>
+      
+      <category>经济知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>经济</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SVN钩子</title>
+    <link href="/2021/06/29/SVN%E9%92%A9%E5%AD%90/"/>
+    <url>/2021/06/29/SVN%E9%92%A9%E5%AD%90/</url>
+    
+    <content type="html"><![CDATA[<h3 id="直接使用方式"><a href="#直接使用方式" class="headerlink" title="直接使用方式"></a>直接使用方式</h3><ul><li>在svn仓库的<code>hooks</code>目录下编写<code>pre-commit</code>或者<code>post-commit</code>的可执行文件。从而让svn可以在提交时和提交后执行一些检查脚本或者通知脚本。</li><li><code>svnlook</code>命令可以指定读取某一个提交的修改，文件等信息</li></ul><h3 id="直接上脚本"><a href="#直接上脚本" class="headerlink" title="直接上脚本"></a>直接上脚本</h3><ul><li>svn检查日志单子格式+ 检查erlang配置格式是否正确</li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-meta">#! /bin/bash</span><span class="hljs-built_in">export</span> LANG=zh_CN.UTF-8REPOS=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> <span class="hljs-comment"># 参数1为仓库名</span>TXN=<span class="hljs-string">&quot;<span class="hljs-variable">$2</span>&quot;</span> <span class="hljs-comment"># 参数2为本次提交生成的临时标签</span>SVNLOOK=/usr/bin/svnlook<span class="hljs-comment"># 判断提交log与预设的规则是否匹配</span>LOGMSG=$(<span class="hljs-variable">$SVNLOOK</span> <span class="hljs-built_in">log</span> -t <span class="hljs-string">&quot;<span class="hljs-variable">$TXN</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>&quot;</span>)LOGFORMAT=<span class="hljs-string">&quot;【(需求|优化|修复|配置)】.+&quot;</span> <span class="hljs-comment"># 日志单子必须固定的描述开头</span><span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;LOGMSG&#125;</span> =~ <span class="hljs-variable">$&#123;LOGFORMAT&#125;</span> ]]<span class="hljs-keyword">then</span>    :<span class="hljs-keyword">else</span>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;提交日志开头格式应为：【需求】、【优化】、【修复】、【配置】&quot;</span> &gt;&amp;2    <span class="hljs-built_in">exit</span> 1<span class="hljs-keyword">fi</span><span class="hljs-comment"># 尝试编译cfg文件</span><span class="hljs-comment"># 通过命令直接获得本次提交：非删除的、非xls的erl配置文件</span>CHANGE_LIST=$(<span class="hljs-variable">$SVNLOOK</span> changed -t <span class="hljs-string">&quot;<span class="hljs-variable">$TXN</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>&quot;</span> | grep -v <span class="hljs-string">&#x27;/$&#x27;</span> | grep -v <span class="hljs-string">&#x27;^D.*&#x27;</span> | grep <span class="hljs-string">&#x27;\.erl$&#x27;</span> | grep -v <span class="hljs-string">&#x27;.*config\/src\/xls.*erl$&#x27;</span> | grep <span class="hljs-string">&#x27;config.*cfg_.*&#x27;</span> | awk <span class="hljs-string">&#x27;&#123;print$2&#125;&#x27;</span>)ESCRIPT=/usr/local/bin/escriptCHECK_SCRIPT=/data/test_hook/trunk/script/tool/check_config_syntax.es <span class="hljs-comment"># 编译检查的es脚本</span>ERROR_OUTPUT=<span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/check_cfg_output&quot;</span><span class="hljs-built_in">touch</span> <span class="hljs-variable">$ERROR_OUTPUT</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;&quot;</span> &gt; <span class="hljs-variable">$ERROR_OUTPUT</span> <span class="hljs-comment">#重置一个错误输出文件</span><span class="hljs-keyword">for</span> FILE <span class="hljs-keyword">in</span> <span class="hljs-variable">$CHANGE_LIST</span> <span class="hljs-comment"># 遍历所有文件尝试编译</span><span class="hljs-keyword">do</span>    FILENAME=$(<span class="hljs-built_in">basename</span> <span class="hljs-variable">$FILE</span>)    <span class="hljs-variable">$SVNLOOK</span> <span class="hljs-built_in">cat</span> -t <span class="hljs-variable">$TXN</span> <span class="hljs-variable">$REPOS</span> <span class="hljs-variable">$FILE</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/<span class="hljs-variable">$FILENAME</span>&quot;</span> <span class="hljs-comment"># 先写入到一个缓冲文件，不然传入的参数有点乱</span>    <span class="hljs-variable">$ESCRIPT</span> <span class="hljs-variable">$CHECK_SCRIPT</span> <span class="hljs-variable">$ERROR_OUTPUT</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/<span class="hljs-variable">$FILENAME</span>&quot;</span> <span class="hljs-comment"># 编译缓冲文件，如果有错误会先输出到错误收集文件</span><span class="hljs-keyword">done</span>ALL_ERROR=$(<span class="hljs-built_in">cat</span> <span class="hljs-variable">$ERROR_OUTPUT</span>)<span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$ALL_ERROR</span> != <span class="hljs-string">&quot;&quot;</span> ]] <span class="hljs-comment"># 读取所有的错误收集，如果有内容，那么直接拒绝提交，把错误输出会svn的dialog</span><span class="hljs-keyword">then</span>    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.beam&quot;</span> /tmp 2&gt;/dev/null    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.erl&quot;</span> /tmp 2&gt; /dev/null    <span class="hljs-built_in">cat</span> <span class="hljs-variable">$ERROR_OUTPUT</span> &gt;&amp;2    <span class="hljs-built_in">exit</span> 1<span class="hljs-keyword">else</span>    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.beam&quot;</span> /tmp 2&gt;/dev/null    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.erl&quot;</span> /tmp 2&gt;/dev/null<span class="hljs-keyword">fi</span><span class="hljs-built_in">exit</span> 0</code></pre></div><ul><li>提交后自动迁出（因为svn的内容是保存在数据库的，所以加上自动迁出会比较直观）</li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-meta">#!/bin/sh</span>REPOS=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>REV=<span class="hljs-string">&quot;<span class="hljs-variable">$2</span>&quot;</span>User=<span class="hljs-string">&#x27;qiushiyu&#x27;</span>Password=<span class="hljs-string">&#x27;123456&#x27;</span><span class="hljs-built_in">export</span> LANG=<span class="hljs-string">&#x27;zh_CN.UTF-8&#x27;</span><span class="hljs-built_in">cd</span> <span class="hljs-variable">$DeployPath</span><span class="hljs-comment"># svn cleanup</span>svn update /data/test_hook --username <span class="hljs-variable">$User</span> --password <span class="hljs-variable">$Password</span></code></pre></div><h3 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h3><ul><li><p>返回svn dialog的中文乱码：</p><p>  往脚本里面添加一个这个<code>export LANG=zh_CN.UTF-8</code>，</p></li></ul><p>根据你的实际状况，<code>LANG</code>的值能够尝试改成<code>en_US.UTF-8/zh_CN.GBK</code></p><ul><li><p><code>svnlook cat</code>命令传入其他语言中内容换行可能有错误：</p><p>  先写入一个缓冲文件后续再操作，增加一点点io但无伤大雅</p></li><li><p>svn积极拒绝：</p><p>  svn服务没开啊兄弟，检查一下<code>svnserve.service</code>或者<code>svnserve</code>命令的进程吧，看看端口号，仓库目录什么的有没有错。</p></li><li><p>提交时感觉脚本没有执行：</p><p>  那一定是脚本写错了，自己调一下</p></li></ul><h3 id="svn钩子介绍"><a href="#svn钩子介绍" class="headerlink" title="svn钩子介绍"></a>svn钩子介绍</h3><p>SVN服务端hooks主要有以下9种：</p><p><strong>pre-lock</strong>：文件加锁前执行，不常用</p><p><strong>post-lock</strong>：文件加锁后执行，通常用来发送锁定事件通知，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.锁定路径的认证用户名</p><p><strong>per-unlock</strong>：文件解锁前执行，不常用</p><p><strong>post-unlock</strong>：文件解锁后执行，通常用来发送解锁事件通知，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.解锁路径的认证用户名</p><p><strong>start-commit</strong>：开始提交时执行，在<code>pre-commit</code>之前，通常用来确定用户是否有提交权限</p><p><strong>pre-commit</strong>：提交之前执行，在<code>start-commit</code>之后，通常用来对提交内容的检查，例如我们后边要介绍的利用<code>pre-commit</code>做提交log的合规性检查，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.提交事务的名称</p><p><strong>post-commit</strong>：提交完成后执行，这应该是使用最广的hooks之一，通常用来在提交之后发送提交通知，甚至是利用它来做自动化的CI&#x2F;CD等操作，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.提交创建的修订版本号</p><p><strong>pre-revprop-change</strong>：在修改revision属性之前执行，不常用</p><p><strong>post-revprop-change</strong>：在修改revision属性之后执行，不常用</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SVN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SVN服务器部署</title>
+    <link href="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/"/>
+    <url>/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装SVN"><a href="#安装SVN" class="headerlink" title="安装SVN"></a>安装SVN</h3><div class="code-wrapper"><pre><code class="hljs Bash">yum install svn</code></pre></div><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><ul><li>分别创建目录和以目录创建对应仓库</li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-built_in">mkdir</span> -p ~/svn/testsvnadmin create ~/svn/test<span class="hljs-built_in">ls</span> -al ~/svn/testtotal 8drwxr-xr-x. 8 root root 112 May 10 14:25 .drwxr-xr-x. 4 root root  36 May 10 11:25 ..drwxr-xr-x. 2 root root  54 Jun 28 10:07 confdrwxr-sr-x. 6 root root 253 Jun 28 15:34 db-r--r--r--. 1 root root   2 May 10 10:44 formatdrwxr-xr-x. 2 root root 226 Jun 28 14:09 hooksdrwxr-xr-x. 2 root root  41 May 10 10:44 locks-rw-r--r--. 1 root root 229 May 10 10:44 README.txtdrwxr-xr-x. 2 root root   6 May 10 11:52 serverdrwxr-xr-x. 4 root root  75 May 10 14:25 .svn</code></pre></div><ul><li>conf目录是svn服务器的配置目录</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">-rw-r--r--. 1 root root 1080 1月 30 13:26 authz      <span class="hljs-comment">#权限控制</span>-rw-r--r--. 1 root root 309 1月 30 13:26 passwd      <span class="hljs-comment">#密码管理</span>-rw-r--r--. 1 root root 3090 1月 30 13:26 svnserve.conf    <span class="hljs-comment">#SVN服务进程配置</span></code></pre></div><h3 id="配配置"><a href="#配配置" class="headerlink" title="配配置"></a>配配置</h3><ul><li>权限配置：<code>~/svn/test/conf/authz</code></li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment">#用户分组(root-&gt;管理员,developer -&gt;开发 other-&gt;其他)</span>[<span class="hljs-built_in">groups</span>]root = qill  <span class="hljs-comment">#管理员用户qill</span>developer = fon,jdom  <span class="hljs-comment">#开发用户fon,jdom</span>other = ceshi,cehua    <span class="hljs-comment">#其他用户ceshi,cehua</span><span class="hljs-comment">#权限配置</span>[/]@admin = rw  <span class="hljs-comment">#管理员读写权限</span>@development = rw  <span class="hljs-comment">#开发读写权限</span>@other = r        <span class="hljs-comment">#其他读权限</span>test6 = rw        <span class="hljs-comment">#test7用户读写权限</span></code></pre></div><ul><li>密码：<code>~/svn/test/conf/passwd</code></li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment">#密码配置,格式为用户名=密码，密码为明文</span>[<span class="hljs-built_in">users</span>]qill = 123fon = 123jdom = 234ceshi = 456cehua = 789test6 = 12341234xiangshouge</code></pre></div><ul><li>svn服务配置：<code>~svn/test/conf/svnserve.conf</code></li></ul><div class="code-wrapper"><pre><code class="hljs Bash">[general]anon-access = none <span class="hljs-comment"># 匿名用户无权访问</span>auth-access = write <span class="hljs-comment"># 认证用户可读写</span>password-db = passwd <span class="hljs-comment"># 指定用户认证密码文件</span>authz-db = authz <span class="hljs-comment"># 指定权限配置文件</span><span class="hljs-comment">### This option specifies the authentication realm of the repository.</span><span class="hljs-comment">### If two repositories have the same authentication realm, they should</span><span class="hljs-comment">### have the same password database, and vice versa.  The default realm</span><span class="hljs-comment">### is repository&#x27;s uuid.</span>realm = /root/svn_test/test <span class="hljs-comment">## 仓库描述，设置成对应目录就好</span><span class="hljs-comment">### The force-username-case option causes svnserve to case-normalize</span><span class="hljs-comment">### usernames before comparing them against the authorization rules in the</span><span class="hljs-comment">### authz-db file configured above.  Valid values are &quot;upper&quot; (to upper-</span><span class="hljs-comment">### case the usernames), &quot;lower&quot; (to lowercase the usernames), and</span><span class="hljs-comment">### &quot;none&quot; (to compare usernames as-is without case conversion, which</span><span class="hljs-comment">### is the default behavior).</span></code></pre></div><h3 id="启动服务和连接"><a href="#启动服务和连接" class="headerlink" title="启动服务和连接"></a>启动服务和连接</h3><ul><li>启动服务</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">svnserve -d -r ~/svn/test --listen-port 3690</code></pre></div><ul><li><p>连接服务</p><ol><li><p>windows客户端选择浏览仓库</p>  <img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/reop_browser.png" class="" title="浏览仓库"></li><li><p>输入对应url，svn:&#x2F;&#x2F;ip:端口&#x2F;仓库目录名</p>  <img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/url_input.png" class="" title="输入url"></li><li><p>连接成功，可以看到一个新的空仓库</p>  <img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/link_repo.png" class="" title="新的仓库"></li></ol></li></ul><p> 4.后续就是对应的检出、提交等流程就不写了。</p><p>至此服务已经搭建完成。有一些其他的事项需要注意。</p><h3 id="或许会遇到的蛋疼的问题"><a href="#或许会遇到的蛋疼的问题" class="headerlink" title="或许会遇到的蛋疼的问题"></a>或许会遇到的蛋疼的问题</h3><ul><li>windows的svn客户端连接svn会卡死的check list<ol><li>windows的防火墙关了没有</li><li>服务器的防火墙关了或者设置了没有</li><li>如果服务器是虚拟机，虚拟机的网卡是否用了NAT模式</li></ol></li><li>linux关防火墙</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">1：关闭防火墙systemctl stop firewalld2：开启指定防火墙<span class="hljs-comment">#开启3690端口</span>firewall-cmd --zone=public --add-port=3690/tcp --permanent<span class="hljs-comment">#刷新配置</span>firewall-cmd --reload</code></pre></div><ul><li>虚拟机的虚拟网卡NAT模式<img src="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/virtual_net_problem.png" class="" title="NAT模式"></li></ul><h3 id="自动检出"><a href="#自动检出" class="headerlink" title="自动检出"></a>自动检出</h3><ul><li>svn的做法是将提交的存入数据库中，所以如果想要直接看到对应的提交可以编写<code>post-commit</code>脚本来做自动检出</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">svn checkout svn://127.0.0.1/test /data/test <span class="hljs-comment">#svn://127.0.0.1/test表示需要检出的仓库地址 /data/test表示需要检出到哪个目录下</span></code></pre></div><ul><li>自动检出配置: <code>/var/project/test/hooks</code>目录下新建一个<code>post-commit</code>文件，<code>post-commit</code>文件添加内容为：</li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-meta">#!/bin/sh</span>REPOS=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>      <span class="hljs-comment">#仓库</span>REV=<span class="hljs-string">&quot;2&quot;</span>        <span class="hljs-comment">#版本号</span>export.UTF-8      <span class="hljs-comment">#编码</span>SVN=/usr/bin/svn  <span class="hljs-comment">#svn地址</span>WEB=/data/test  <span class="hljs-comment">#要更新的项目目录</span>SVN update <span class="hljs-variable">$WEB</span> --username qill --password 123 <span class="hljs-comment">#--username qill表示设置用户名 --password 123表示设置密码</span><span class="hljs-comment"># 将post-commit设置为可执行</span><span class="hljs-built_in">chmod</span> +x /var/project/test/hooks/post-commit</code></pre></div><p>到此自动检出配置完成，不过注意，第一次的时候需要手动检出，之后就不需要了,到此linux搭建svn服务器完成</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SVN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>安装windows和office</title>
+    <link href="/2021/06/05/%E5%AE%89%E8%A3%85windows%E5%92%8Coffice/"/>
+    <url>/2021/06/05/%E5%AE%89%E8%A3%85windows%E5%92%8Coffice/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://hellowindows.cn/">HelloWindows.cn 精校 完整 极致 Windows系统下载仓储站</a></p><p>直接下载里面的 Windows 和 Offices（都是正版）</p><ul><li><p>Windows</p><img src="/2021/06/05/%E5%AE%89%E8%A3%85windows%E5%92%8Coffice/windows_download.png" class="" title="下载windows"></li><li><p>Offices</p><img src="/2021/06/05/%E5%AE%89%E8%A3%85windows%E5%92%8Coffice/office_download.png" class="" title="下载office"></li><li><p>激活工具，使用激活工具把windows和Office都激活</p><img src="/2021/06/05/%E5%AE%89%E8%A3%85windows%E5%92%8Coffice/active.png" class="" title="下载激活工具"></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>破解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Moyu中对rebar3的取舍</title>
+    <link href="/2021/05/26/Moyu%E4%B8%AD%E5%AF%B9rebar3%E7%9A%84%E5%8F%96%E8%88%8D/"/>
+    <url>/2021/05/26/Moyu%E4%B8%AD%E5%AF%B9rebar3%E7%9A%84%E5%8F%96%E8%88%8D/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试。" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="26c27df217fea465136244d14d459b6e0793c20036d5176e5f9b32d69e0de33a">4c168c136aafe095002ab4e5bd9f508dd0f76637677ee7c35a37e8b66eca7eed193c5a95fab43e31b8fe2229cb5192ca5e2a7f5ee2c89d6fcc77ccf4cc3cfaefe21ba4ae735bf2b6ee5a4c58d020618648c71c93855053251f9b5900b37971021538598bef81caab66c952de73835b1d4c30b4e702acd22723d63b4c4f42264848df18129bb8111b1a894a0e6aba44239acf049385b4e0a14a3fd1cce5461bce3f651da97bef34373163c5825b61e8e516c07079daf8df6d3e6f1136f9f32464bec5f1ff355d9820c91de53a639d12f25afc14e7093f1e9e6390b1a6a66bc8b4ce7d37d845a9becf27674e3945220db111ed8bc33e3723ae0e5c3f685d5c257ec79025ef91a7298b40cc09b4fa8d96d4df578425f26152402ce82df13f9e39ca50e14d0516d5ae017c4dcef67b4b7a8ffdb8955b5ce915f4e5236c98408bb7c85af46a1e400fe3dc51853d689e544f370fa5625afba46c41a78a7f93eff5eba23df5eae669597e44948e3387ab67584b2e8d1eacb9e65796c2a90ca5cff86ba1b339ebee4515351ab9e660625f78500f398739d0a72e038156402abb22b9b7651b323c3af3497950abd9ad7f210ca3fd18d6d5bb11aeee4637f58d22e4960660cfa1bdb56b86889e45ee7f51a3d3a61e8da91c91ea6d40603680a4aa412bfc7a1f766d38eafa76dec7ade1da4c272fe1a6671359284bfadc47b92bf1b68b965880e2c8aa3d98573b7fcf135edf5363254867737d1831cdf1fc479cca2356fba15a89803d9d0c398ef01ed80780cf24d3c89fbe915280e0f739931b16fbec0dbbdb1b3c165597c06af9f016a63f1a271fe2bd33226f1f7bd0e0a35d0fc3b7822861e1d73db004e5884ef20445ba84578c5ce8dd18a4b5d9d0bd1f3235c12615d08ad9b2a8765b7c5ff5be849c809a0e35f0f9404e760004b6bba55faacbdd86ad9b484d1f935fec898d395c70dc6e6369d968c6764e8413c4dd8cebf36cbda064f7592b9e6b2a98422b808370d970b68d723747503343a935dab5a3f9f24528a896b83246aebf88ed1c4e49063e33fea55d3e2f25a9c1d49f33dd37f10d0722e082cd82069aef2aab616dfaecdd15b40d1c7a401c9c2585b40def848dd20637fb4a2c70874938a7afe865046031781c8140cda91382ac744a0f95f835b82d5d91eb1b40be411fa2b36177af3da944357a53168a560db7a01cb9431ac4f6ff43900c464171f06d508625398d338bee2d20a59b61441b424db4ee180ef063bbee924df21655aaf02285e53ef04ec97a04ad610c845d159052f723d033f01fab69a46af30c30c53e23913de16ee3bcfbfb8b1d75afab57f2c07b795790e26862ad50d6d0ac5e9138df9d16456c4a8fbecb654293125c185be8b6c6f086cd6a477238d154990df0799fedb2fbabf37d49f61965108a1f31b3a04ecf3785217e9f13d59a480ac3bbe82fa31016cda4552eff043d124836886c2dcb9af7065936a154a5d278c95859f5260e4fb03e2893df45eb0fd2f521df713de7a5ad3f42688072488ded27d5cb30636c0be0acb380c708a31a800ca75b646ee759d3c8934f10f5277c749909f1becf90f71c12dcaa19971c7274e043ce9e83e338fdd4b8f73b1e3aca54642a4e932609ba221e40901523ffcbad4b6248d9dbe5de8e4a6b4327c07033ac730cc03553a841175f04ea8f37bad166b57a4b3d917c313e1647a7fbed3ab54c50a3abb2e020380f4bc834a8871bb37093d2de470bc5891e93127d8446489637ac9b4d1631d03c2b29a12e199c12bc65c5fdd9f2e655576812153e3f430c1192e51c88fa72a20aece15a648e6f5eefcdcd41b51120a5a2ea9bfc48d4debb9e1660254e11a5383de32a8c8dc1825efa0e70fdbf72bb5a5e4892d75c231bd9e0e022765138d54933a8b8a846c5bd40bc4e9d5c8dad26c7ca502fd04f1a2fb0cb001651e9d906b9a905bcd586abbeca0be2edbe971027e1541d41018e3e1e751cd6606a8cd5521ad062a40829c745d007ea76b63a4c4299aac77b88e1e4abdc2e0156c15c324c110dbb94be7e3a9296b4005107bf54d09e299f3dd189aa2816969aa59a81d7f751ca1e978d0d9d091b4a42e59f34d21126014e6b976dea292d27d67252c13071be72eb239afeddfb9ca8b14e1658bbf4900ac3b26cb8df17c104608488f6c90e350e2542e2e8f7c92f991ac02df680f0650949385f247f948d120cd4eb52bcedfa57aafb5dc37a3cf2eaa2f676fb0ef4a75c2d9649e1b67b9e4550d932827dd438e571b87e2f8cfb631a1076b0b74cfb49dbe33ebd471168871b8e1b65824d5204b1ce53e6541d552ee4cb106be4a806ebb8663c149b2e0807a27ce328991d3c69b6c4d28a9e948b89e46916c780fb6e99ef977221a1164ca0a2f9375bb73bf1defd96d290a78cd0ed8d426e9fd5cced5b118f665b18ab7f06512e2f4a073cbd44a378d544b63590eac87d374ea2d25a5ee13f1a7c8dc7d70fa93b93a6166072e914dcee9c7528531b1cd7e08611303ce78d72650941e1112b37d0b4b9e68e0d33a196fe1441154b74fcdbdc1465811b57597e534fc5178bf7778c9197c62d1a36b4263beee4e31bad910cfa41d46dbe40c2e8c75d27ae6931eedc27fd97d0966a5209bd48175517bda6090e6264fd46797cfe489a5b9d2a1706a241d608150eb10ed6ebbae5a7d41a14f026acf24ba0372746d07c717c6d3bd2ce6f517c7e58e0efe29fada0664c734c48edeea3fee357ddb37b4a54733edc504a16663abf6f1e1c102a0c828a72e9f900dddf46c950d71358672d6baa646b584504cba09c982732b045698578e07211c71d9fbcb3b7e0ff7b6e8c9eba23e94d7d693beef3dc60d1e9ca9f87f4c09d797c0304488adb132d654fd4ddf35040da15a6dfb58c2703a3c4eceff6fc46c2d3aefd6a3d06ac358c6995936721cc43691592689878efface221d78b5dca1ef139a5fc2caf984df4dfbc2b36b3cbfeb7a718c5d48a2c5cfdfa827e4ddde812d797972109230629e8c1621a001872f0c5497f6764030ad75b0b404ff843a3e905eeffee57a72d9c8d3228e96c8aa5d46538817bf52ce743e4ab823f8375c57030f6fa53e060bb884ab22506b76313cc9794c74cbe586ed723e71419efc71b3190ebeb09ebb27e412eef71e40157e7d5d4e92a49a038f32b6c866ab6933991e1cc5f3c372161c201229866b944f04908c07114fd4c8143fd5a7307c4339a1dd005eae1ba13fefbc4957adb53e59711ebf9a25b92a7e7a2292fe7d8ed4ed449dbab3d3ed5c9a3ea9f95ec3233e92b68d807ea1bc62609f35d942df904e2f63d64ce226f10a3965b0ac5572531b5b484c873862a938026d106544738f6849e879f6cc8cf9de52a8c50e76c3fcf2cbdaf5174c59bcf0027f31c9ebdc587f9a6db1e56bd0e2eed689ee9ad1f220e5a40a64ba72509854e4936fbfb9c4b1982ebf327cb2e4b2ef04d80c8b6154fb92938201ba27cf84cab8264e751585209513414022d71603329f9e80bcbdc929788225e57fa8ddc1c1458c3bac713c524dfb0f0cdaec00ce1b220f33a62d6de4b960106eb823389468d67434dd6aa9a70bf9df89aa908194f1caf3640100f9f9cf85bbee82a6b6f38b674c64b3f60db31242a7409dd3b3db0bfc971e4106d2aaa9383b2c78606f4a2fb3677629678a0b161103672a078c9443bf0cafa18bab0a4f03c4b223b46aedfad09f76c80b5e7792e328f4a7622ce15359c6f602054dcab1ecb8979d7171b9dc72f0ee1d1c2cbfa2dffd3230ea768e09825ec5a3de782831575e5907ee3a93615517c2889e759cc8a97f4a0628664c2fe4ca0a422b63f69e3643bf26f64aa10c2514f4b47c174b6d21e1e65287d0c0df1431b043c34029c5afd9e8d6311ec8433f4843d32d3845b964a38840222fa5db0096b22194c511343a33fb33d05079683288aedf61cb9314d16cc29adeea92a4490079bb5f84be20d91a3e530b5a014fe9c6a90e0b700366f1f53edb4ec78baad647d532cd104a223ad3f171527100f2aede9ed81fda7911334eb26845e7473a567b61c901eae5954d30ba8600c2663db2cb2d1b68ff76c5495a4ac4441331e8ac75659af6b0305ee7e871f7dd9ab5ba26dfd5c12c0daac9584ffff95e75c6b1ae4aa3c184b02de9d9256606614b922358150ea211ecd71b25dd55f4b0f1267421afed40ea0bb7326b29f54683c8d67578f81067de76164c55a4985a0294a0e893e383d3655c13c17c1e52baf6dfda4474888cc18c6db23c6e505a873fddf56d9d7a46166b5b1f901ef35bf102908647fcbfcd2900a5a4960a3b51a2b523259a355bff0d955492bb32a5d8e0ab4e9f7fb1250e66209de9b2fef2c3fa9dc82033d465dc1aae9075c968686206fb1b68389929dd8ad1d8cd69b748fb18f697a53c95b969bc441c4f8cd5140fc8c69747a4fb748b6fa77a529ae978e477e4b5d950fceff075eb09c012183a8876572bfe785fbf18c219e83747001bc6aedb0b224477f26713e8506ebda035037687be9c062761adf28078d264147c76ef6707cc5e0ffd2112808f3a49f0a2c98a10f5787de3073643e7460e5439f99914b27d5e6dacd0ad648cef2ec255f46804adfbbfcda0205ee0ce4facac2b4c11e9254a7518b8b41083ddc725de926d5a990bc5ae37dc6c603a125b790da5f0d495decdea4547bb9dbc0e6a6b7df2b19d2e1fdd8eb6f593a084c9db09601017f86654980eb766626dd013ba697baafbc0fd72e52b848811bf8f284ffcd84a6d4fd2a730e1b191ecadcdb718f2dd9647a279dd9c50e9f6581c598113a214aec6116d1aefe6a4c0681e7a8b3be944e688aea134aee36537148e7673b2efa37e33905398f4e72b2a61a56f02ebcd1170e06472e4e4ae483131ca021a16ce620e11421fecd17b4cafba4c44b51d93052a161269facbc398fe597bfb70231a4826311ff3ca84fe5d58553b5669ea9e0222a11a65608de581f4f73bc5d38a1963ef86ca1f3d3a7e034734ad9ba077b258b0a357f9b6564ab4ee74a2cb186c362061b5cebad8526ccfa4e906961a0756b7f68fb73f48fd040c13ce86908a9f8aa87ebbf99ddbb4b36c7da93661263f22560b6d0833901685778f46a7d2361030689048910b230996ca3d5e2cb2db2b0cde5a342bd0d9d53780d64f879eb489055767acda3baab67130511fd8753bc903c083f6aec51aa27ee5858bb004953f9fc0825a462952497fd0adb32b97d7ae078898ec629fc74a4e4634db2289eae4a368765d047a8e85e4b22f3d4c980438d1923db98be2e185100c5faeb3472fb637fbba1a0d3e72f76d7d1d81bfe14d42c2e7d227ae13c9151cc73e774d6fec33200d8c4e989a39dbe6835a4138c7daf538e04d9eb4353da6873352d87b845cbb850bafb859ece2fac782906fc0522b0e11f0ab6670d8ce186fc3eb2c90aa0148af0a26f5358c8f32d4942900144a55b08dbc0b74405422d39d570bfcab9fa030a471e02d13d20c3d365b4a053c480f04331f0e3b1222934d67ee8b727485d4a5c593cd05597d105ec105aae612c63c636821d1f239494554716fd21abaec6ec3ed2ebaf0e122161f0e88aa5b46e53c96919bdc1e35d8a17defd801e009275bfd9c636960c6668f3e5dac5876e3b6fd3c4dccc248964e002394563828fd9a8b1c0bcffc8f8837d6fdd1cb9b141d6c71a7908cc872c397a0a9d39f623001c4992d83a96632411efae3a67781ef2de54ceefb4ef6bbba89fe0910908d421d20d13765230771d38cd5e22f625f8f32dd3195a80a2d086c30f0eb7c9746e7c0b0ff36af5220fe110589ef9d0b8010771f13ded123cd16860604e6f0d8c651974f7a2ecd2c0542807112afcff75689d6b7543a3218660158b4a640404a364860d448190a4f4e2ef27c93c493ba47d723cc3abc365c65e772a654135088822b0394a0d68311c288f2256c682cd9cf8b4f81d1caecb8c557f15fe065d73fdf88ad04eac14ba08450c57384400be75a7fb14f19bd5ef99d40412740662098b60d7a8b79c1814c307e11c5e860fa12fff274a5485023b0e5e6f16e39d0a5a1b710ab396cbc63aa5225b14a5913c10c7508ae8e77b36a7118b65d2cc1ee3913432ee2340324af4f4cf384b704d2a1b83b1a09967475e0eee50a564a4f763bd54d94145b376b0a4832d0e3fd2ecd2b9b125e7a008fb48b81a9d6f90869d9cb9ffe23c6ab5e64ee0b6a6a8cb1dde4764f37e9a01a28dd4f5636f3b866fca96edbdf603e0d7c2b74bc062483cb41e8d39dd626c01dd492032b3cae32ab1970c35654d8fbe9cb1ba0c4323c74bc45fff592cc0516fb1247a5ca1dee7e064d5cc815643e3becd4142d1852b593e0d6874b48ef0110458733735c1630ffaff569317384fd075af139a55cb55f3c63628b6145668d189be085cc4e5f0a55b8ec5232a6d5b226bea98d1e06004b1ee13e8c8b700d46bed7fe72962181f3c1dc5e9a526daaa6902399a334868ebd3fd8b760f10fe83e42676fd49c6360dc25f3a77267fe91ad775153033fc9a209b82a24a85c82e02fd8b8f1939c9ef07f686c44e82a03c5bac9b583ba9b57c46cdabc5e259f59d2dc1f7946b1b3dea4de517b2d7593d3165da3bdf2beb3a36a3989da768af02a63742bfa0b9e9fb6a86dd84ef5b3d4a9a1ba59e78f54bb0c0c74a420cee0716e0bbb7ab79d9ee8d71c6d92ac5a4524fc9f6a08834223e3f79b514cfa7d980390401ad598016662e30c916209ffe19fa949839c2dfdbffa7bee527d8b9b19c667ed0f33df921d00d99c4c8942ee3e65a5fbe5fe844b7c662b1e75520f321abbcff886e16808f197b0decf546dbf8cfb79cf055020f0fd81bedde8bf7744d4dbfe31e39260234f0920b96ec2c8851baba8f71dab81657e0f28f67e33f98ab327386ba1ea5bbc104e8f943a0ec61fa8d452fcd6da6c78e892e9677ef14655743f577c8524b13028eca208b12676e0aa11055e2a646c52f8a19957acef6b3cc32dbf9d491da1e0e6cbc090ce8a642f0c036c4cafc1723c672e3bbc4519dcf9ef6f2964a7b2b547547156c6b8b4ee465ef0e71db6a8afed4270fd9c8dafbce665ece72423174976c52173bc87707e3892dc557ecd8d2df0e23673b1ded6319947401d5c97a95944cf4e3374f2b0041d700d64d153571f22222d6ad9aca7a759a67121303a8412a8787244e7d15cf56ad3381583e5ca29a5516ce79cf1e3dd20f79a427680f0f6ff59499eb9b7597d5b1aad6f45e23cf493c7a832a12fdceb48fc14adfe591d57905f6edea91ef9fac7a7961df09cd9621ec46bbba0dbe207302222199c0f496d03005d5c5058704e422249be69f94866f1cf238013c16ad828aa35ed7e5fcf8fecc83566c3024461c48c0fe3abc85b80f5bfa2273b18c8839c69926beac5e1581917964cafc5387c6c42208307b2d63cc113d07b3212b372fb956918b86515a7fc0eb90289cf1ef7a37100cc481e8c9cd29ab256db3c61b8d5f74bbed6e2b3115efc5627525b764557e20d860430ce3768f8e6d08eaf42ca065c9d108fbea8e2e5ec2c7d7c8e505b9f84be0b002173cf360d9e9d856984c5f1d470fae14e0abdb548080b538ba41d8021dc5c58ed1167513aa17492ff23cfa65f80881d7964b189bf5ff51b1253ab8d62dca09ab5a5b31aeb7050e5bff0289d323ba4a8c14c6a39e1448bbf02a796673156a19554ee2d81bb365797fb15dcf0928b5706be834a62d61d276b8c41c0d4e2a7a5ce269b2d264d4730d03244d078d54583cc47674b6cf6434a29ccb3a270a26f91681fc73ee242ce62194f590b44a53b7da9c81a4e0cf5274af4fea5a30c63d7fa9e4a152c193e5ee027e866ba9b1250e83ad3c507de82d7f84cec21578699203e493cf34f7f294a22e35517d659d33c0f8aa7c049860dfcc16a05aca9f765ebceee8f895d87946f459d22812467f520bf74cb1f3ffa4ce61a57ca7e2d1bbc16256fdb6be53f03a12a49435de03829b1cd0881895744e74760dd7eebaa9455b71f5d49545dd379858feeb62f3f063ccb4afe589b166ae0ea9f23803d8b4b89549f3e613ff274e54be91e452b1c2655b348d828bd23e50dc952ed87b7b4838d263bd5a9369fa98158eb92142f1818bd400fcf1c80d77e4eca7f8601b78242bb0960ea81a971247e7260c8ff3b48430b1305b95761aa743544350269cbcb1c23cb3697a92f08cd6146e344a159c0824ee8dc9c38083dbb4bf992cc827c5e88e78836ed04244be19d67e48eb1992ff593b762f80a0864435d4c4f5be999fe4a2429618d353ee55974f814fa1af28e3f4e6ae57874172049330833ecc60907c0a036ef459176c3ddab2cb49869899dc39afa4040d413df1db0e8788ed81904a08c7b4ae8283a53b7807fea2281bbc7136ccf00aca6f414e094dab5741b783c10272f66fa025f3895c7e650722544a7b23cb11fe6836025fa1f1316722f7942c54012ac346fb1087490c1a1571737c8f71c09340806a980b74cdafc3f64f81376bf3b5aef637febb01601f561366aec15f53c5c91c81c7cf22b909daf021a6e9c2cb34a662118c8b14f0a6afee5dbd30dcd5d74e78cafad599731711474ba304a253d5965057ee64e802e5d8dabd686080997c43e8536a0a50d8b5ebe41a9444533e58af17a9b701e45bf9058c0d53d8842b0033d8c9056b3fd84f6f1eb3dafe5e831e66851265ded524af44d88b2bb8a0f416cfecaa5dc715f05ad8abd7ff27875391485314ecbe1a3713de16d8a9fe3b7ac8a5c536637201cde3299a78f3d2a4c4f416a307bd873d1bff31520b3532b665d9408a4f93919a1ee934d1c69030918429d626cfab92e5d288f0271cf8d0b11bd44def2814caac04254d0d1c0f257ed2032a532931b44670d72ffae13254e38e1f3cd213f403c0102470533292ef5617dc4cedde88f4cd71c5ab79bdaff9937bb5f1cec793455cdfe275c08d8db5d9340b57442ee199e556b650cda8f6a817052ca0f60c24764aa46aed6dca1d1a57191a8a341445687620cd662b9861a2944cc1c78c61d15c0850c485da1a6c1bc5a330972bb1b119f617b2e595d29d0e58bc5fed2ba65a1dae3f9bfab3d5908a5776056385e9d30ebe6f3ce5401b98efca59d4b08d862ec7fd6408d1c91d4758828c2268d0c90bfc10817cb61a852f4b5a493b80449de80791e5c2faf4cf0662ad5bf0f45d032df30b51c10ff2262b7c3719c1919cee1a277ec11700370690a4e53cc52e228f08abc75af8cd2000cdc2575b97e634a74ff9acdeb21113313759823545a7c4e8c8751abe6918c9831e09a03e8b935407fbc420106804ceebb16bb153db866b9e835149826942c3dc827caa3d6c7799a176d203c29e9f9fed7d53767f3adbf6426859c16fd082c746247ab4833fc24ee5d34aac4a7f04c82720486c6e56c595cd6ca296fc7916f8e24f0a25ede08269cc87f74180743f99e4ca0670a23a44902ef29a3d29155c5c34ddcc915afa49f6e8bda516d8487839b5a48dd2d7ed165976743dbd3099bfb1af6576d3ee8eb98f6db07489226e66041b6a660f662774d3d91aba232897b478dfed3f2057fc837c9524340c927288c26e0a1c070a7d6b40c4990d7f73149d1c3478bf57cc06104dcc1922eaba92936ef25268d366abd332d383aef4c4f2841bf7184e401c8b7df2e2b2ab40d09b62d4fc4d73cef39ad9c4bf316e11c616c26714df04a83ca2fff34de13beca95e8f7bdb925c6ad05eabcbd100cfa46af9b06b54abb44280b4b8409c3144d69cdbcded6c2625ad3a159af1146942c1b3def156aaab1cea56a4ff742cf977a3a614851d4144e55e202970afe98a8eeef3f0ef6ce99d3576f10545d841054544f6d58a3fc3e5dc683c8d43aefdab3002ccb536d40935964ffc30def44eb9bbc1e9a5eb729433b84382bb73ebbe491721a3c29b19cce88e8301c555e3d5c3df347889f730aa33737880ce764c0fa4c49eb4083b3bd8c1e962432941c8dbeef3c44f06b8595b0e4ee342fd51d5de7ae5486b8ce9de244e7d172bf16bc03918cd2dd268f5491e8951a307397944b14622ab58dfe033a49bbeab221408b4cc65907f33d7cbeeafb0d1c506882fe6d31aa1e019215bae048e828783aabaef5046116a60441807ea0dad29af7c51464973bd4781ca60d0bf5123596507d897513d0372ef926c57464fdd6c928e4bca42436fd81a2986c91e9fddc5d60d8988142888807578596c29274aab36f4cf102991826591fd5b6a596f3adc7fed876536118ba314516aeab3403aea8c7c0fbbeb65448e6e9cbd0010076dcf89580f95508dd60408334f6f411d6733a0887e5ddc146b225d4323e8ed2c87790b77722dee85cd3fd56e08d92e6cb622239f1552fc48d6dd77aebc1f1d5d20c09b3443e785a639002f3d606482e95432d8831957fe0a8a2571202ae5788ea26d4c275ba7def1ff6695316e0c73e41830689af8af70b6273bc0b226a2471ba02a9792d2ba5130c9c9b9ca69780dbf626505405f1574f7faa3d432db30ba0da4546bae8481150d95aa73d1c30caecf2b6e5f0dd4b17526d6411b1fbb6d4a5eafdc1fdd49eda549d37e0feb887642c75200a9eb4d46028bacd7c2cd147ee378c49a1ac0fe05b7b0a1a34a6fd25118b6839d25858ec7ff01e25f8777b3d8430ca43b981ecdb800562e4e08b80e39cd5113c6fc83c48e012ef0aec1d0fb83aefc8ee0c19112ae43e6dbdd1d64b1061d24bee65c8afea2f029b6161ad09f841b5fc39031467858c165b3ebb0d64d4ed42fa0ebcff3737746088bbb2d076d7e2fa1649e14fa671f3f970ccd6a1717cb74b3bb2d7fb5b3618d3356985de13890b6614b82deee54e22692c5bd976812e0f8b1b78642d93677cc9577280d7af4fcbec90274283f5f4c699db8929e94dff5f7ec12e328995fd8e7b1777316e736dfa6e82b29266f1d934a553377b65a99f48fecc33f56068a3d5a939006a2059fa273111f67faf85b5538b1e0783aa790d608a0baa24de56297245b2816988f135a613a3673b33bf8f734ad29482291f889a5f13c13de385a01150c9150d868b623a419fa90a294ebdcb494503566c5b0ae8b7520beba16bde2f69a1895c808047b4b966b883beedf0d9d64bf97fdf0626f59a903a732b987b7ec5195ec7e110c125f8a7cba1254306ad9148ef1a7ce38fd400f856ea9d521e8e26686ac88f83504123d361753fce9fedbf8e72da2319a398470185ee2f4c52305dac84164795a577447cb31ea7913e1b2b1797a92bdf813b279fde3e7449b39919ef347713d8f6a5d27bdde95f6da593e7ca5e2a26211fa922428eff6f49267204a3b825576ef1959ca64a0f8cdfb75b4daf40e769341e65a8c92f46145391660120705c804789686d13f289476f8d58036c433afc39a7a3701b4bdfe7f4692985e91ed75ac736e0301956c898ae4132ac646c81f3e69a45c5aa6f8bdf73ebdd3a8e1d8515a32103980429ae4f65d7e9a909c50a92b8d79dc5b40d8e7109b22d0bd50e4db49c86a9143ebecf5e4ecb08d0f673386eabbc41dfebbecbcd3c42aa06145e97c091c00ab26f3a8114d8f1220448895ee98f17deac58e20f89d2abb73b282bfd04d3e87b45120743237957e7f7a748a27178c316fa0d5e37bd2715f43b9a2c8ad947e7a5b98fbdbdf5cd04d2d7d08c53f39cda5f99f1874e72c28df8e97e737c299e7c2a39bf6c296c8d09840602ae662dfeea963ea1741f231f3876dd3324f9393cd24d8231a1a28150a417ac4fc712d9852233d20de722b3b18d446d7e85250dc6d9ac1d69c3db778388a6b047516c805d5292eb0047140980bdc4ddd836b79a842027bb72c570160805238536524c1072876a8923da133632a71b3171dc5d8f83326483e91740f89d74896dadf8c108367d2229366b87fbc7497896863078f1cec755b14c156ca145037d80cb5beb10b902439ae377d395a7b7b4d1544864a3b73e779c546258a3b326027dd501ed8d75a6967b40617cc569b6c5b61563c525621193c4a757de9e05b78b98b3167245ecc25175d22725f84fec0e5579fba7474a8950c8e146e122c6050f7f85f122f545d583ddd69222224ce21212f374fa37fbd4a96107d3eac1e773da08a82f1120c5e597d861434879fba36d5f51a0c7725894079f812ba8e204cd1c02d28d13b87aa69a8471571a39a9580f8d0b1d8767ca3c550c8ee34118f9d0371cdfec1008614ffe8e0a508e378b9b1f444c454c5df3fed6157bb9be5c451a611138fdf7f6edec6e72cd2511c2192d150858a74a13fea7bcd8662a051a8ec615140879ff9cc67de4e9a4bb30065cfa717e174a541d5629b86f9d1164ffc6dae8beace4d80e1b261be8818bf04eadf4f8ce4d379a3f7936c6245b818b2a95438aa6ffd1c883e49d738579d84f1eaaf209420d8bcef8e98c937d0cb840f2e1d0a94526d7e805f3c3170beb7ad47ceb805383ee65f65c84a86c4a9751a80c7334f6051ce28b083c462cd965ed3d31a69e8bd07ba9c145ef51ccb2ba30108b3712089b198b387fe717ae5274d7d980f0087a34641e001311739987890ce13833a4eb830fb0fb5c11a9a2056120b91b604a9d5733513f6afe117aaac8986fb8281fa905c951d4601173e1a426cd1af4eabe9a3c04c30110df8f6710c3df066a3c507e64bb0182cddcb8b1af9e07838f62f9d02cf99fca18913596f8b52e7398effbec63a7f54b6237198b0221fefb2eb204b5a3077461919b01db22e7443ef4e272058ed4f7c9f7223327d147fd83409f68b30fd2462a7c4faedfb04d2c776f5301c96e0ad63a2956b21bba4af3aefea67a3f7309dda2a8ec2608dc7840945bbbed55333ecf5987f2826e08f90e0b33a507d1041e9d0197fcd938ae51272afdaff97292644d9c32a3189c954d4350ab9396b8574dfae13d79a4d4e6e0b37b87210f2dc63877ea4d8fe376fbb5ebbc107333ff15a163cfe6017a09e26605aae48176e724bdc3d50fb08eb4fcb0a475b05073a705ad6f043db98ad015c12e9de42b063d6bddeb4b5e4c5f232bbc550ff9cf48589318b39f3f9ed0f2bbb2f295dc52f3cf604598e66558d00eb80d3044851b66392437c80ee03bcf13ee7e466b76459fb0c453a75115bf08202c9f976acec9d8db104e289e53ac0a822e97ab1216e8776c6ed2541413706446e458d8bc3c85f458fe8f46757d35ef9606e0050baa618a5b43d7b5008982f871518559817ffe031d97db5fd08f0375c05a0aeed5116d4687d84fe6ea94d7464d4d5bbe62830cde67db0dcc7b4b01c3992d9c4845926bfa7b8c0f18b8946eac3420193277c92a6ac0ae21ad720c597e495851260ce38605facd38dedb34f70f479630951ef08ffe7b67c373038399fb726100a979ad52ef4a64d055705b0e39f9ca053c2597434ce0e79440454b08da781c5a69c83e97d3f2dca9692e467bd60841622322e730fbe568b6875d288a743978c45645006190c65c717ac8c7ba41e95578bdd2294de0cfd3d87d91656e38a613d1eef71271e0ff0b467c7f2e0aec4663a220a4fba809f62543c306d2533c211639fec6b570449b57539c01a25b9d459c3a9c3bacbccc47d6558dad747d12711a3360073f203aa53536a3c9c9179f82800b4612614f3df7e44f61cb55c50f3b439484760f26402e16277f202c876fb8a0f09a3067adbef2cca8de26ff7e57f31c38ea4d0436c557869cafbefce98e3a0e4701ae2f2c3cc444020a39d47553fa923b5e1ff2280540c1de5df3464b5a6cba1dbfa2cdcc8686baed8948de0781a71f3df5144be8d6e2a922928ca15999c8ece86bffb9debaed58cd0dd085d987890f095f7e9ad491c7afcf1201685330391a5c302b99cacbbeaac41f4bbdd3d938d305e5c599acbc8eacdd5535f84895ebb9ab663aa785ea19cfb1b83bc2226e7bb2314505d94126cce101343069f21b57c06204e60ffb7dcd8bfe5c17711158b2a100af6e376282673e7258701624b2db7a90273b30da189bf5bfd29c5daf4a79b469382545cf7a0930fce4f180be2fe19ffc1314977b6fd758b2e69bfed5a3a58a781f275da64e81ede8d260d18e87ee9640086ee2984ccdb36e7bb4b714aadfb4d2764a28f1520b167db86417ab3c4bb406756f4e5e88e04594a374ef509b8dd2c608ddeae206bcedeaea5eb14d545256c29efb3dab28ebd735598dd143dfec139adca59a0cc5150968bc061153067ee93be11f8e47e251d7f1248090f2ccfdc185c2bb706260ac244538dd7417c5c63296ad5a5a894bcf460eed1ee35b7d62ca9326a9d07d62cd7f56355db5f8ece05b9b997e43359c03971cdd1d77142c061c0fb122528fc2e6d2effd3a65539959af6346672e28130f96ab9b8c506dd527c1fd6495afa6a6b1df5282b16ebeecc23a5522ce4692886b1ff019f09cfd83c9409eb35473701ba389c13a71e778c09be1093411577f27a3cfe399c7841fe3ffd1b82a57cf83af33c399832367199ac9240f3f8cb3b6a59fde42ccedd2ca190336b2ea102f5c838801f3b6e5f034f7d33577239d2045f4581bcefcfafb66b6e20bbcdffbfcfdafa158a0b50d9414623711c6b10ffa6a91f45f8b19a5e7646f1858651c2cb636a09e377d59d9b52bb386d469de6afb14288fb6494f4974e21bae93c076bb3b570782298200307456c8dab2c978a2724115b2df63ec260d2ffab788eca858ab3a758b277ccfdfabce3b18996ee77d944ec1992a17a6e39db78d0e265ffc5d4f51c21b0ebd87c1230ecce61f22480bbe928a6a7ff2b346724479e0302a88efc1c996416c34211da90fb0de9029655e813686187ea28f8064b1846ba5735585d1f6179844d81b58b0a3ae4a3e52cd1fc4d8fd8ee4f9a3ae50814eb9086f47621b035d0292c3fc9bd23667aaf22899533ab84a8b16055f251889eac4e84bad5723c080cc423184f5c5e1b37f809a86df35540b056778d7821ebd6f0de39b35c1c0f83a8da2159800266b6043826bd304d486abfc885484cf2ebd304897cb6185951b5efff1cfa14cf6733c3989a6729efc424182c810a9088f2ac1eac2c91096baf47242cb92f51c1cf7c5fa382f3b62e9ee4f597de2a013f593f95717c66a77be0f3f876966fe1ab332f6373870acd9822d9d5a7604988781507f6ea1303dc4a716fa43cd4a0d3a49b1cf262888af7e2e9f2f474c41b00a2d810fdc1ee10c9c91fb15c609cb2ea37f7efbc550d22ce8d2bc93ab89934a3e4a10d06005e748f5caefe7fba483023ad78d1d7d068d7153b10321cfbd4382ee8e1fab1003a06e7bc72767cbc05a7da2d992e509e17af17a126c3d1cb3207a9d1f100e614011b141c2843cee2c9fd4dac46d467f7ead12c36c98cb626f2d4cb3796dba35b7adb233c8bae832c40c12d56ca319498cd7f79754f87f6ce73495801d59d3a57e0b7de512b17a3eb278c6831ef1eba4602ac701caf301f2bc2ed50119a4fdab36bedc54e64297061bdfbfb56e8fa4ca1b090555ed4fe0ce870f61c0416509f2ae8d8296010ab36344077591f50d3b6daeb9d78168f5e015c56e3d92399d4d7f59754496540354cadd63cc5dc910ee80dc811340a51eff3530ee4f7025522a0b2096aa0157de21604693542ef80bbb72302e264de40dcfeb24a210ef215e870d7a6573e9abf0a7b3974433e4e1b893323061c462456a7c12191c9d05d140baf1cd6ce6d32e96fc28f0767cc4d9b1f0995dce0e7562ce9343b86847b8327eb8b79b03d5fa005c3781945fdb6faffb844321783520a63f2aa12d7813fad46e8636b95de12b30d13c01822ab40ac66c57d0b7619e8341ba2116a7b06859a64a42c76561253dbc3c4923a48d3f34f55f61aff7d1e97c9f712056d4499525d373f91a76530e9754ee6a021eba3dea10798ebbebcdc0611c16b7bbf9f3678ca3c4390bfa3a7fa8aedeca288ac48ff9406c87c5b741cd74821acb401059131bf87c2e09efbce04be0772462c7349e1929b2b7e1799964ff2d8b8c6ef0397446655a81a730d133145d233a6189c609367e9b46b2656116d624966352c222e30b45d8939daa584f7e8e580e7159a045b6561de2566437b6d744c86b1557fe24c04a1040c46a55aa107bb1c403a0ddc24dbe13ad71a4afde92df7e291c810dc55f74c57b9c59d33a752ef53fe990bd7f946c05a0bd72c6ad37d62f596529888c72e5288299edbcb3adbffa247a260f66762488f4d3995c0e374c21ad54bdfcb0aca7917c2b8205a6e718b4051d97d236a2a402bd515f6dc50e6182b3229bc96399cd0572210dccfdda4f17f4330b91e6655f4226b20c2feea4dfa92e381768304ba90dbaaf28e1534df8dd866cb4db8f1453f1d3ec5c43c50a8631ba6e678ee227fef2e08c6d336b587dc7cb66530145077bead4c0cc7c6fc1959b597d4c99a517ce2fae140a801618537ea06f5a64add11407ca5117d690c0170b18e65128ebf3d866516849474cc25d95a74a0dbc8787e6cef3de603b4d4edd77686ba197fa2446096cfebb478aceb7d339da28a86f1b1cb1c3ace6bf26d220bd7db22b9ec8817fdee955ed74f6e85ce7c427397c648df93e5ca129b84dc03c016eaa1821abdad09a9a4192bf5f9aa18cb7c6dc4e322564d815e6c0f08d5bccf30ff044925b4ec252d8e46feb91075a90b4cfb091c1cd1f6272d474559ce2121d62d972bd1dcd2c86244d4acbc767e4e1d3afaeba780c72b7545f1ff0b85aa8f24f6b624a26d9983ef7adaeb4223d71abc203958a47bbd97b431b81f2a03a8e1e8e20bd1ebb766e33c3f1b0474733dbc6a655c3a26ad199f81151f4f37e3013f715846dd4529639808e6504c69bf2d1b0e65e92778173bef006874af2f87d085ad2b6870476f08a4b08abeb8bf6ad05055c86761bfe35c08f68f4ad84bedb5704949258baae7869a5d2a39f455e361c62663f9d6e701a4737d68bd075beb7ba5f5d25b990a00842fc9020e7dddf08d6b9e889e7275621528f2878981fb446e0e91b5d8ab7c57a9dfccfe409e9eea6a0a14d9d248453496ad5e22f6f36f98ab8a684ebe03f27f55c965327eaaa2ef8907dd43e5c850405110d6a967afc5e84d0fce74b7e900f85ff65947712836075e07da9f6ab436ad9fca155210088dfdba851e6f3db31a0d646d2b6f3719a9453d28e6b8503a165b7cbeb72636f4ec7aae1ce69e2fc4e3d25b71b5d6919cf1b7d2b9f1417154863a9f66f7bda60a2833bc24d6cf1fd98fa99468936e0fac98895cb2d5af4af5bc4b04e43cb05c62dd2f8db3eabd046fa8bea47e9658ab65b2e6487ecae1c12c1bb374cf6014dec4126db36d888171ad4eb2afec4363eee865ef627b00c6c3ee322f4aece02335c7f4ccac8e59a3fc7a1a8a9c609815be4e934292cc5c60377f8f55df971b14a1453e68cde611d06c21c23837961a3ef2f965ece49234d44732611d22170664c072022b07b5b70bfa8cb53668e82f0747abade10689a21be1c8f0f3353d3c18a3d4be1aaa9976e1f2e38539b1a5d739d726a9dd6fc4e4cbdfc4681200d486fe91b7a5c4799cb80345792a01f1b11b2d39a4fce46fab7775f3d3d071a9d520a3f526302bc9e9967ff2db80b52972eaf723754cebc891a9a06e4b2101a5655ea38753cb7ae90c85219ddda2dc787459998b9913fa3746e513bcd42a1524e90422187da62089f6e47e31d6ce25660cfaf0d1fa9627de5d6c7ee82a1fc41b6f1f44d6c0776c19eeca0c97e390aa25b83373712680fef8432f8f6163fce7203a46de92b30112a6b74ff0fe57d7de4a4f3a59016ac540fd8b1bd326a9f932c26fbc0ba1d6e04b168b1ebcc19c887a7ba90655f3373a410e9faeb472c5c12998181b07456f67dd6235b2667483954fdb9349b71b52281054cedc1538f4c9008b4ca8339dba779a251a5fbe23dd119d25566e8f090bc5e96c4bd84a03d74cc612306fcc57e75a52424f5115ef8eb0129f5c1969e5dca72752f2ed477c458f4c00f743079a17089ff02866e9097b06202c65f3ae8d7bdf781021045343d72b12a4766effe59411ed2698ad0b630b4b6ef558e8778babff0ac8e7014515516d4f784a95ade183973904c0485015098481254b9b12516a1d20dc7871de19759dc09f2a2698c60ce6ac2aaddf1ae86ead07541371563dfee62f17734ebbcdb6327fd789e6a6491ca6f21fee858237d1ff044836c4012415bb657e695d136ffad33f9cb284fbe7bc1de2fe6e181209c3322cf5262b9512fc9f4d8257e58c7893dfbb4fa9b819ae4de49c74c43b2a864cc7e76114cad07d250ff8133e3ed55febce8969fddbb4e2b0c46fae5eec6009ff08e345ad6d7dc28e9</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">你需要输入私有领域的秘钥方可进入</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+      <tag>Rebar3</tag>
+      
+      <tag>private</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Rebar3各种自定义配置</title>
+    <link href="/2021/05/26/Rebar3%E5%90%84%E7%A7%8D%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE/"/>
+    <url>/2021/05/26/Rebar3%E5%90%84%E7%A7%8D%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><ul><li>编译器选项可以使用erl_opts配置，具体选项跟<code>compile:file</code>一样</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">&#123;erl_opts, []&#125;.</code></pre></div><ul><li>可声明需要首先编译的模块</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">&#123;erl_first_files, [<span class="hljs-string">&quot;srcipt/mymodule.erl&quot;</span>, <span class="hljs-string">&quot;src/mymodule.erl&quot;</span>]&#125;.</code></pre></div><h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><ul><li>依赖</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">&#123;deps, [    %% <span class="hljs-built_in">log</span>     &#123;lager, <span class="hljs-string">&quot;3.9.2&quot;</span>&#125;    ,&#123;goldrush, <span class="hljs-string">&quot;0.1.9&quot;</span>&#125;        %% HTTP Server    ,&#123;cowboy, <span class="hljs-string">&quot;2.9.0&quot;</span>&#125;    ,&#123;cowlib, <span class="hljs-string">&quot;2.11.0&quot;</span>&#125;    ,&#123;ranch, <span class="hljs-string">&quot;1.8.0&quot;</span>&#125;]&#125;.</code></pre></div><ul><li>依赖下载CDN</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">&#123;rebar_packages_cdn, <span class="hljs-string">&quot;https://hexpm.upyun.com&quot;</span>&#125;.</code></pre></div><ul><li>relx发布配置</li></ul><div class="code-wrapper"><pre><code class="hljs Erlang">&#123;relx, [  &#123;release, &#123;moyu, <span class="hljs-string">&quot;0.1.0&quot;</span>&#125;, [&#123;app, none&#125;, sasl]&#125;, <span class="hljs-comment">% 发布的app名以及项目内的app</span>  &#123;check_for_undefined_functions, false&#125;, <span class="hljs-comment">% 检查没定义的函数</span>  &#123;sys_config_src, <span class="hljs-string">&quot;./args/sys.config.src&quot;</span>&#125;, <span class="hljs-comment">% 自定义的sys.config.src目录</span>  &#123;vm_args_src, <span class="hljs-string">&quot;./args/vm.args.src&quot;</span>&#125;, <span class="hljs-comment">% 自定义的环境变量目录</span>  &#123;overlay, [ <span class="hljs-comment">%% 对于项目内其他非app目录的做法：复制</span>        &#123;copy, <span class="hljs-string">&quot;yctl&quot;</span>, <span class="hljs-string">&quot;./&quot;</span>&#125;,        &#123;copy, <span class="hljs-string">&quot;script&quot;</span>, <span class="hljs-string">&quot;./&quot;</span>&#125;,        &#123;copy, <span class="hljs-string">&quot;args&quot;</span>, <span class="hljs-string">&quot;./&quot;</span>&#125;,        &#123;copy, <span class="hljs-string">&quot;setting&quot;</span>, <span class="hljs-string">&quot;./&quot;</span>&#125;,        &#123;copy, <span class="hljs-string">&quot;config&quot;</span>, <span class="hljs-string">&quot;./&quot;</span>&#125;,        &#123;copy, <span class="hljs-string">&quot;update&quot;</span>, <span class="hljs-string">&quot;./&quot;</span>&#125;    ]&#125;]&#125;.</code></pre></div><ul><li>多环境发布profiles配置使用时需要使用<code>rebar3 as prod release -o 发布目录</code> 来使用不同模式</li></ul><div class="code-wrapper"><pre><code class="hljs Erlang">&#123;profiles, [    &#123;dev, [ <span class="hljs-comment">% dev模式下的一些覆盖配置</span>        &#123;relx, [            &#123;dev_mode, false&#125;        ]&#125;    ]&#125;,    &#123;prod, [ <span class="hljs-comment">% prod模式下的覆盖配置</span>        &#123;erl_opts, [no_debug_info]&#125;,        &#123;overrides, [            &#123;del, [&#123;erl_opts, [&#123;d,&#x27;TEST&#x27;,true&#125;]&#125;]&#125;        ]&#125;,        &#123;relx, [            &#123;dev_mode, false&#125;        ]&#125;    ]&#125;]&#125;.</code></pre></div><ul><li><code>Makefile</code>简单调用profiles的做法外部命令为:<code>make PROFILE=prod release</code></li></ul><div class="code-wrapper"><pre><code class="hljs Makefile"><span class="hljs-comment"># 编译erl文件</span><span class="hljs-section">erl: erl_compile</span><span class="hljs-section">erl_compile: init_make make_pre</span>  @echo <span class="hljs-string">&quot;make erl&quot;</span><span class="hljs-keyword">ifndef</span> PROFILE  @(rebar3 compile)<span class="hljs-keyword">else</span>  @(rebar3 as <span class="hljs-variable">$(PROFILE)</span> compile)<span class="hljs-keyword">endif</span><span class="hljs-section">release: compile_pre</span>  @echo <span class="hljs-string">&quot;make release&quot;</span><span class="hljs-keyword">ifndef</span> PROFILE  @(rebar3 release -o <span class="hljs-variable">$(RELEASE_BASE)</span>)<span class="hljs-keyword">else</span>  @(rebar3 as <span class="hljs-variable">$(PROFILE)</span> release -o <span class="hljs-variable">$(RELEASE_BASE)</span>)<span class="hljs-keyword">endif</span></code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+      <tag>Rebar3</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Rebar3的基本使用流程</title>
+    <link href="/2021/05/26/Rebar3%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/"/>
+    <url>/2021/05/26/Rebar3%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><div class="code-wrapper"><pre><code class="hljs Bash">rebar3 new [lib|app|release|plugin] myapp</code></pre></div><h3 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h3><ol><li><code>rebar.config</code>添加<code>&#123;deps, [cowboy]&#125;</code></li><li><code>rebar.config</code>可添加CDN的源让rebar3从该源上下载依赖<code>&#123;rebar_packages_cdn,&quot;https://hexpm.upyun.com&quot;&#125;.</code></li><li>修改<code>.app.src</code>，<code>applications</code>属性里添加依赖：</li></ol><div class="code-wrapper"><pre><code class="hljs Bash">&#123;application, web_test, [&#123;description, <span class="hljs-string">&quot;A Web App&quot;</span>&#125;,  &#123;vsn, <span class="hljs-string">&quot;0.1.0&quot;</span>&#125;,  &#123;registered, []&#125;,  &#123;mod, &#123;yweb_app, []&#125;&#125;,  &#123;applications,   [kernel,    stdlib,    **cowboy**   ]&#125;,  &#123;<span class="hljs-built_in">env</span>,[]&#125;,  &#123;modules, []&#125; ]&#125;.</code></pre></div><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>rebar3直接compile就会自动获取依赖。 </p><div class="code-wrapper"><pre><code class="hljs Bash">rebar3 compile===&gt; Fetching cowboy v2.9.0===&gt; Fetching cowlib v2.11.0===&gt; Analyzing applications...===&gt; Compiling cowlib===&gt; Compiling ranch===&gt; Compiling cowboy===&gt; Analyzing applications...===&gt; Compiling test_app</code></pre></div><h3 id="在shell中运行项目"><a href="#在shell中运行项目" class="headerlink" title="在shell中运行项目"></a>在shell中运行项目</h3><p>在编译目录直接运行<code>rebar3 shell</code>这个命令会包含项目的ebin以及所有依赖的ebin。</p><h3 id="发布项目"><a href="#发布项目" class="headerlink" title="发布项目"></a>发布项目</h3><div class="code-wrapper"><pre><code class="hljs Bash">rebar3 release -o /data/release/default===&gt; Release successfully assembled: /data/release/default/test_app</code></pre></div><p>发布能够把项目内所有的文件复制到对应的目录并且命名为项目名，并且会多生成三个文件夹：bin、release、lib。<br>bin目录主要是一些rebar3的管理脚本</p><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-built_in">ls</span> -al /data/release/default/test_app/bintotal 104drwxr-xr-x.  2 root root   105 May 25 22:56 .drwxr-xr-x. 10 root root   125 May 25 22:56 ..-rw-r--r--.  1 root root 14214 May 25 22:56 install_upgrade.escript <span class="hljs-comment"># 一个escript执行时机未知</span>-rwxr-xr-x.  1 root root 33941 May 25 22:56 test_app <span class="hljs-comment"># rebar3管理命令实际执行的脚本</span>-rwxr-xr-x.  1 root root 33941 May 25 22:56 test_app-0.1.0 <span class="hljs-comment"># 与上面都一样，但多一个版本号</span>-rw-r--r--.  1 root root  7508 May 25 22:56 nodetool <span class="hljs-comment"># 一个escript，执行时机未知</span>-rw-r--r--.  1 root root  6806 May 25 22:56 no_dot_erlang.boot</code></pre></div><p>release主要管理项目内信息集合，是由relx项目生成（后面补上）</p><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-built_in">ls</span> -al /data/release/default/test_app/releases/0.1.0/total 120drwxr-xr-x. 2 root root   149 May 25 22:56 .drwxr-xr-x. 3 root root    41 May 25 22:56 ..-rw-r--r--. 1 root root  1473 May 25 22:56 test_app.rel <span class="hljs-comment"># 包含项目内所有app的信息</span>-rw-r--r--. 1 root root  6806 May 25 22:56 no_dot_erlang.boot-rw-r--r--. 1 root root 34049 May 25 22:56 start.boot-rw-r--r--. 1 root root 28770 May 25 22:56 start_clean.boot-rw-r--r--. 1 root root 39328 May 25 22:56 start.script <span class="hljs-comment"># 更完整的app.src集合，包含了所有的模块信息</span>lrwxrwxrwx. 1 root root    43 May 25 22:56 sys.config.src -&gt; 编译目录/args/sys.config.srclrwxrwxrwx. 1 root root    40 May 25 22:56 vm.args.src -&gt; 编译目录/args/vm.args.src</code></pre></div><p>lib是所有app加上版本号的目录</p><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-built_in">ls</span> -al /data/game/release/default/my/lib/total 4drwxr-xr-x.  2 root root 4096 May 25 22:56 .drwxr-xr-x. 10 root root  125 May 25 22:56 ..lrwxrwxrwx.  1 root root   49 May 25 22:56 cowboy-2.9.0 -&gt; 编译目录/_build/default/lib/cowboylrwxrwxrwx.  1 root root   49 May 25 22:56 cowlib-2.11.0 -&gt; 编译目录/_build/default/lib/cowlib</code></pre></div><p>默认是用软连接指向编译目录<code>_build</code>下的对应profile的文件。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+      <tag>Rebar3</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Rebar3的目录组织方式</title>
+    <link href="/2021/05/26/Rebar3%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F/"/>
+    <url>/2021/05/26/Rebar3%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<h3 id="开发目录"><a href="#开发目录" class="headerlink" title="开发目录"></a>开发目录</h3><div class="code-wrapper"><pre><div class="caption"><span>单一App的组织方式</span></div><code class="hljs Bash">.├── _build <span class="hljs-comment">## 运行rebar compile编译后生成的文件夹</span>│   └── default <span class="hljs-comment">## 配置的环境：debug或者release或者生产</span>│       └── lib <span class="hljs-comment">## 统一存放项目下所有的app</span>│           └── test_app │               ├── ebin <span class="hljs-comment">## 该app所有的ebin位置</span>│               │   ├── test_app.app│               │   ├── test_app_app.beam│               │   └── test_app_sup.beam│               ├── include -&gt; ../../../../include│               ├── priv -&gt; ../../../../priv│               └── src -&gt; ../../../../src├── include <span class="hljs-comment">## 头文件</span>│   ├── rebar.lock│   └── test_app_app.hrl├── LICENSE├── README.md├── rebar.config <span class="hljs-comment">## rebar.config</span>├── rebar.lock└── src <span class="hljs-comment">## 源代码文件</span>    ├── test_app_app.erl    ├── test_app.app.src <span class="hljs-comment">## app配置</span>    └── test_app_sup.erl</code></pre></div><div class="code-wrapper"><pre><div class="caption"><span>多个App的组织方式</span></div><code class="hljs Bash">.├── _build <span class="hljs-comment">## 运行rebar compile编译后生成的文件夹</span>│   └── default <span class="hljs-comment">## 配置的环境：debug或者release或者生产</span>│       └── lib <span class="hljs-comment">## 统一存放项目下所有的app</span>│           ├── app1 │           |   ├── ebin <span class="hljs-comment">## 该app所有的ebin位置</span>│           |   │   ├── test_app.app│           |   │   ├── test_app_app.beam│           |   │   └── test_app_sup.beam│           |   ├── include -&gt; ../../../../include│           |   ├── priv -&gt; ../../../../priv│           |   └── src -&gt; ../../../../src|           └── app2 ├── LICENSE├── README.md├── rebar.config <span class="hljs-comment">## rebar.config</span>├── rebar.lock└── apps <span class="hljs-comment">## 源代码文件</span>    ├── app1    │   │   ├── app1.app.src    │   │   ├── app1_app.erl    │   │   └── app1_sup.erl    │   ├── include     │   └── src     ├── app2    │   └── app2.app.src    └── app3</code></pre></div><h3 id="发布目录"><a href="#发布目录" class="headerlink" title="发布目录"></a>发布目录</h3><div class="code-wrapper"><pre><code class="hljs Bash">.├── bin <span class="hljs-comment">## rebar3生成的脚本</span>│   ├── install_upgrade.escript│   ├── test_app │   ├── test_app -0.1.0│   ├── nodetool│   └── no_dot_erlang.boot├── lib <span class="hljs-comment"># 依赖以及项目下所有自己编写的app，这是软连接</span>│   ├── test_app-0.1.0 -&gt; /root/.../_build/default/lib/test_app│   ├── cowboy-2.9.0 -&gt; /root/.../_build/default/lib/cowboy│   └── cowlib-2.11.0 -&gt; /root/.../_build/default/lib/cowlib├── releases│   ├── 0.1.0│   │   ├── test_app.rel│   │   ├── no_dot_erlang.boot│   │   ├── start.boot│   │   ├── start_clean.boot│   │   ├── start.script│   │   ├── sys.config.src -&gt; /root/moyu/server/trunk/args/sys.config.src│   │   └── vm.args.src -&gt; /root/moyu/server/trunk/args/vm.args.src│   └── start_erl.data└── yctl</code></pre></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+      <tag>Rebar3</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Shell: .RPM文件安装方法</title>
+    <link href="/2021/05/19/Shell-RPM%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95/"/>
+    <url>/2021/05/19/Shell-RPM%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="RPM-包的安装"><a href="#RPM-包的安装" class="headerlink" title="RPM 包的安装"></a>RPM 包的安装</h2><p>最简单的安装 RPM 的命令格式为：  </p><div class="code-wrapper"><pre><code class="hljs Bash">shell &gt; rpm -ivh 包全名</code></pre></div><p>此命令中各选项参数的含义为：</p><ul><li>-i：安装（install）;</li><li>-v：显示更详细的信息（verbose）;</li><li>-h：打印 #，显示安装进度（hash）;</li></ul><p>例如，使用此命令安装 apache 软件包，如下所示：</p><div class="code-wrapper"><pre><code class="hljs Bash">[root@localhost ~]<span class="hljs-comment"># rpm -ivh \  </span>/mnt/cdrom/Packages/httpd-2.2.15-15.el6.centos.1.i686.rpm  Preparing...  <span class="hljs-comment">####################  </span>[100%]  1:httpd  <span class="hljs-comment">####################  </span>[100%]</code></pre></div><p>直到出现两个 100% 才是真正的安装成功，第一个 100% 仅表示完成了安装准备工作。  </p><p>此命令还可以一次性安装多个软件包，仅需将包全名用空格分开即可，如下所示：  </p><div class="code-wrapper"><pre><code class="hljs Bash">[root@localhost ~]<span class="hljs-comment"># rpm -ivh a.rpm b.rpm c.rpm</span></code></pre></div><h2 id="RPM包的卸载"><a href="#RPM包的卸载" class="headerlink" title="RPM包的卸载"></a>RPM包的卸载</h2><p>RPM 软件包的卸载最简单命令：</p><div class="code-wrapper"><pre><code class="hljs Bash">[root@localhost ~]<span class="hljs-comment"># rpm -e 包名</span></code></pre></div><p>RPM 软件包的卸载要考虑包之间的依赖性。例如，我们先安装的 httpd 软件包，后安装 httpd 的功能模块 mod_ssl 包，那么在卸载时，就必须先卸载 mod_ssl，然后卸载 httpd，否则会报错。  </p><p>软件包卸载和拆除大楼是一样的，本来先盖的 2 楼，后盖的 3 楼，那么拆楼时一定要先拆除 3 楼。</p><p>如果卸载 RPM 软件不考虑依赖性，执行卸载命令会包依赖性错误，例如：</p><div class="code-wrapper"><pre><code class="hljs Bash">[root@localhost ~]<span class="hljs-comment"># rpm -e httpd  </span>error: Failed dependencies:  httpd-mmn = 20051115 is needed by (installed) mod_wsgi-3.2-1.el6.i686  httpd-mmn = 20051115 is needed by (installed) php-5.3.3-3.el6_2.8.i686  httpd-mmn = 20051115 is needed by (installed) mod_ssl-1:2.2.15-15.el6.  centos.1.i686  httpd-mmn = 20051115 is needed by (installed) mod_perl-2.0.4-10.el6.i686  httpd = 2.2.15-15.el6.centos.1 is needed by (installed) httpd-manual-2.2.  15-15.el6.centos.1 .noarch  httpd is needed by (installed) webalizer-2.21_02-3.3.el6.i686  httpd is needed by (installed) mod_ssl-1:2.2.15-15.el6.centos.1.i686  httpd=0:2.2.15-15.el6.centos.1 is needed by(installed)mod_ssl-1:2.2.15-15.el6.centos.1.i686</code></pre></div><p>-e 选项表示卸载，也就是 erase 的首字母。  </p><p>RPM 软件包的卸载命令支持使用“-nocteps”选项，即可以不检测依赖性直接卸载，但此方式不推荐大家使用，因为此操作很可能导致其他软件也无法征程使用。</p><h2 id="RPM包默认安装路径"><a href="#RPM包默认安装路径" class="headerlink" title="RPM包默认安装路径"></a>RPM包默认安装路径</h2><p>通常情况下，RPM 包采用系统默认的安装路径，所有安装文件会按照类别分散安装到表 1 所示的目录中。 </p><h4 id="表-1-RPM-包默认安装路径"><a href="#表-1-RPM-包默认安装路径" class="headerlink" title="表 1 RPM 包默认安装路径"></a>表 1 RPM 包默认安装路径</h4><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>安装路径</td><td>含 义</td></tr><tr><td>&#x2F;etc&#x2F;</td><td>配置文件安装目录</td></tr><tr><td>&#x2F;usr&#x2F;bin&#x2F;</td><td>可执行的命令安装目录</td></tr><tr><td>&#x2F;usr&#x2F;lib&#x2F;</td><td>程序所使用的函数库保存位置</td></tr><tr><td>&#x2F;usr&#x2F;share&#x2F;doc&#x2F;</td><td>基本的软件使用手册保存位置</td></tr><tr><td>&#x2F;usr&#x2F;share&#x2F;man&#x2F;</td><td>帮助文件保存位置</td></tr></tbody></table><p>RPM 包的默认安装路径是可以通过命令查询的。  </p><p>除此之外，RPM 包也支持手动指定安装路径，但此方式并不推荐。因为一旦手动指定安装路径，所有的安装文件会集中安装到指定位置，且系统中用来查询安装路径的命令也无法使用（需要进行手工配置才能被系统识别），得不偿失。  </p><p>与 RPM 包不同，源码包的安装通常采用手动指定安装路径（习惯安装到 &#x2F;usr&#x2F;local&#x2F; 中）的方式。既然安装路径不同，同一 apache 程序的源码包和 RPM 包就可以安装到一台 Linux 服务器上（但同一时间只能开启一个，因为它们需要占用同一个 80 端口）。  </p><p>实际情况中，一台服务器几乎不会同时包含两个 apache 程序，管理员不好管理，还会占用过多的服务器磁盘空间。  </p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Rebar3安装使用</title>
+    <link href="/2021/05/10/Rebar3%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/"/>
+    <url>/2021/05/10/Rebar3%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<ul><li>首先：需要安装erlang: <a href="/2022/12/08/Erlang%E5%AE%89%E8%A3%85/" title="Erlang安装">Erlang安装</a></li><li>进入rebar3的官网下载编译好的rebar3的可执行文件 <a href="https://rebar3.org/">https://rebar3.org/</a></li><li>放到机器的<code>/usr/local/lib</code>（仅是个人习惯）</li><li>编辑<code>/etc/profile</code>最后一行添加<code>export PATH=/usr/local/lib:PATH</code></li><li><code>source /etc/profile</code></li><li><code>rebar3 --version</code></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+      <tag>rebar3</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>iptables命令</title>
+    <link href="/2021/05/08/iptables%E5%91%BD%E4%BB%A4/"/>
+    <url>/2021/05/08/iptables%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<ul><li>关闭所有的INPUT FORWARD OUTPUT命令</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">iptables -P INPUT DROPiptables -P FORWARD DROPiptables -P OUTPUT DROP</code></pre></div><ul><li>查看状态列表命令</li></ul><div class="code-wrapper"><pre><code class="hljs Bash">iptables -L -n<span class="hljs-comment"># output like this</span>Chain INPUT (policy ACCEPT)target     prot opt <span class="hljs-built_in">source</span>               destinationACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0            udp dpt:53ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:53ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0            udp dpt:67ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:67ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHEDACCEPT     all  --  0.0.0.0/0            0.0.0.0/0INPUT_direct  all  --  0.0.0.0/0            0.0.0.0/0INPUT_ZONES_SOURCE  all  --  0.0.0.0/0            0.0.0.0/0INPUT_ZONES  all  --  0.0.0.0/0            0.0.0.0/0DROP       all  --  0.0.0.0/0            0.0.0.0/0            ctstate INVALIDREJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibitedChain FORWARD (policy ACCEPT)target     prot opt <span class="hljs-built_in">source</span>               destinationACCEPT     all  --  0.0.0.0/0            192.168.122.0/24     ctstate RELATED,ESTABLISHEDACCEPT     all  --  192.168.122.0/24     0.0.0.0/0ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0REJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-port-unreachableREJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-port-unreachableACCEPT     all  --  0.0.0.0/0            0.0.0.0/0            ctstate RELATED,ESTABLISHEDACCEPT     all  --  0.0.0.0/0            0.0.0.0/0FORWARD_direct  all  --  0.0.0.0/0            0.0.0.0/0FORWARD_IN_ZONES_SOURCE  all  --  0.0.0.0/0            0.0.0.0/0FORWARD_IN_ZONES  all  --  0.0.0.0/0            0.0.0.0/0FORWARD_OUT_ZONES_SOURCE  all  --  0.0.0.0/0            0.0.0.0/0FORWARD_OUT_ZONES  all  --  0.0.0.0/0            0.0.0.0/0DROP       all  --  0.0.0.0/0            0.0.0.0/0            ctstate INVALIDREJECT     all  --  0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibited</code></pre></div><ul><li>打开某个端口的命令</li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment"># 进入</span>iptables -A INPUT -p tcp --dport 22 -j ACCEPT<span class="hljs-comment"># 出去</span>iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT</code></pre></div><ul><li>打开一堆端口的命令</li></ul><div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-comment"># 进入</span>iptables -A INPUT -p tcp --dport 30000:31000 -j ACCEPT<span class="hljs-comment"># 出去</span>iptables -A OUTPUT -p tcp --dport 30000:31000 -j ACCEPT</code></pre></div><ul><li>关闭端口命令：把打开命令的<code>ACCEPT</code>换成<code>REJECT</code></li><li>操作udp协议：把打开命令的<code>tcp</code>换成<code>kcp</code></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Rebar3的作用</title>
+    <link href="/2021/05/07/Rebar3%E7%9A%84%E4%BD%9C%E7%94%A8/"/>
+    <url>/2021/05/07/Rebar3%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一些变化："><a href="#一些变化：" class="headerlink" title="一些变化："></a>一些变化：</h2><ul><li>改变代码组织方式：<ul><li>使用app的组织思路把原本以app思路编写的服务更加整洁规范。</li><li>把原本因“方便”而糅合的代码拆分为专属功能模块，例如：<code>common_config</code></li><li>把无归属的代码，都挂载到某个app</li></ul></li><li>编译命令有所修改：<ul><li>以前是需要事先mmake.erl文件，然后这个文件读取emakefile的配置和调用compile:file来进行编译。其中还会包括多语言编译、多进程编译等优化。</li><li>现在直接调用rebar3 release对配置的app下所有的src进行编译。</li></ul></li><li>管理命令有所修改：<ul><li>rebar3 damon启动项目</li><li>rebar3 remote_console进入远程节点，以前是命令中设置cookie，节点名然后进行连接</li></ul></li></ul><h2 id="好处："><a href="#好处：" class="headerlink" title="好处："></a>好处：</h2><ul><li>更方便的使用开源库：我们的做法是把开源库下载下来，然后配置<code>rebar.cofig</code>文件就可以下载编译好依赖文件了。不需要我们手动再下载再修改库。</li></ul><a href="/2021/05/26/Rebar3%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F/" title="Rebar3的目录组织方式">Rebar3的目录组织方式</a><a href="/2021/05/26/Rebar3%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B/" title="Rebar3的基本使用流程">Rebar3的基本使用流程</a><a href="/2021/05/26/Rebar3%E5%90%84%E7%A7%8D%E8%87%AA%E5%AE%9A%E4%B9%89%E9%85%8D%E7%BD%AE/" title="Rebar3各种自定义配置">Rebar3各种自定义配置</a><a href="/2021/05/26/Moyu%E4%B8%AD%E5%AF%B9rebar3%E7%9A%84%E5%8F%96%E8%88%8D/" title="Moyu中对rebar3的取舍">Moyu中对rebar3的取舍</a>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+      <tag>Rebar3</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>谢谢，你明哥！</title>
+    <link href="/2017/08/29/%E8%B0%A2%E8%B0%A2%E4%BD%A0%E6%98%8E%E5%93%A5/"/>
+    <url>/2017/08/29/%E8%B0%A2%E8%B0%A2%E4%BD%A0%E6%98%8E%E5%93%A5/</url>
+    
+    <content type="html"><![CDATA[<p>其实，我想写这个很久了。最近一直在加班状态，加上回到宿舍就不太想动了。但是每当我在园区走回公司时，每看到这张凳子，还是不仅会想到你对我的启发。</p><p>虽然只有短短的两周的接触，但是明哥你对我的影响无疑是深远的。我从你身上懂得了当事情很多的时候，就把事情都列出来，然后一点一点慢慢做处事方式。我现在也渐渐地去思考，我自己的工作是为了什么，自己的代码所干的事情是什么，为什么要这么干。也渐渐明白了你说的一天代码不及交流一下的感触了。最最重要的是，我拥有了你这个朋友，一个愿意把一个如此菜逼的我手把手教学两周的朋友。</p><p>刚开始工作的第一周，我深知自己的技术水平真的是非常一般，无论是node、数据库等的知识还停留在幼儿园阶段，我自己也明白这都是我大学荒废时间的后果。但是开始工作的头两周真的是你改变了我。现在，我慢慢可以独立开发了，我的同事也都很友好而且，xj也非常有耐心。我能够独立负责好一个简单的项目了，而且也参与到公司的项目中去了。虽然最近加班很累，但我深刻地感觉到我每天都在一点一滴地进步着（随着踩下一个又一个的坑）哈哈。</p><p>我舍友觉得我最近的加班好没有人性，虽然我也是这么觉得的，但是我觉得着也是锻炼我抗压的好机会呀。我会在将来的某个阶段离开这里，但离开的时候我一定要在公司被人认同，这也是你和我说的要有始有终。</p><p>在实习阶段的我，现在还有很多东西要学呢。无论是技术还是为人处世，最近我也感受到在职场的一些不适合的言论了，幸好xj人很nice，每一次都会提醒我。或许是我一直随性习惯了吧，有些行为还是不太好改，但是我会努力的。</p><p>恩还是这个凳子，这是你要离开的前一天我们在这里坐了一会儿，你和我谈互联网与人生规划，我和你谈人生理想。我知道了你是一个“不太幸运的人”，以前也错失了很多机会，但是我在这里也想祝福一下你，希望你以后能够工作顺利。以后或许我还能和你共事呢哈哈。或许之后你会是我的员工也未必噢！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>实习半个月的感觉</title>
+    <link href="/2017/08/09/%E5%AE%9E%E4%B9%A0%E5%8D%8A%E4%B8%AA%E6%9C%88%E7%9A%84%E6%84%9F%E8%A7%89/"/>
+    <url>/2017/08/09/%E5%AE%9E%E4%B9%A0%E5%8D%8A%E4%B8%AA%E6%9C%88%E7%9A%84%E6%84%9F%E8%A7%89/</url>
+    
+    <content type="html"><![CDATA[<p>今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。</p><p>实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分层开发模式、接手了明哥留给我的KPI系统、看完了C后台的所有内容。看上去其实很多东西，但是我意识到我的时间还是很少。因为，我的毕设还没动手，我还不懂ES6的代码规范，我需要学会egg.js的框架知识以用于之后新版的C后台的开发，我需要首席async，promise等控制异步的模块，现在我自己的node知识只能说是半桶水，有很多原理我自己还是不清楚，我还需要快速地熟练mongodb的操作。</p><p>或许这些可以慢慢来，但是在这互联网的时代，我自己深刻地意识到自己的压力，我或许想要发展成一个node工程师，然后再学习技术然后发展成一个数据处理或者数据挖掘清晰的python工程师，然后平时可以干干“坏事”。或许我是一个比较幸运的人，我一路走来，还有之后的路我都看到了困难与机会，我需要时刻给自己充电。</p><p>但是这一周，过了三天了，每天从公司回来我都觉得很困，很累呀，真是蛋疼。在公司里面坐着的那张椅子是软垫的，坐得我的腰很辛苦，我都一度以为我的身体开始发虚了，难道真的是撸多了？今天晚上怒跑了华师一圈加上运动厂两圈，然后脖子终于舒服一点了。但是坐久了，腰还是一样，看来要加快健身的日程了。</p><p>昨天和肥航逛了一个晚上，我发现了他对工作有点逃避，其实我似乎对新的东西也有着很多的逃避心里，就像现在的实习，我还不是因为我堂哥有个推荐我的机会我才会来面试的嘛，不然我肯定会拖很久才去实习的，不过在实习的时候我也很幸运，也学到了很多，怎么说呢，我现在的感觉就是一天真的事太短了点，现在已经是00.25分了，写道这里已经用了25分钟，在之前我还答应了猪猪，我写完这个，然后去睡觉的，但是一直停不了笔，真是蛋疼。</p><p>后面还有挑战，继续加油吧！！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>《搏击俱乐部》-关于精神病的一些思考</title>
+    <link href="/2017/06/18/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"/>
+    <url>/2017/06/18/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</url>
+    
+    <content type="html"><![CDATA[<p>我对于这一部分的感受其实比分析每个人的左肩的恶魔与右肩上的天使更深刻。</p><p>我回想到自己之前看过一部短片叫《精神分裂》，短片的主角看到了一个陨石砸到了自家的房顶，然后奇怪的事情发生了他的视界与真实偏移了91厘米，在主角的视界中他在真实世界中的身体位置不一样,具体就是这样子的（图没了）。</p><p>然后他去看医生，医生就当做他是一个异想天开的普通人一样与他聊聊天，主角认为医生并不是很了解他。所以他只好放弃治疗了。<br>从上帝视角来看，主角并不希望自己变成这个样子，想要变回来，他认为偏移了91厘米让自己的生活出现了极大的混乱，他认为这样子下去他很容易丢掉工作，他不敢让他母亲来探望自己，没事也不敢上街，不敢和他人交流。搏击俱乐部的主角虽然不是是这样子的，但是他拥有双重人格，导演思考角度很好，全篇基本是主角的独白。或许这样是对的，现实中的大多数人的角度去观察这些少数人所总结的事情不一定是正确的，更好的情况是我们能够拥有“上帝视角”，让这些少数人自己叙说他们自己，并且感受到他们的情况才能理解他们罢。</p><p>我想到一句话：天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤。但是似乎没那么多人对所谓的大任很有欲望，或许上大街上抓那么几个人做一道选择题：A.假如上天会对你降临一些“灾难”，然后你能够身价多少多少，迎娶白富美。B.你能够平安的健康平庸的的过完你的一生。大多数人的选择会是什么？若是问我，我会回答我选B。</p><p>如果说，谁想要一些难题来挑战自己，提升自己，会有很多人说好，来吧。但是，如果把难题和挑战换成病痛呢，说好的，我会觉得你不是傻逼就是真的很有种！</p><p>说那么多，不是想说让我们去多多关心生活中的少数人群这种屁话。量子力学的一些周边的理论说，我们不能知道事物真实的样子是什么，我们只能看到我们能看到的东西，我们只能看到一定频段的光谱，只能听到一定频率的声波。但是我们看到的，和听到的就真的是事物原本的样子吗？进化论我们能知道，适者生存这个道理，所以我们想大多数人都是适者，这些少数人不一定是。所以，还是让我们多多关心他们吧:)。</p><p>我想和大家分享《精神分裂》这部短片的结局，主角认为只有陨石再来一次才能救他，他等到了第二个陨石，他模仿第一次的时候发生的事情，去陨石附近。陨石掉下来了，当他醒来，他发现，他不仅水平偏移91厘米的问题没有进展，而且垂直方向也偏移了91厘米。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>电影</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>《搏击俱乐部》-与内心邪恶的战争</title>
+    <link href="/2017/06/17/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E4%B8%8E%E5%86%85%E5%BF%83%E9%82%AA%E6%81%B6%E7%9A%84%E6%88%98%E4%BA%89/"/>
+    <url>/2017/06/17/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E4%B8%8E%E5%86%85%E5%BF%83%E9%82%AA%E6%81%B6%E7%9A%84%E6%88%98%E4%BA%89/</url>
+    
+    <content type="html"><![CDATA[<p>昨天看完搏击俱乐部，第一感觉很无聊，md 9.0评分的片子这狗样？看完适逢下暴雨下午两三点宿舍就已经天黑了，还有点微微的冷意，加上宿舍奢侈地开着空调还有比这更好的氛围吗，果断睡觉去。一觉直接睡到19.00了，爽得不要不要的。</p><p>睡醒之后又想起这部片子了，我记得斌头老师说过一句话，好书永远是你看不懂的书，好电影永远是你看不懂的电影。凡是你看不懂的书那都叫好书，凡是你看不懂的电影都是好电影。所以我想，我智商是不是比别人高那么一点点呢，好像不是。既然世界上那么多人给这部片子高分那它高分就肯定有它的理由嘛。</p><p>华丽的分割线（略有剧透）</p><hr><p>全片就是讲主角与泰勒创造了搏击俱乐部的故事。这句话电影简介有说，其实这句话还是凑个行而已。</p><p>真正的正文分割线</p><hr><p>全片其实是讲主角他自己创建了搏击俱乐部的故事，泰勒是他的另外的人格（个人感觉可以这样说）。主角人设有点类似我们普罗大众，追求优质生活，喜欢展现个性，但又不敢过于张扬的那么一个人。但是这样子并不是他喜欢的，准确地说是主角讨厌这样的生活。主角因为工作关系，他需要经常倒时差，他失眠，焦虑。他其实需要安慰，或者是发泄。</p><p>所以他遇到了泰勒，打了他人生的第一次架，然后他觉得很爽，去了一栋报废的楼，泰勒是完全堕落的人，主角并不是，他是有理智的，但是他觉得堕落之后就很爽呀，所以他就在哪里，时不时就去俱乐部打架，白天正常上班。他认为自己能够在白天正常的工作到了其他时间他就可以完全放任自我的日子很爽。恩，很爽吗？我觉得应该是很爽的，从我本身而言。越长大我似乎对越多的东西产生担忧，例如现在我在担忧自己是否能够找得到合适的实习。相比于童年的时候，我也在很多方面有了很多的顾虑，例如我骑车我顾虑会不会撞到别人，会不会破坏公物，会不会摔倒，我敢说我起码前面两条我在童年的时候从来不会是我的顾虑。越是长大会有越多的生活顾虑，这是真的，至于为什么我觉得主角很爽？那是因为我缺乏发泄的平台（或许是我懒得去找一个这样的平台），其实懒并不是原因，更深层的原因是我对很多事物缺乏兴趣，我一直没有真正发自内心的感兴趣过一些事情。所以我认为能放任自我是很爽的事情呢！</p><p>肯定有人会说过类似的句子–“每个人都会有自己的阴暗面”。一般来说人都喜欢而且害怕着自己的阴暗面，喜欢是因为自由，害怕则是因为责任。主角在搏击俱乐部的日子就是这样的。当时他内心认为泰勒就是自己想要变成的人。他享受着正常工作和放任自我同时存在的生活，但是影片肯定不会让他那么好过的。泰勒教唆了一堆的极端分子，理性的主角慢慢发现不对劲了，他知道了泰勒就是自己的第二人格而且极端邪恶，他曾经放任的恶魔已经不受控制了。然后主角顺利地走上与恶魔抗争的道路，而且很成功的失败了，从最后的结局来看，他搂着马拉辛格说送她一个礼物时我认为胜利的是泰勒。</p><p>这一段本应该有些内容的，不过已经距离看完电影已经两天了，如今已经不知道要写什么了，那就算了罢。</p><p>恩，通常来说后面应该跟着一些高中式作文的观点–跟着正义，拒绝邪恶等等，哈哈我就不想写这些东东了。但是对于这部影片却让我想到了之前看过的一部精神病的短片，若是感兴趣不妨移步下一章～</p><p>最后补上一句，我现在写文章，我很喜欢口语化，在语句前面加个语气词：恩，额之类的，我觉得在未来的某一天，我回看一定会说这样子看上去很蠢，很low吧（其实现在已经觉得了），但我就是忍不住这么做～</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>电影</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>GF(28)运算</title>
+    <link href="/2017/06/07/GF-28-%E8%BF%90%E7%AE%97/"/>
+    <url>/2017/06/07/GF-28-%E8%BF%90%E7%AE%97/</url>
+    
+    <content type="html"><![CDATA[<p>任务:<br>用C／C++实现对GF(2^8)的若干运算功能，包括：加法、乘法、求乘法逆元（给定x，求y，使得x*y &#x3D;&#x3D; 1 )、求离散对数（即给定一个生成元g，输入x，求y使得g^y &#x3D;&#x3D; x)。</p><p>首先分析一下思路：<br>加法思路：对每一位进行异或操作</p><p>乘法：<br>①（参照密码编码学与网络安全的书本还原的一个算法）首先计算数组a中的对数组b中每一位的乘法中间结果，然后根据数组b决定用来异或的中间结果，最后得出结果。<br>②利用无符号字符类型解释整形创建一个过度变量为result，然后根据字符b的最后一位决定结果值，如果b的最后一位是0则result等于上一个循环的result值，若b的最后一位是1，result值等于result异或a。需要做八次循环，每次循环一开始都要判断a是否大于127如果大于127则a需要左移一位并且异或1B，else a只需要左移一位。</p><p>乘法逆元思路：<br>首先规定生成元是3（00000011，当然用其他生成元也可以，随便）然后生成一个以3为生成元的逆元表，然后查询用户输入的x查询到x之后利用255减去x所在位置那个位置的元素即为x的乘法逆元y</p><p>离散对数思路：<br>用户输入生成元与X，多次调用乘法，调用乘法的次数则为所求的离散对数</p><p>我大概用到的函数定义（忽略界面函数，输入输出函数等与算法无关的函数）：</p><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cstring&gt;</span></span><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fstream&gt;</span> </span>using namespace <span class="hljs-built_in">std</span>;<span class="hljs-type">void</span> <span class="hljs-title function_">set_genrator</span><span class="hljs-params">()</span>;           <span class="hljs-comment">//用于开始设置生成元数组 </span><span class="hljs-type">void</span> <span class="hljs-title function_">set_Inverse</span><span class="hljs-params">()</span>;           <span class="hljs-comment">//用于开始设置逆元表</span><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">GFsum</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> a, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b)</span>; <span class="hljs-comment">//求和 </span><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">GFmul</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> a, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b)</span>; <span class="hljs-comment">//乘法 </span><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">inverse</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b)</span>;  <span class="hljs-comment">//乘法逆元 </span><span class="hljs-type">bool</span> <span class="hljs-title function_">judge_genrator</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> a)</span>; <span class="hljs-comment">//判断用户输入的生成元是否为生成元 </span><span class="hljs-type">int</span> <span class="hljs-title function_">logarithm</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> a, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b)</span>;  <span class="hljs-comment">//离散对数</span><span class="hljs-type">int</span> Genrator[<span class="hljs-number">256</span>];           <span class="hljs-comment">//保存生成元信息</span><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> Inverse[<span class="hljs-number">256</span>];      <span class="hljs-comment">//保存以3为生成元的逆元表</span></code></pre></div><p>用于设置生成元数组用来判断用户输入的生成元是否为一个真实的生成元：</p><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">set_genrator</span><span class="hljs-params">()</span>&#123;<span class="hljs-built_in">memset</span>(Genrator, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(Genrator));<span class="hljs-built_in">string</span> buf;<span class="hljs-type">int</span> a;ifstream <span class="hljs-title function_">GEN</span><span class="hljs-params">(<span class="hljs-string">&quot;一个包含所有生成元的记录文件，可以自己生成也可以网上去找&quot;</span>)</span>;<span class="hljs-keyword">while</span> (!GEN.eof())&#123;GEN &gt;&gt; buf;a = change_int(buf);Genrator[a] = <span class="hljs-number">1</span>;&#125;GEN.close();&#125;</code></pre></div><p>生成逆元表</p><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">set_Inverse</span><span class="hljs-params">()</span>&#123;<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> gen = <span class="hljs-number">3</span>;Inverse[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;Inverse[<span class="hljs-number">1</span>] = <span class="hljs-number">3</span>;<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt; <span class="hljs-number">256</span>; i++)&#123;Inverse[i] = GFmul(Inverse[i<span class="hljs-number">-1</span>], gen);&#125;&#125;</code></pre></div><h4 id="具体算法"><a href="#具体算法" class="headerlink" title="具体算法"></a>具体算法</h4><h4 id="加法："><a href="#加法：" class="headerlink" title="加法："></a>加法：</h4><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//直接异或运算就ok了</span></code></pre></div>}<h4 id="乘法："><a href="#乘法：" class="headerlink" title="乘法："></a>乘法：</h4><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">GFmul</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> a, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b)</span>&#123;<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> result = <span class="hljs-number">0</span>;<span class="hljs-keyword">if</span> ((b&amp;<span class="hljs-number">1</span>)==<span class="hljs-number">1</span>) result = a;b = b &gt;&gt; <span class="hljs-number">1</span>;<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; i++)&#123;<span class="hljs-keyword">if</span> ((a&gt;<span class="hljs-number">127</span>))a = (a &lt;&lt; <span class="hljs-number">1</span>) ^ <span class="hljs-number">0x1b</span>;<span class="hljs-keyword">else</span> a = a &lt;&lt; <span class="hljs-number">1</span>;<span class="hljs-keyword">if</span>((b&amp;<span class="hljs-number">1</span>) == <span class="hljs-number">1</span>)&#123;            result ^= a;        &#125;        b &gt;&gt;= <span class="hljs-number">1</span>;&#125;<span class="hljs-keyword">return</span> result;&#125;</code></pre></div>}<h4 id="分析一下乘法原理："><a href="#分析一下乘法原理：" class="headerlink" title="分析一下乘法原理："></a>分析一下乘法原理：</h4><p>总共要循环8次，每一次循环都需要判断b的最低位是否为1，a的最高位是否为1。如果b的最低位为1，那么就结果result就要与a进行异或运算。再判断a最高位是否为1，如果是的话那么a在左移之后还要异或 1B。大概差不多了吧。</p><h4 id="乘法逆元："><a href="#乘法逆元：" class="headerlink" title="乘法逆元："></a>乘法逆元：</h4><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//生成逆元表函数</span><span class="hljs-type">void</span> <span class="hljs-title function_">set_Inverse</span><span class="hljs-params">()</span>&#123;<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> gen = <span class="hljs-number">3</span>;Inverse[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;Inverse[<span class="hljs-number">1</span>] = <span class="hljs-number">3</span>;<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt; <span class="hljs-number">256</span>; i++)&#123;Inverse[i] = GFmul(Inverse[i<span class="hljs-number">-1</span>], gen);&#125;&#125;<span class="hljs-comment">//查表函数</span><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> <span class="hljs-title function_">inverse</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b)</span>&#123;<span class="hljs-comment">//初始化 </span><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> result;<span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>)&#123;<span class="hljs-built_in">cout</span> &lt;&lt; (<span class="hljs-type">int</span>)b &lt;&lt; <span class="hljs-string">&quot;没有逆元&quot;</span> &lt;&lt;<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//0没有逆元</span>&#125;<span class="hljs-keyword">else</span> &#123;<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">256</span>; i++)&#123;<span class="hljs-keyword">if</span> (Inverse[i] == b) &#123;result = Inverse[<span class="hljs-number">255</span>-i];<span class="hljs-keyword">return</span> result;&#125;&#125;&#125;&#125;</code></pre></div>}<h4 id="乘法逆元原理："><a href="#乘法逆元原理：" class="headerlink" title="乘法逆元原理："></a>乘法逆元原理：</h4><p>在GF(2^8)这个群里如果有g^x g^y &#x3D;&#x3D; 1（g是其中一个生成元）那么就会有x+y &#x3D;&#x3D; 255。回到函数里面，第一个我利用生成元：3做254次乘法（第一个元素是0第二个元素是3）得到了一个以3为生成元重新排列的群。第二个就是查表函数了。暴力搜索出b所在的位置，然后*255-b所在的位置的元素就是b的逆元。</p><h4 id="离散对数："><a href="#离散对数：" class="headerlink" title="离散对数："></a>离散对数：</h4><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">set_genrator</span><span class="hljs-params">()</span>&#123;<span class="hljs-built_in">memset</span>(Genrator, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(Genrator));<span class="hljs-built_in">string</span> buf;<span class="hljs-type">int</span> a;ifstream <span class="hljs-title function_">GEN</span><span class="hljs-params">(<span class="hljs-string">&quot;一个包含有所有生成元的文件，可以自己生成，也可以上网找&quot;</span>)</span>;<span class="hljs-keyword">while</span> (!GEN.eof())&#123;GEN &gt;&gt; buf;a = change_int(buf);Genrator[a] = <span class="hljs-number">1</span>;&#125;GEN.close();&#125;<span class="hljs-type">int</span> <span class="hljs-title function_">genrator</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> a, <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b)</span>&#123; <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>)&#123;<span class="hljs-built_in">cout</span> &lt;&lt; (<span class="hljs-type">int</span>)b &lt;&lt; <span class="hljs-string">&quot;没有离散对数！&quot;</span> &lt;&lt;<span class="hljs-built_in">endl</span>; &#125;<span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">//多次使用乘法直到找到为止；</span><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> mi = <span class="hljs-number">1</span>; <span class="hljs-type">int</span> y = <span class="hljs-number">0</span>;<span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;mi = GFmul(mi, a); y++;<span class="hljs-keyword">if</span>(mi == b) <span class="hljs-keyword">return</span> y;&#125;&#125;&#125;</code></pre></div><h4 id="离散对数原理："><a href="#离散对数原理：" class="headerlink" title="离散对数原理："></a>离散对数原理：</h4><p>这里需要用户输入一个“生成元”和一个X，首先要保证用户输入的生成元是一个真实的生成元。所以需要加一个判断。之后就是利用生成元做多次乘法做到值为X为止，循环次数就是离散对数了。</p><p><em>最后：仅是学生党随意写的用于交流学习，不喜勿喷，谢谢驻足的各位</em></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习杂谈</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>《情书》读后感</title>
+    <link href="/2017/06/06/%E3%80%8A%E6%83%85%E4%B9%A6%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
+    <url>/2017/06/06/%E3%80%8A%E6%83%85%E4%B9%A6%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    
+    <content type="html"><![CDATA[<p>情书给的双线叙事方式，我还是不太习惯去了解吧，或许看书不够状态，所以脑海中的图片跟不上节奏，为什么渡边博子对藤井树这么依恋？藤井见博子第一面就知道两个人很像，藤井树对自己以前的不够勇敢很后悔，所以他一上来就会问博子能做他女朋友吗？</p><p>他是一个害怕失去，而且不拘小节的人，但他又是勇敢的，这就是真实的写照吧，人若是体验过失去的滋味，若是上天愿意给第二次机会，试问又有谁不会牢牢把握住呢？对于我来说，若是对于某件事我做出了一个自认为不太好的选择，我之后总会想着要是当时能这样做就好了！但上天不会给自己这么多机会。偏偏藤井树就有这么一次机会，他内心最深处的记忆是一直存在的，所以他勇敢了。</p><p>渡子是个怎样的人，我想说，我很希望有这样一个妻子，她对丈夫的爱是忠贞的，是一直忠贞的。虽然之后秋叶在一起，但她就像小溪（to the moon），她的内心很细腻，能记得和爱人的每一个瞬间，每一份感动，每一句话。她不善长表达，她在心底有想法也只会告诉她自已。至于藤井吧，天知道她是怎么被喜欢上的，但青春的柏拉图式的爱情都是这个狗样，他想进办法去吸引她，想迟办法去表达自己的情素，看来是那么傻，那么懵懵懂懂，那么可爱。现实总是这狗样，平时的冤家很有可能在将来会变成CP。个人经验总结一下的话就是：如果传出了感情绯闻，90%的可能不是空穴来风，反正我就是这样。我想着法子去了解我现在的爱人，想当初是那么的笨，那么的可爱，明明对方很明显的心思就是摸不透，我无时无刻不在想着怎么去表白，但似乎想到的都没用上，最多还是在“被迫无耐”下表白了，就像藤井树，天知道他会转学，不然还能多暗恋两年呢。或许他也会想，只要毕业了就上去表白吧～。青春总是没有好戏的，藤井树也选择了一棵比较饱满的麦穗，但他是幸运的，他的麦穗和最大的那稞是差不多的。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>《情书》</tag>
+      
+      <tag>读后感</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>《to the moon》游玩后感</title>
+    <link href="/2017/06/04/%E3%80%8Ato-the-moon%E3%80%8B%E6%B8%B8%E7%8E%A9%E5%90%8E%E6%84%9F/"/>
+    <url>/2017/06/04/%E3%80%8Ato-the-moon%E3%80%8B%E6%B8%B8%E7%8E%A9%E5%90%8E%E6%84%9F/</url>
+    
+    <content type="html"><![CDATA[<div class="code-wrapper"><pre><code class="hljs">听说 《to the moon》是一款拥有神剧情的游戏。于是我就特意下载来玩一下，游戏只需要三小时，不过三小时已经足够刷新一个人的爱情观了。</code></pre></div><p>此文有严重的“剧透”，高能预警～～</p><p>在我看来没有其他方法比解出里面的“谜题”更好了</p><p>故事简介：<br>  故事是主角们利用一个记忆改造机的东西去帮助一位即将去世的叫John的老爷爷完成一个去月亮的梦想。主角需要从John的老年-&gt;中年-&gt;青年-&gt;童年一直往下走然后改造John的记忆。把John爷爷从小培养成为了月球而努力的人，从而在长大之后变成一名宇航员然后坐上火箭去月球。主角们在寻找记忆标签的时候有一个很奇怪的现象：John一点都不想去月球！John满脑子只有他亡故的妻子–小溪。。。</p><p>去月亮游记的“谜题”：</p><p>兔子，灯塔，鸭嘴兽。<br>《序章》</p><p>为什么JOHN要去月亮？<br>为什么灯塔上面放了一只兔子？ –听到主题曲《to the moon》<br>为什么兔子是蓝色加黄色的？<br>为什么鸭嘴兽在地下室，而且很脏？<br>ACT 1 其实我一直认为他们是灯塔。<br>为什么小溪一直闷闷不乐在折兔子，她看着John很烦躁，她不着急吗？<br>为什么要在这座灯塔附近建屋子？<br>为什么John喜欢吃腌橄榄？<br>他们结婚了，但似乎John的母亲有点奇怪。<br>为什么小溪喜欢看《国王的新衣》？<br>伊利莎尔是什么样的人，为什么她会说其实她和小溪一样，但她是一个演员？<br>为什么小溪会直接接受John的约会。<br>为什么小溪说两个人在同一间放映室看电影就等于一起看电影？不应该坐一起？<br>为什么John完全没有去月亮的意思？<br>ACT 2 和 ACT 3基本用来解密了，然后就不用多说了。<br>1.John去月亮就是因为想去（或许这样说会有点奇怪但是我认为这应该是没错的），在John一个人的时候，想必他已经把和小溪的点点滴滴回忆了一遍又一遍吧，所以我相信他已经想到了从前，如果我的假设没错的话那么他是回忆了多少次才能够做到不放过这些细节呢？</p><p>2&amp;3.我一直认为他们是灯塔，这篇星空下有一只以月亮作为肚子的兔子呢，天是蓝蓝的，月亮也是黄黄的，那么兔子就是蓝色加黄色啦，放在灯塔上估计是John想要告诉小溪他已经知道她不停折兔子时的内心想法了。</p><p>4.这是我唯一不知道怎么回答的问题了，如果John已经回忆起所有的东西了，不应该会漏掉鸭嘴兽吧？所以我只能归类为他老了，童年的东西已经不能记得很清楚了（感慨岁月蹉跎），但是鸭嘴兽是陪伴小溪一辈子的玩偶，不可能这都想不到吧？是因为曾经服用药物强制失忆的原因？</p><p>5.小溪这是再说我一直记住我和你的童年那个晚上，那个对孤独的有自闭症的小溪无比重要的夜晚，让她认识到友情的夜晚啊！</p><p>6.那是因为，小溪想要把所有有关灯塔，月亮，兔子有关的东西都放在身边，然而John只是傻傻的以为小溪只是执着，而且延续这她的奇怪想法。John也是傻得可以，但是反观我们现在，如果我们有John身上那么大的压力的时候，我们还会冷静地站在我们爱的人的角度从对方的角度思考吗？生活差点压垮了John，小溪她自己也非常明白，她觉得很内疚，但天生的性格使她不会向John表达她的想法。</p><p>7.John怀念他的哥哥。每个人心中总有点小秘密对吧。。</p><p>8.John的母亲也很想念他的哥哥，那个聪明，懂事的哥哥。所以John一直学他的哥哥，他强行改变了自己，他从一个内向的人变成一个开朗，健谈的人了。但他最原始还是内向、保守的，从他只有一个至好的朋友我们就能看到。他其实害怕社交，John也是一个伟大的人呢，试问现在谁还能想他那样把所有的包袱都揽在自己身上呢？</p><p>9.初恋信物！！</p><p>10.伊利也是内向的人！没错，这是她自己说的，每个人都会有自知之明的，她很明白她与世界是隔绝的，但外部的的“力量”使她更不敢变成像小溪一样的异类！所以她觉得小溪很勇敢–能保持自己，也很幸福–有John的爱情。而她可能每天晚上睡觉之前都会想到自己与世界的孤立，怕会偷偷地哭泣吧，然后第二天醒来又会“开心地”说今天又是新的一天啦，大家要加油喔！！</p><p>11.小溪一直就喜欢John啦。。。</p><p>12.这我还真不知道是什么意思呢。</p><p>13.因为他根本就没有了那个晚上的记忆啦，是两位博士强行开启的记忆，他自己不想要的记忆他怎么会记得呢，如果想要想起小溪，就要先想起哥哥呀，这真是痛苦呢！！这也是要老了之后想开了才敢想起来的事情吧。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>观感</tag>
+      
+      <tag>游戏</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SCNU毕业生赠字活动观字有感</title>
+    <link href="/2017/06/04/SCNU%E6%AF%95%E4%B8%9A%E7%94%9F%E8%B5%A0%E5%AD%97%E6%B4%BB%E5%8A%A8%E8%A7%82%E5%AD%97%E6%9C%89%E6%84%9F/"/>
+    <url>/2017/06/04/SCNU%E6%AF%95%E4%B8%9A%E7%94%9F%E8%B5%A0%E5%AD%97%E6%B4%BB%E5%8A%A8%E8%A7%82%E5%AD%97%E6%9C%89%E6%84%9F/</url>
+    
+    <content type="html"><![CDATA[<p>今天上完两节课后发现在学校中间广场竟然有一个scnu名家给毕业生赠自的活动。觉得这次学生会的活动挺有意思于是忍不住就去看看，O(∩_∩)O哈哈~差点错过了午饭。<br>观看了各位老师的作品忍不住想作一评价，纯属个人观点，若是一下老师看到了!那是缘分：）</p><p>雷YK老师，写字思定而后动，字体浓墨重笔，显其苍劲有力。但略显浮华，下笔略有犹豫，不够干脆，行文如挑战，写完一篇松一口大气。看上去就像是修为不太够的样子呢。</p><p>余DJ老师，字如作画，专注细节，但胸中未有成文，缺勾缺墨。从字上看，余老师应该是为人随和，粗中有细的人。</p><p>孟DD老师，粗中有细，行云潇洒，一笔成章，然而我在写这篇博文的时候已经对您没印象了，sorry：）</p><p>邝ZB老师，字体苍劲有力，功底深厚，写字时手腕没有一丝抖动，写字之前胸成成竹，行云流水尽显潇洒，看这位老师写字可真是心中舒畅至极。可惜老师周围环境太差，左边有一位一直与邝老师聊天的老师，右边有一位‘不识字’的老师，所以在我看的两个小时左右的时间上邝老师可是一直受到干扰从而有诸多败笔啊。</p><p>邓FM老师，应该是摆摊的老师中文字功底最深厚的老师了。明明如此年长的老师，下笔却是非常干脆，有劲，大字潇洒，不拘一格令我大为赞叹。观赏完大字之后才发现邓老师写的落笔小字更是令我心惊，一笔成章，非常精细。更难得的是，邓老师每一福字都是心无旁骛得写，真是非常用心。</p><p>学生会这个活动对于毕业生们真是有非常大的纪念意义的，辛苦scnu的各位老师了。你们顶着太阳，在北座前面的小广场上为毕业生写了一天的字。我看到了老师对我们的期望，看着师兄师姐拿着字画与老师们拍照留念我不禁想起了以前教过自己的老师，他（她）们在我们毕业的时候内心的对我们的祝福应该也像这些字画，简单而又充满着对莘莘学子的寄托罢。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>观感</tag>
+      
+      <tag>活动</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>

@@ -1,0 +1,823 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QILL_gloden_black_circle.png">
+  <link rel="icon" href="/img/QILL_gloden_black_circle.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="QSY">
+  <meta name="keywords" content="QSY qill">
+  
+    <meta name="description" content="直接使用方式 在svn仓库的hooks目录下编写pre-commit或者post-commit的可执行文件。从而让svn可以在提交时和提交后执行一些检查脚本或者通知脚本。 svnlook命令可以指定读取某一个提交的修改，文件等信息  直接上脚本 svn检查日志单子格式+ 检查erlang配置格式是否正确  #! &#x2F;bin&#x2F;bash  export LANG&#x3D;zh_CN.UTF-8 REPOS&#x3D;&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN钩子">
+<meta property="og:url" content="https://qiil.github.io/2021/06/29/SVN%E9%92%A9%E5%AD%90/">
+<meta property="og:site_name" content="一起闷声发大财吧">
+<meta property="og:description" content="直接使用方式 在svn仓库的hooks目录下编写pre-commit或者post-commit的可执行文件。从而让svn可以在提交时和提交后执行一些检查脚本或者通知脚本。 svnlook命令可以指定读取某一个提交的修改，文件等信息  直接上脚本 svn检查日志单子格式+ 检查erlang配置格式是否正确  #! &#x2F;bin&#x2F;bash  export LANG&#x3D;zh_CN.UTF-8 REPOS&#x3D;&amp;q">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-29T08:08:46.000Z">
+<meta property="article:modified_time" content="2022-12-08T08:11:05.848Z">
+<meta property="article:author" content="QSY">
+<meta property="article:tag" content="SVN">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>SVN钩子 - 一起闷声发大财吧</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"qiil.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 30vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>秋天的世界人人都爱摸鱼</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SVN钩子"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-06-29 16:08" pubdate>
+          2021年6月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="编程其他"
+        id="heading-fad2eb8c682b827ff8137cac8c1ef9bc" role="tab" data-toggle="collapse" href="#collapse-fad2eb8c682b827ff8137cac8c1ef9bc"
+        aria-expanded="true"
+      >
+        编程其他
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-fad2eb8c682b827ff8137cac8c1ef9bc"
+           role="tabpanel" aria-labelledby="heading-fad2eb8c682b827ff8137cac8c1ef9bc">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" title="SVN服务器部署"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">SVN服务器部署</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/06/29/SVN%E9%92%A9%E5%AD%90/" title="SVN钩子"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">SVN钩子</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/08/12/Windows%E4%B8%8B%E7%BB%99%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%AB%AF%E5%8F%A3%E4%BB%A3%E7%90%86/" title="Windows下给虚拟机的端口代理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Windows下给虚拟机的端口代理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SVN钩子</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="直接使用方式"><a href="#直接使用方式" class="headerlink" title="直接使用方式"></a>直接使用方式</h3><ul>
+<li>在svn仓库的<code>hooks</code>目录下编写<code>pre-commit</code>或者<code>post-commit</code>的可执行文件。从而让svn可以在提交时和提交后执行一些检查脚本或者通知脚本。</li>
+<li><code>svnlook</code>命令可以指定读取某一个提交的修改，文件等信息</li>
+</ul>
+<h3 id="直接上脚本"><a href="#直接上脚本" class="headerlink" title="直接上脚本"></a>直接上脚本</h3><ul>
+<li>svn检查日志单子格式+ 检查erlang配置格式是否正确</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-meta">#! /bin/bash</span>
+
+<span class="hljs-built_in">export</span> LANG=zh_CN.UTF-8
+REPOS=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span> <span class="hljs-comment"># 参数1为仓库名</span>
+TXN=<span class="hljs-string">&quot;<span class="hljs-variable">$2</span>&quot;</span> <span class="hljs-comment"># 参数2为本次提交生成的临时标签</span>
+SVNLOOK=/usr/bin/svnlook
+
+<span class="hljs-comment"># 判断提交log与预设的规则是否匹配</span>
+LOGMSG=$(<span class="hljs-variable">$SVNLOOK</span> <span class="hljs-built_in">log</span> -t <span class="hljs-string">&quot;<span class="hljs-variable">$TXN</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>&quot;</span>)
+LOGFORMAT=<span class="hljs-string">&quot;【(需求|优化|修复|配置)】.+&quot;</span> <span class="hljs-comment"># 日志单子必须固定的描述开头</span>
+<span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;LOGMSG&#125;</span> =~ <span class="hljs-variable">$&#123;LOGFORMAT&#125;</span> ]]
+<span class="hljs-keyword">then</span>
+    :
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;提交日志开头格式应为：【需求】、【优化】、【修复】、【配置】&quot;</span> &gt;&amp;2
+    <span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">fi</span>
+
+<span class="hljs-comment"># 尝试编译cfg文件</span>
+<span class="hljs-comment"># 通过命令直接获得本次提交：非删除的、非xls的erl配置文件</span>
+CHANGE_LIST=$(<span class="hljs-variable">$SVNLOOK</span> changed -t <span class="hljs-string">&quot;<span class="hljs-variable">$TXN</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>&quot;</span> | grep -v <span class="hljs-string">&#x27;/$&#x27;</span> | grep -v <span class="hljs-string">&#x27;^D.*&#x27;</span> | grep <span class="hljs-string">&#x27;\.erl$&#x27;</span> | grep -v <span class="hljs-string">&#x27;.*config\/src\/xls.*erl$&#x27;</span> | grep <span class="hljs-string">&#x27;config.*cfg_.*&#x27;</span> | awk <span class="hljs-string">&#x27;&#123;print$2&#125;&#x27;</span>)
+ESCRIPT=/usr/local/bin/escript
+CHECK_SCRIPT=/data/test_hook/trunk/script/tool/check_config_syntax.es <span class="hljs-comment"># 编译检查的es脚本</span>
+ERROR_OUTPUT=<span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/check_cfg_output&quot;</span>
+<span class="hljs-built_in">touch</span> <span class="hljs-variable">$ERROR_OUTPUT</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;&quot;</span> &gt; <span class="hljs-variable">$ERROR_OUTPUT</span> <span class="hljs-comment">#重置一个错误输出文件</span>
+
+<span class="hljs-keyword">for</span> FILE <span class="hljs-keyword">in</span> <span class="hljs-variable">$CHANGE_LIST</span> <span class="hljs-comment"># 遍历所有文件尝试编译</span>
+<span class="hljs-keyword">do</span>
+    FILENAME=$(<span class="hljs-built_in">basename</span> <span class="hljs-variable">$FILE</span>)
+    <span class="hljs-variable">$SVNLOOK</span> <span class="hljs-built_in">cat</span> -t <span class="hljs-variable">$TXN</span> <span class="hljs-variable">$REPOS</span> <span class="hljs-variable">$FILE</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/<span class="hljs-variable">$FILENAME</span>&quot;</span> <span class="hljs-comment"># 先写入到一个缓冲文件，不然传入的参数有点乱</span>
+    <span class="hljs-variable">$ESCRIPT</span> <span class="hljs-variable">$CHECK_SCRIPT</span> <span class="hljs-variable">$ERROR_OUTPUT</span> <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/<span class="hljs-variable">$FILENAME</span>&quot;</span> <span class="hljs-comment"># 编译缓冲文件，如果有错误会先输出到错误收集文件</span>
+<span class="hljs-keyword">done</span>
+
+ALL_ERROR=$(<span class="hljs-built_in">cat</span> <span class="hljs-variable">$ERROR_OUTPUT</span>)
+<span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$ALL_ERROR</span> != <span class="hljs-string">&quot;&quot;</span> ]] <span class="hljs-comment"># 读取所有的错误收集，如果有内容，那么直接拒绝提交，把错误输出会svn的dialog</span>
+<span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.beam&quot;</span> /tmp 2&gt;/dev/null
+    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.erl&quot;</span> /tmp 2&gt; /dev/null
+    <span class="hljs-built_in">cat</span> <span class="hljs-variable">$ERROR_OUTPUT</span> &gt;&amp;2
+    <span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">else</span>
+    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.beam&quot;</span> /tmp 2&gt;/dev/null
+    <span class="hljs-built_in">mv</span> -f <span class="hljs-string">&quot;<span class="hljs-variable">$REPOS</span>/hooks/*.erl&quot;</span> /tmp 2&gt;/dev/null
+<span class="hljs-keyword">fi</span>
+
+
+<span class="hljs-built_in">exit</span> 0
+</code></pre></div>
+<ul>
+<li>提交后自动迁出（因为svn的内容是保存在数据库的，所以加上自动迁出会比较直观）</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs Bash"><span class="hljs-meta">#!/bin/sh</span>
+
+REPOS=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span>
+REV=<span class="hljs-string">&quot;<span class="hljs-variable">$2</span>&quot;</span>
+
+User=<span class="hljs-string">&#x27;qiushiyu&#x27;</span>
+Password=<span class="hljs-string">&#x27;123456&#x27;</span>
+<span class="hljs-built_in">export</span> LANG=<span class="hljs-string">&#x27;zh_CN.UTF-8&#x27;</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$DeployPath</span>
+<span class="hljs-comment"># svn cleanup</span>
+svn update /data/test_hook --username <span class="hljs-variable">$User</span> --password <span class="hljs-variable">$Password</span>
+</code></pre></div>
+
+<h3 id="可能会遇到的问题"><a href="#可能会遇到的问题" class="headerlink" title="可能会遇到的问题"></a>可能会遇到的问题</h3><ul>
+<li><p>返回svn dialog的中文乱码：</p>
+<p>  往脚本里面添加一个这个<code>export LANG=zh_CN.UTF-8</code>，</p>
+</li>
+</ul>
+<p>根据你的实际状况，<code>LANG</code>的值能够尝试改成<code>en_US.UTF-8/zh_CN.GBK</code></p>
+<ul>
+<li><p><code>svnlook cat</code>命令传入其他语言中内容换行可能有错误：</p>
+<p>  先写入一个缓冲文件后续再操作，增加一点点io但无伤大雅</p>
+</li>
+<li><p>svn积极拒绝：</p>
+<p>  svn服务没开啊兄弟，检查一下<code>svnserve.service</code>或者<code>svnserve</code>命令的进程吧，看看端口号，仓库目录什么的有没有错。</p>
+</li>
+<li><p>提交时感觉脚本没有执行：</p>
+<p>  那一定是脚本写错了，自己调一下</p>
+</li>
+</ul>
+<h3 id="svn钩子介绍"><a href="#svn钩子介绍" class="headerlink" title="svn钩子介绍"></a>svn钩子介绍</h3><p>SVN服务端hooks主要有以下9种：</p>
+<p><strong>pre-lock</strong>：文件加锁前执行，不常用</p>
+<p><strong>post-lock</strong>：文件加锁后执行，通常用来发送锁定事件通知，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.锁定路径的认证用户名</p>
+<p><strong>per-unlock</strong>：文件解锁前执行，不常用</p>
+<p><strong>post-unlock</strong>：文件解锁后执行，通常用来发送解锁事件通知，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.解锁路径的认证用户名</p>
+<p><strong>start-commit</strong>：开始提交时执行，在<code>pre-commit</code>之前，通常用来确定用户是否有提交权限</p>
+<p><strong>pre-commit</strong>：提交之前执行，在<code>start-commit</code>之后，通常用来对提交内容的检查，例如我们后边要介绍的利用<code>pre-commit</code>做提交log的合规性检查，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.提交事务的名称</p>
+<p><strong>post-commit</strong>：提交完成后执行，这应该是使用最广的hooks之一，通常用来在提交之后发送提交通知，甚至是利用它来做自动化的CI&#x2F;CD等操作，需要传递两个参数给hooks脚本，按照顺序依次为：1.版本库路径，2.提交创建的修订版本号</p>
+<p><strong>pre-revprop-change</strong>：在修改revision属性之前执行，不常用</p>
+<p><strong>post-revprop-change</strong>：在修改revision属性之后执行，不常用</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%85%B6%E4%BB%96/" class="category-chain-item">编程其他</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SVN/">#SVN</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SVN钩子</div>
+      <div>https://qiil.github.io/2021/06/29/SVN钩子/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>QSY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年6月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/03/%E8%B4%B7%E6%AC%BE%E7%9A%84%E6%89%8B%E7%BB%AD%E8%B4%B9%E6%8D%A2%E7%AE%97%E5%88%A9%E7%8E%87/" title="贷款的手续费换算利率">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">贷款的手续费换算利率</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/28/SVN%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" title="SVN服务器部署">
+                        <span class="hidden-mobile">SVN服务器部署</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> Qill <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
