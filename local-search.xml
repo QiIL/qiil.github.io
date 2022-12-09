@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Erlang Recon粗浅笔记</title>
+    <link href="/2022/12/09/Erlang-Recon%E7%B2%97%E6%B5%85%E7%AC%94%E8%AE%B0/"/>
+    <url>/2022/12/09/Erlang-Recon%E7%B2%97%E6%B5%85%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="Recon是什么"><a href="#Recon是什么" class="headerlink" title="Recon是什么"></a>Recon是什么</h3><p>他的作者Ferd说：他希望Recon是一个用于在生产环境诊断Erlang系统问题或者是能安全的检查生产环境的工具库。</p><p>所以recon的一系列脚本最主要用于在发生crashdump的时候帮助用户分析到原因（<strong>最关键是帮你查到那个进程堵消息了</strong>）。因为它设计的时候充分考虑到了对系统的最小影响，所以在线上使用是很安全的。</p><h3 id="各个模块的作用"><a href="#各个模块的作用" class="headerlink" title="各个模块的作用"></a>各个模块的作用</h3><h4 id="recon"><a href="#recon" class="headerlink" title="recon"></a>recon</h4><p>最主要的模块，提供了一些函数帮助查看进程的信息、虚拟机的总体状态和OTP在节点中的行为。</p><h4 id="recon-alloc"><a href="#recon-alloc" class="headerlink" title="recon_alloc"></a>recon_alloc</h4><p>重新组合的一些函数来处理Erlang的内存分配器。用更简洁的方法来展示内存分配想信息帮助发现问题。</p><h4 id="recon-lib"><a href="#recon-lib" class="headerlink" title="recon_lib"></a>recon_lib</h4><p>主要由recon调用的，重新组合的一些用于处理Erlang节点数据的函数。</p><h4 id="recon-trace"><a href="#recon-trace" class="headerlink" title="recon_trace"></a>recon_trace</h4><p>提供了一个生产环境下安全的方式去追踪函数调用。</p><h3 id="recon-rec"><a href="#recon-rec" class="headerlink" title="recon_rec"></a>recon_rec</h3><p>recon_trace的拓展，可以根据已知的记录定义以更易读的格式打印记录。</p><h3 id="一些常用的接口"><a href="#一些常用的接口" class="headerlink" title="一些常用的接口"></a>一些常用的接口</h3><ul><li><code>recon:proc_count(message_quque_len, 10)</code>列出本节点消息队列最多的前10个进程信息</li><li><code>recon:node_stats_print(10, 5000)</code>每隔5000毫秒打印节点信息，总共打印打印10次。</li><li><code>recon_alloc:memory(used|allocated)</code>返回内存使用信息<code>used</code>是正在占用的内存量，allocated是Erlang VM预定的内存量。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Erlang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Erlang</tag>
+      
+      <tag>Recon</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>个人所得税计算方法</title>
     <link href="/2022/12/08/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/"/>
     <url>/2022/12/08/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/</url>
@@ -80,12 +107,24 @@
   
   <entry>
     <title>这算不算夕阳无限好？</title>
-    <link href="/2022/09/05/%E9%9A%8F%E7%AC%94/"/>
-    <url>/2022/09/05/%E9%9A%8F%E7%AC%94/</url>
+    <link href="/2022/09/05/%E8%BF%99%E7%AE%97%E4%B8%8D%E7%AE%97%E5%A4%95%E9%98%B3%E6%97%A0%E9%99%90%E5%A5%BD%EF%BC%9F/"/>
+    <url>/2022/09/05/%E8%BF%99%E7%AE%97%E4%B8%8D%E7%AE%97%E5%A4%95%E9%98%B3%E6%97%A0%E9%99%90%E5%A5%BD%EF%BC%9F/</url>
     
     <content type="html"><![CDATA[<p>上周五公司对面新开了一家公司，他们的门口摆了很多花架。但每次我出门上厕所都会问到一股很难闻的香味。我当时还觉得这些花怎么这么“臭”?</p><p>今天我早上回来，他们的花架还没挪走，花也有一点枯，但味道却出奇地让我觉得很舒服。轻轻的香味，闻起来觉得很清新，这香味跟花的外表一点都不匹配，我觉得那是属于花“年轻”时候的香味，而她们现在“有点老了”。</p><p>或许是因为这样，上周他们争奇斗艳，每一朵花都用尽全力去散发自己最美最香的一面。但混合起来却有一种不和谐甚至冲突的感觉。而今天，她们气力不足但散发的是最自然的香味，却让人舒服。</p>]]></content>
     
     
+    <categories>
+      
+      <category>人生经历</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>观感</tag>
+      
+    </tags>
     
   </entry>
   
@@ -603,14 +642,14 @@
     
     <categories>
       
-      <category>学习杂谈</category>
+      <category>算法</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>学习杂谈</tag>
+      <tag>算法</tag>
       
     </tags>
     
