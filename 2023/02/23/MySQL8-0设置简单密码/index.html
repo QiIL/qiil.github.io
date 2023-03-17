@@ -16,22 +16,22 @@
   <meta name="author" content="QSY">
   <meta name="keywords" content="QSY qill">
   
-    <meta name="description" content="今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。 实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分">
+    <meta name="description" content="问题在安装MySQL8.0时，修改临时密码，因密码过于简单（如：123456），不符合MySQL密码规范，会触发一个报错信息： mysql&gt; alter user &amp;#x27;root&amp;#x27;@&amp;#x27;localhost&amp;#x27; identified by &amp;#x27;123456&amp;#x27;; ERROR 1819 (HY000): Your password does not">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实习半个月的感觉">
-<meta property="og:url" content="https://qiil.github.io/2017/08/09/%E5%AE%9E%E4%B9%A0%E5%8D%8A%E4%B8%AA%E6%9C%88%E7%9A%84%E6%84%9F%E8%A7%89/">
+<meta property="og:title" content="MySQL8.0设置简单密码的方法">
+<meta property="og:url" content="https://qiil.github.io/2023/02/23/MySQL8-0%E8%AE%BE%E7%BD%AE%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81/">
 <meta property="og:site_name" content="一起闷声发大财吧">
-<meta property="og:description" content="今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。 实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分">
+<meta property="og:description" content="问题在安装MySQL8.0时，修改临时密码，因密码过于简单（如：123456），不符合MySQL密码规范，会触发一个报错信息： mysql&gt; alter user &amp;#x27;root&amp;#x27;@&amp;#x27;localhost&amp;#x27; identified by &amp;#x27;123456&amp;#x27;; ERROR 1819 (HY000): Your password does not">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-08-09T09:36:04.000Z">
-<meta property="article:modified_time" content="2022-12-07T09:36:04.000Z">
+<meta property="article:published_time" content="2023-02-23T02:27:12.000Z">
+<meta property="article:modified_time" content="2023-02-23T02:57:32.584Z">
 <meta property="article:author" content="QSY">
-<meta property="article:tag" content="QSY qill">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>实习半个月的感觉 - 一起闷声发大财吧</title>
+  <title>MySQL8.0设置简单密码的方法 - 一起闷声发大财吧</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="实习半个月的感觉"></span>
+            <span id="subtitle" data-typed-text="MySQL8.0设置简单密码的方法"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2017-08-09 17:36" pubdate>
-          2017年8月9日 下午
+        <time datetime="2023-02-23 10:27" pubdate>
+          2023年2月23日 上午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          903 字
+          1.7k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          10 分钟
+          17 分钟
         
       </span>
     
@@ -275,17 +275,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="人生经历"
-        id="heading-6fc1f2ea008dc19f2aaceaf1b4eabc60" role="tab" data-toggle="collapse" href="#collapse-6fc1f2ea008dc19f2aaceaf1b4eabc60"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据库"
+        id="heading-68051bf4aa2743b030984b694628ee9c" role="tab" data-toggle="collapse" href="#collapse-68051bf4aa2743b030984b694628ee9c"
         aria-expanded="true"
       >
-        人生经历
-        <span class="list-group-count">(8)</span>
+        数据库
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-6fc1f2ea008dc19f2aaceaf1b4eabc60"
-           role="tabpanel" aria-labelledby="heading-6fc1f2ea008dc19f2aaceaf1b4eabc60">
+      <div class="category-collapse collapse show" id="collapse-68051bf4aa2743b030984b694628ee9c"
+           role="tabpanel" aria-labelledby="heading-68051bf4aa2743b030984b694628ee9c">
         
         
           
@@ -294,73 +294,10 @@
     
       
       
-        <a href="/2022/09/05/%E8%BF%99%E7%AE%97%E4%B8%8D%E7%AE%97%E5%A4%95%E9%98%B3%E6%97%A0%E9%99%90%E5%A5%BD%EF%BC%9F/" title="这算不算夕阳无限好？"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">这算不算夕阳无限好？</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/08/29/%E8%B0%A2%E8%B0%A2%E4%BD%A0%E6%98%8E%E5%93%A5/" title="谢谢，你明哥！"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">谢谢，你明哥！</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/08/09/%E5%AE%9E%E4%B9%A0%E5%8D%8A%E4%B8%AA%E6%9C%88%E7%9A%84%E6%84%9F%E8%A7%89/" title="实习半个月的感觉"
+        <a href="/2023/02/23/MySQL8-0%E8%AE%BE%E7%BD%AE%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81/" title="MySQL8.0设置简单密码的方法"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">实习半个月的感觉</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/18/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" title="《搏击俱乐部》-关于精神病的一些思考"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《搏击俱乐部》-关于精神病的一些思考</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/17/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E4%B8%8E%E5%86%85%E5%BF%83%E9%82%AA%E6%81%B6%E7%9A%84%E6%88%98%E4%BA%89/" title="《搏击俱乐部》-与内心邪恶的战争"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《搏击俱乐部》-与内心邪恶的战争</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/06/%E3%80%8A%E6%83%85%E4%B9%A6%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/" title="《情书》读后感"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《情书》读后感</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/04/%E3%80%8Ato-the-moon%E3%80%8B%E6%B8%B8%E7%8E%A9%E5%90%8E%E6%84%9F/" title="《to the moon》游玩后感"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《to the moon》游玩后感</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/04/SCNU%E6%AF%95%E4%B8%9A%E7%94%9F%E8%B5%A0%E5%AD%97%E6%B4%BB%E5%8A%A8%E8%A7%82%E5%AD%97%E6%9C%89%E6%84%9F/" title="SCNU毕业生赠字活动观字有感"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">SCNU毕业生赠字活动观字有感</span>
+          <span class="category-post">MySQL8.0设置简单密码的方法</span>
         </a>
       
     
@@ -383,18 +320,55 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">实习半个月的感觉</h1>
+            <h1 style="display: none">MySQL8.0设置简单密码的方法</h1>
             
             
               <div class="markdown-body">
                 
-                <p>今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。</p>
-<p>实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分层开发模式、接手了明哥留给我的KPI系统、看完了C后台的所有内容。看上去其实很多东西，但是我意识到我的时间还是很少。因为，我的毕设还没动手，我还不懂ES6的代码规范，我需要学会egg.js的框架知识以用于之后新版的C后台的开发，我需要熟悉async，promise等控制异步的模块，现在我自己的node知识只能说是半桶水，有很多原理我自己还是不清楚，我还需要快速地熟练mongodb的操作。</p>
-<p>或许这些可以慢慢来，但是在这互联网的时代，我自己深刻地意识到自己的压力，我或许想要发展成一个node工程师，然后再学习技术然后发展成一个数据处理或者数据挖掘清晰的python工程师，然后平时可以干干“坏事”。或许我是一个比较幸运的人，我一路走来，还有之后的路我都看到了困难与机会，我需要时刻给自己充电。</p>
-<p>但是这一周，过了三天了，每天从公司回来我都觉得很困，很累呀，真是蛋疼。在公司里面坐着的那张椅子是软垫的，坐得我的腰很辛苦，我都一度以为我的身体开始发虚了，难道真的是撸多了？今天晚上怒跑了华师一圈加上运动厂两圈，然后脖子终于舒服一点了。但是坐久了，腰还是一样，看来要加快健身的日程了。</p>
-<p>昨天和肥航逛了一个晚上，我发现了他对工作有点逃避，其实我似乎对新的东西也有着很多的逃避心里，就像现在的实习，我还不是因为我堂哥有个推荐我的机会我才会来面试的嘛，不然我肯定会拖很久才去实习的，不过在实习的时候我也很幸运，也学到了很多，怎么说呢，我现在的感觉就是一天真的事太短了点，现在已经是00.25分了，写道这里已经用了25分钟，在之前我还答应了猪猪，我写完这个，然后去睡觉的，但是一直停不了笔，真是蛋疼。</p>
-<p>后面还有挑战，继续加油吧！！</p>
+                <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在安装MySQL8.0时，修改临时密码，因密码过于简单（如：123456），不符合MySQL密码规范，会触发一个报错信息：</p>
+<div class="code-wrapper"><pre><code class="hljs mysql">mysql&gt; alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;123456&#x27;;
+ERROR 1819 (HY000): Your password does not satisfy the current policy requirements。</code></pre></div>
 
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ol>
+<li>先修改一个合乎规则的密码，例如<code>Root_1234</code>。</li>
+<li>查询<code>vilidate_password</code>变量。</li>
+<li>修改里面的<code>lengh</code>和<code>policy</code>的值。<code>lengh</code>表示密码的最低长度，<code>policy</code>为安全等级，想设置简单密码则需要设置成<code>LOW</code><div class="code-wrapper"><pre><code class="hljs mysql">mysql&gt; alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;Root_r1234&#x27;;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; SHOW VARIABLES LIKE &#x27;validate_password%&#x27;;
++--------------------------------------+--------+
+| Variable_name                        | Value  |
++--------------------------------------+--------+
+| validate_password.check_user_name    | ON     |
+| validate_password.dictionary_file    |        |
+| validate_password.length             | 8      |
+| validate_password.mixed_case_count   | 1      |
+| validate_password.number_count       | 1      |
+| validate_password.policy             | MEDIUM |
+| validate_password.special_char_count | 1      |
++--------------------------------------+--------+
+7 rows in set (0.00 sec)</code></pre></div>
+可以看到，当前的<code>lengh=8, policy=MIDIUM</code>，修改一下他们的值，就可以设置简单密码了。<div class="code-wrapper"><pre><code class="hljs mysql">mysql&gt; set global validate_password.length=6;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; set global validate_password.policy=LOW;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;123456&#x27;;
+Query OK, 0 rows affected (0.00 sec)
+</code></pre></div></li>
+</ol>
+<h3 id="MySQL5-7的解决方案"><a href="#MySQL5-7的解决方案" class="headerlink" title="MySQL5.7的解决方案"></a>MySQL5.7的解决方案</h3><p>直接设置<code>validate_password_policy &amp; validate_password_length</code></p>
+<p>1、解决办法调整MySQL密码验证规则，修改 policy 和 length 的值。</p>
+<p>2、MySQL 5.7 进行如下设置，即可解决问题：</p>
+<div class="code-wrapper"><pre><code class="hljs mysql">mysql&gt; set global validate_password_policy=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; set global validate_password_length=1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;123456&#x27;;
+Query OK, 0 rows affected (0.00 sec)</code></pre></div>
                 
               </div>
             
@@ -412,7 +386,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BA%BA%E7%94%9F%E7%BB%8F%E5%8E%86/" class="category-chain-item">人生经历</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
   
   
 
@@ -424,6 +398,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/MySQL/">#MySQL</a>
+      
+    </div>
+  
 </div>
 
 
@@ -432,8 +413,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>实习半个月的感觉</div>
-      <div>https://qiil.github.io/2017/08/09/实习半个月的感觉/</div>
+      <div>MySQL8.0设置简单密码的方法</div>
+      <div>https://qiil.github.io/2023/02/23/MySQL8-0设置简单密码/</div>
     </div>
     <div class="license-meta">
       
@@ -445,7 +426,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2017年8月9日</div>
+          <div>2023年2月23日</div>
         </div>
       
       
@@ -489,9 +470,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2017/08/29/%E8%B0%A2%E8%B0%A2%E4%BD%A0%E6%98%8E%E5%93%A5/" title="谢谢，你明哥！">
+                      <a href="/2023/03/17/Shell-%E5%8D%95%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8C%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8D%E5%BC%95%E5%8F%B7%EF%BC%8C/" title="Shell 单引号，双引号，反引号，&#39;&#39; &#34;&#34; ``">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">谢谢，你明哥！</span>
+                        <span class="hidden-mobile">Shell 单引号，双引号，反引号，&#39;&#39; &#34;&#34; ``</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -499,8 +480,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2017/06/18/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" title="《搏击俱乐部》-关于精神病的一些思考">
-                        <span class="hidden-mobile">《搏击俱乐部》-关于精神病的一些思考</span>
+                      <a href="/2023/02/16/Shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAip%E5%9C%B0%E5%9D%80/" title="Shell脚本获取本机ip地址">
+                        <span class="hidden-mobile">Shell脚本获取本机ip地址</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

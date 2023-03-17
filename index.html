@@ -226,6 +226,243 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2023/03/17/Shell-%E5%8D%95%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8C%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8D%E5%BC%95%E5%8F%B7%EF%BC%8C/" target="_blank">
+          Shell 单引号，双引号，反引号，&#39;&#39; &#34;&#34; ``
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/03/17/Shell-%E5%8D%95%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8C%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8D%E5%BC%95%E5%8F%B7%EF%BC%8C/" target="_blank">
+        <div>
+          基础说明 单引号&#39;str&#39;：把单引号内所有的字符都识别为字符串，特殊含义字符都不会识别 双引号&quot;str&quot;；双引号在单引号的基础上能识别$（参数替换）和 `（命令替换） 反引号`str`：会把反引号内的内容当做命令先执行  例子 单引号不识别特殊含义字符 A=pan echo &#x27;I have a $A&#x27; I have an $A  # 单引号内
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-17 10:45" pubdate>
+              2023-03-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+              <a href="/tags/Shell/">#Shell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/02/23/MySQL8-0%E8%AE%BE%E7%BD%AE%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81/" target="_blank">
+          MySQL8.0设置简单密码的方法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/23/MySQL8-0%E8%AE%BE%E7%BD%AE%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81/" target="_blank">
+        <div>
+          问题在安装MySQL8.0时，修改临时密码，因密码过于简单（如：123456），不符合MySQL密码规范，会触发一个报错信息： mysql&gt; alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;123456&#x27;; ERROR 1819 (HY000): Your password does not
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-23 10:27" pubdate>
+              2023-02-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MySQL/">#MySQL</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/02/16/Shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAip%E5%9C%B0%E5%9D%80/" target="_blank">
+          Shell脚本获取本机ip地址
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/02/16/Shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%9C%BAip%E5%9C%B0%E5%9D%80/" target="_blank">
+        <div>
+          方法一：ifconfig -aifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk &#x27;&#123;print $2&#125;&#x27;|tr -d &quot;addr:&quot;  命令解释 ifconfig -a  　　　　 和window下执行此命令一样道理，返回本机所有ip信息 grep inet
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-16 15:40" pubdate>
+              2023-02-16
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Shell/">#Shell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/12/26/%E4%B9%A0%E8%BF%91%E5%B9%B3%E6%80%BB%E4%B9%A6%E8%AE%B0%E9%87%8D%E8%A6%81%E8%AE%B2%E8%AF%9D%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" target="_blank">
+          习近平总书记重要讲话思维导图
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/26/%E4%B9%A0%E8%BF%91%E5%B9%B3%E6%80%BB%E4%B9%A6%E8%AE%B0%E9%87%8D%E8%A6%81%E8%AE%B2%E8%AF%9D%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" target="_blank">
+        <div>
+          [习近平总书记重要讲话思维导图]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-26 10:15" pubdate>
+              2022-12-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E5%85%AC/" class="category-chain-item">考公</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%80%83%E5%85%AC/">#考公</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/" target="_blank">
+          Erlang trace追踪调用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/" target="_blank">
+        <div>
+          核心函数 erlang:trace&#x2F;3 和 erlang:trace_pattern&#x2F;2-3erlang:trace/3最基本的跟踪工具，能够使当前进程跟踪指定（其他进程，端口等）的内容。 erlang:trace(PidPortSpec, OnOffBoolean, FlagList) -&gt; integer() PidPortSpec = pid() | port(
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-09 15:39" pubdate>
+              2022-12-09
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/12/09/Erlang-Recon%E7%B2%97%E6%B5%85%E7%AC%94%E8%AE%B0/" target="_blank">
           Erlang Recon粗浅笔记
         </a>
@@ -533,322 +770,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/15/Centos7%E4%BF%AE%E6%94%B9ip%E5%9C%B0%E5%9D%80/" target="_blank">
-          Centos7修改ip地址
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/15/Centos7%E4%BF%AE%E6%94%B9ip%E5%9C%B0%E5%9D%80/" target="_blank">
-        <div>
-          查看ip地址ifconfig # 方式1  ## 这个名字的文件是我们需要修改的 ens32: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500         inet 192.168.100.172  netmask 255.255.255.0  broadcast 192.168.100.255         inet6
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-15 11:42" pubdate>
-              2022-08-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-              <a href="/tags/Centos7/">#Centos7</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/12/Centos7%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8remi%E5%BA%93/" target="_blank">
-          Centos7安装使用remi库
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/12/Centos7%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8remi%E5%BA%93/" target="_blank">
-        <div>
-          查看库点我查看epel库   安装以 epel-release-latest-7.noarch.rpm 为例 wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  rpm -ivh epel-release-latest-7.noarch.rpm  ## 或者用这个 yum install -y ht
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-12 17:42" pubdate>
-              2022-08-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-              <a href="/tags/Centos7/">#Centos7</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/12/Windows%E4%B8%8B%E7%BB%99%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%AB%AF%E5%8F%A3%E4%BB%A3%E7%90%86/" target="_blank">
-          Windows下给虚拟机的端口代理
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/12/Windows%E4%B8%8B%E7%BB%99%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E7%AB%AF%E5%8F%A3%E4%BB%A3%E7%90%86/" target="_blank">
-        <div>
-          新建一个.bat文件，然后复制下面的内容保存后双击运行 netsh interface portproxy delete v4tov4 listenaddress=本机IP listenport=本机端口 netsh interface portproxy add v4tov4 listenaddress=本机IP listenport=本机端口 connectaddress=其他机器ip con
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-12 14:33" pubdate>
-              2022-08-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%85%B6%E4%BB%96/" class="category-chain-item">编程其他</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Windows/">#Windows</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/05/Centos7%E5%AE%89%E8%A3%85GCC/" target="_blank">
-          Centos7安装GCC
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/08/05/Centos7%E5%AE%89%E8%A3%85GCC/" target="_blank">
-        <div>
-          安装：下面用到remi库请看这  yum install centos-release-scl  yum list devtoolset-7-gcc* --enablerepo=remi Loaded plugins: fastestmirror, langpacks Loading mirror speeds from cached hostfile  * base: ftp.sjtu.edu.
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-05 15:27" pubdate>
-              2022-08-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-              <a href="/tags/Centos7/">#Centos7</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/03/%E8%B4%B7%E6%AC%BE%E7%9A%84%E6%89%8B%E7%BB%AD%E8%B4%B9%E6%8D%A2%E7%AE%97%E5%88%A9%E7%8E%87/" target="_blank">
-          贷款的手续费换算利率
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/03/%E8%B4%B7%E6%AC%BE%E7%9A%84%E6%89%8B%E7%BB%AD%E8%B4%B9%E6%8D%A2%E7%AE%97%E5%88%A9%E7%8E%87/" target="_blank">
-        <div>
-          一般4S店会告诉客户我们的车贷是没有利息的，只会收取一定的手续费。这种情况下大家都能反应过来其实手续费就是等同于利息。但是，对于车贷利率却容易掉入错误计算的陷阱。举例说明一下更为清晰。     假设贷款金额8万，期限2年，手续费4千。根据利率等于利息除以本金的公式，我们一般会计算出这笔贷款的年利率为2.5%。（&#x3D;4000&#x2F;80000&#x2F;2）     乍一看会觉得这个超便
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-03 16:12" pubdate>
-              2021-08-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BB%8F%E6%B5%8E%E7%9F%A5%E8%AF%86/" class="category-chain-item">经济知识</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BB%8F%E6%B5%8E/">#经济</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

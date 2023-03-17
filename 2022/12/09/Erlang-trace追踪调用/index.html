@@ -1,0 +1,979 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,default" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QILL_gloden_black_circle.png">
+  <link rel="icon" href="/img/QILL_gloden_black_circle.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="QSY">
+  <meta name="keywords" content="QSY qill">
+  
+    <meta name="description" content="核心函数 erlang:trace&#x2F;3 和 erlang:trace_pattern&#x2F;2-3erlang:trace&#x2F;3最基本的跟踪工具，能够使当前进程跟踪指定（其他进程，端口等）的内容。 erlang:trace(PidPortSpec, OnOffBoolean, FlagList) -&gt; integer() PidPortSpec &#x3D; pid() | port(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Erlang trace追踪调用">
+<meta property="og:url" content="https://qiil.github.io/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/">
+<meta property="og:site_name" content="一起闷声发大财吧">
+<meta property="og:description" content="核心函数 erlang:trace&#x2F;3 和 erlang:trace_pattern&#x2F;2-3erlang:trace&#x2F;3最基本的跟踪工具，能够使当前进程跟踪指定（其他进程，端口等）的内容。 erlang:trace(PidPortSpec, OnOffBoolean, FlagList) -&gt; integer() PidPortSpec &#x3D; pid() | port(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qiil.github.io/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/pid_port_spec.png">
+<meta property="og:image" content="https://qiil.github.io/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/flag_list.png">
+<meta property="article:published_time" content="2022-12-09T07:39:10.000Z">
+<meta property="article:modified_time" content="2023-01-05T10:55:45.598Z">
+<meta property="article:author" content="QSY">
+<meta property="article:tag" content="QSY qill">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://qiil.github.io/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/pid_port_spec.png">
+  
+  
+  
+  <title>Erlang trace追踪调用 - 一起闷声发大财吧</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"qiil.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 30vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>秋天的世界人人都爱摸鱼</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Erlang trace追踪调用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-09 15:39" pubdate>
+          2022年12月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          136 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Erlang trace追踪调用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                
+
+<h2 id="核心函数-erlang-trace-x2F-3-和-erlang-trace-pattern-x2F-2-3"><a href="#核心函数-erlang-trace-x2F-3-和-erlang-trace-pattern-x2F-2-3" class="headerlink" title="核心函数 erlang:trace&#x2F;3 和 erlang:trace_pattern&#x2F;2-3"></a>核心函数 erlang:trace&#x2F;3 和 erlang:trace_pattern&#x2F;2-3</h2><p><code>erlang:trace/3</code>最基本的跟踪工具，能够使当前进程跟踪指定（其他进程，端口等）的内容。</p>
+<div class="code-wrapper"><pre><code class="hljs erlang">erlang:trace(PidPortSpec, OnOffBoolean, FlagList) -&gt; integer()
+PidPortSpec = pid() | port() | all | processes | ports | existing | existing_process | existing_ports | new | new_process | new_ports</code></pre></div>
+<p>参数1一般来说只需要用到这几个</p>
+<ul>
+<li><code>all</code>跟踪所有进程和Port</li>
+<li><code>process</code>这跟踪进程</li>
+<li><code>new</code>只跟踪新建的进程和Port</li>
+<li><code>existing</code>只跟踪当前已存在的进程和Port</li>
+</ul>
+<img src="/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/pid_port_spec.png" srcset="/img/loading.gif" lazyload class="" title="[title]">
+
+<p>参数2是boolean值，<code>true</code>为打开跟踪，<code>false</code>为关闭跟踪。<br>参数3 FlagList是标志开关，用来控制如何进行跟踪的：</p>
+<div class="code-wrapper"><pre><code class="hljs erlang">all | send | &#x27;<span class="hljs-keyword">receive</span>&#x27; | procs | ports | call | arity |
+    return_to | silent | running | exiting | running_procs |
+    running_ports | garbage_collection | timestamp |
+    cpu_timestamp | monotonic_timestamp |
+    strict_monotonic_timestamp | set_on_spawn |
+    set_on_first_spawn | set_on_link | set_on_first_link |
+    &#123;tracer, pid() | port()&#125; |
+    &#123;tracer, module(), term()&#125;</code></pre></div>
+<p>选项之间可以组合使用。文档<a target="_blank" rel="noopener" href="https://www.erlang.org/doc/man/erlang.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk#trace-3">trace&#x2F;3</a>有每个选项的含义。比较重要的几个分别为：</p>
+<ul>
+<li><code>all</code>组合除了<code>tracer</code>和<code>cpu_timestamp</code>外所有的跟踪选项。</li>
+<li><code>send</code>，<code>receive</code>跟踪发送和接收的消息。</li>
+<li><code>garbage_collection</code>跟踪垃圾回收情况。</li>
+<li><code>set_on_spawn</code>和<code>set_on_link</code>让让已经被跟踪的进程创建出的进程或者link的进程也能被跟踪。</li>
+<li><code>&#123;tracer, Pid&#125;</code>指定一个进程去接收跟踪时收到的消息。当不想把信息全发给shell时可以这样干。</li>
+<li><code>&#123;tracer, Module, State&#125;</code>指定一个跟踪函数，用来处理跟踪得到的信息，可以参考<a target="_blank" rel="noopener" href="https://www.erlang.org/doc/man/erl_tracer.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk">erl_tracer</a>编写的跟踪模块。</li>
+</ul>
+<img src="/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/flag_list.png" srcset="/img/loading.gif" lazyload class="" title="[title]">
+
+<p><code>erlang:trace/3</code>是可以单独使用的，但是如果我们想跟踪函数，我们就需要使用<code>erlang:trace_pattern/2-3</code>来告诉Erlang那些函数是我们想要跟踪的。<code>erlang:trace/3</code>用来指定那些进程或者Port会被跟踪，而<code>erlang:trace_pattern/2-3</code>是用来指定那些函数是我们要跟踪的。<a target="_blank" rel="noopener" href="https://www.erlang.org/doc/man/erlang.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk#trace_pattern-3">跟踪事件只会在被跟踪的进程调用被跟踪的函数时才会发生。</a>巨日参数如下：</p>
+<div class="code-wrapper"><pre><code class="hljs erlang"><span class="hljs-comment">% 模块下所有名为Function的函数</span>
+&#123;Module,Function,&#x27;_&#x27;&#125;
+
+<span class="hljs-comment">% 模块下所有函数</span>
+&#123;Module,&#x27;_&#x27;,&#x27;_&#x27;&#125;
+
+<span class="hljs-comment">% 所有模块下的全部函数</span>
+&#123;&#x27;_&#x27;, &#x27;_&#x27;, &#x27;_&#x27;&#125;</code></pre></div>
+
+<p>参数2可以为true或者false用来开启或者关闭跟踪或者是符合match spec规范的模式跟踪。我们稍后再讨论match spec。第3个参数和模式跟踪有关系，这里我们只关注最重要的两个：</p>
+<ul>
+<li>global 跟踪所有通过模块名显示调用函数的情况，例如<code>trace:test_multiply(3, 4)</code></li>
+<li>local 跟踪所有调用该函数的场景，包括不使用模块名的情况，例如<code>test_multiply(3, 4)</code><br>其他请移步<a target="_blank" rel="noopener" href="https://www.erlang.org/doc/man/erlang.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk#trace_pattern-3">trace_pattern&#x2F;3</a></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs erlang"><span class="hljs-comment">%% 跟踪所有进程的call操作</span>
+<span class="hljs-number">1</span>&gt; erlang:trace(all, <span class="hljs-literal">true</span>, [call]).
+<span class="hljs-number">393</span>
+<span class="hljs-comment">%% 跟踪math模块的所有函数</span>
+<span class="hljs-number">2</span>&gt; erlang:trace_pattern(&#123;math, &#x27;_&#x27;, &#x27;_&#x27;&#125;, <span class="hljs-literal">true</span>, [local]).
+<span class="hljs-number">27</span>
+<span class="hljs-comment">%% 启动进程去调用</span>
+<span class="hljs-number">3</span>&gt; spawn(<span class="hljs-keyword">fun</span>() -&gt; math:pow(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">end</span>).
+&lt;<span class="hljs-number">0.5475</span>.<span class="hljs-number">0</span>&gt;
+<span class="hljs-number">4</span>&gt; spawn(<span class="hljs-keyword">fun</span>() -&gt; math:pow(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">end</span>).
+&lt;<span class="hljs-number">0.5477</span>.<span class="hljs-number">0</span>&gt;
+<span class="hljs-comment">%% 查看进程消息</span>
+<span class="hljs-number">5</span>&gt; flush().
+Shell got &#123;trace,&lt;<span class="hljs-number">9132.5475</span>.<span class="hljs-number">0</span>&gt;,call,&#123;math,pow,[<span class="hljs-number">10</span>,<span class="hljs-number">2</span>]&#125;&#125;
+Shell got &#123;trace,&lt;<span class="hljs-number">9132.5477</span>.<span class="hljs-number">0</span>&gt;,call,&#123;math,pow,[<span class="hljs-number">10</span>,<span class="hljs-number">2</span>]&#125;&#125;
+ok
+<span class="hljs-comment">%% 停止跟踪</span>
+<span class="hljs-number">7</span>&gt; erlang:trace(all, <span class="hljs-literal">false</span>, [call]).
+ok
+<span class="hljs-comment">%% 停止跟踪后再调用</span>
+<span class="hljs-number">8</span>&gt; spawn(<span class="hljs-keyword">fun</span>() -&gt; math:pow(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">end</span>).
+<span class="hljs-number">9</span>&gt; spawn(<span class="hljs-keyword">fun</span>() -&gt; math:pow(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">end</span>).
+<span class="hljs-comment">%% 没有内容</span>
+<span class="hljs-number">10</span>&gt; flush().
+ok
+<span class="hljs-comment">%% 重启跟踪进程，因为没有关闭函数跟踪，所以不需要重启函数跟踪</span>
+<span class="hljs-number">11</span>&gt; erlang:trace(all, <span class="hljs-literal">false</span>, [call]).
+<span class="hljs-number">12</span>&gt; spawn(<span class="hljs-keyword">fun</span>() -&gt; math:pow(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">end</span>).
+<span class="hljs-number">13</span>&gt; spawn(<span class="hljs-keyword">fun</span>() -&gt; math:pow(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>) <span class="hljs-keyword">end</span>).
+<span class="hljs-number">14</span>&gt; flush().
+Shell got &#123;trace,&lt;<span class="hljs-number">9132.5558</span>.<span class="hljs-number">0</span>&gt;,call,&#123;math,pow,[<span class="hljs-number">10</span>,<span class="hljs-number">2</span>]&#125;&#125;
+Shell got &#123;trace,&lt;<span class="hljs-number">9132.5560</span>.<span class="hljs-number">0</span>&gt;,call,&#123;math,pow,[<span class="hljs-number">10</span>,<span class="hljs-number">2</span>]&#125;&#125;
+ok</code></pre></div>
+
+<h3 id="erlang-trace-x2F-3-和-erlang-trace-pattern-x2F-2-3的另一个例子"><a href="#erlang-trace-x2F-3-和-erlang-trace-pattern-x2F-2-3的另一个例子" class="headerlink" title="erlang:trace&#x2F;3 和 erlang:trace_pattern&#x2F;2-3的另一个例子"></a>erlang:trace&#x2F;3 和 erlang:trace_pattern&#x2F;2-3的另一个例子</h3><p>代码就不展示了，可以下载这个模块: <a href="/2022/12/09/Erlang-trace%E8%BF%BD%E8%B8%AA%E8%B0%83%E7%94%A8/trace.erl" title="测试用的trace.erl">测试用的trace.erl</a></p>
+<div class="code-wrapper"><pre><code class="hljs Erlang">
+<span class="hljs-function"><span class="hljs-title">start_test_tracer</span><span class="hljs-params">()</span> -&gt;</span> 
+    spawn(<span class="hljs-keyword">fun</span>() -&gt; ?MODULE:test_tracer_loop() <span class="hljs-keyword">end</span>).
+
+<span class="hljs-function"><span class="hljs-title">test_tracer_loop</span><span class="hljs-params">()</span> -&gt;</span>
+    <span class="hljs-keyword">receive</span>
+        &#123;trace, Pid, send, Msg, To&#125; -&gt;
+            <span class="hljs-comment">% 处理send</span>
+            io:format(<span class="hljs-string">&quot;Process ~p sent message ~p to process ~p~n&quot;</span>, [Pid, Msg, To]);
+        &#123;trace, Pid, &#x27;<span class="hljs-keyword">receive</span>&#x27;, Msg&#125; -&gt;
+            % 处理receive
+            io:format(&quot;Process ~p received message ~p~n&quot;, [Pid, Msg]);
+        &#123;trace, Pid, return_from, &#123;Module, Function, Arity&#125;, ReturnValue&#125; -&gt;
+            % 处理返回值
+            io:format(&quot;Function ~p:~p/~p returned ~p in process ~p~n&quot;,
+                [Module, Function, Arity, ReturnValue, Pid]);
+        &#123;trace, Pid, call, &#123;Module, Function, Arguments&#125;&#125; -&gt;
+            % 处理调用
+            io:format(&quot;Function ~p:~p invoked with arguments ~p in process ~p~n&quot;,
+                [Module, Function, Arguments, Pid]);
+        Msg -&gt;
+            io:format(&quot;Received unexpected message ~p~n&quot;, [Msg])
+    end.</code></pre></div>
+
+<p>跟踪测试</p>
+<div class="code-wrapper"><pre><code class="hljs erlang">
+<span class="hljs-comment">% 启动跟踪模块</span>
+<span class="hljs-number">1</span>&gt; Pid = trace:start_test_tracer().
+
+<span class="hljs-comment">% 启动算数服务器，此时我们还没有启动跟踪器</span>
+<span class="hljs-number">2</span>&gt; ServerPid = trace:start_test_loop_server().
+
+<span class="hljs-comment">% 开始进行跟踪</span>
+<span class="hljs-number">3</span>&gt; erlang:trace(ServerPid, <span class="hljs-literal">true</span>, [call, send, &#x27;<span class="hljs-keyword">receive</span>&#x27;, &#123;tracer, Pid&#125;]).
+
+<span class="hljs-comment">% 设置模式跟踪</span>
+<span class="hljs-number">4</span>&gt; erlang:trace_pattern(&#123;trace, &#x27;_&#x27;, &#x27;_&#x27;&#125;, [&#123;&#x27;_&#x27;, [], [&#123;return_trace&#125;]&#125;], [local]).
+
+<span class="hljs-comment">% 执行算数服务器中的函数</span>
+<span class="hljs-number">5</span>&gt; trace:test_multiply(ServerPid, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>).
+Process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt; received message &#123;&lt;<span class="hljs-number">0.85</span>.<span class="hljs-number">0</span>&gt;,&#123;test_multiply,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>&#125;&#125;
+Function trace:test_multiply invoked with arguments [<span class="hljs-number">4</span>,<span class="hljs-number">3</span>] in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+<span class="hljs-number">12</span>
+Function trace:&#x27;-test_multiply/<span class="hljs-number">2</span>-<span class="hljs-keyword">fun</span>-<span class="hljs-number">0</span>-&#x27; invoked with arguments [<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4</span>] in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+Function trace:&#x27;-test_multiply/<span class="hljs-number">2</span>-<span class="hljs-keyword">fun</span>-<span class="hljs-number">0</span>-&#x27;/<span class="hljs-number">3</span> returned <span class="hljs-number">4</span> in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+Function trace:&#x27;-test_multiply/<span class="hljs-number">2</span>-<span class="hljs-keyword">fun</span>-<span class="hljs-number">0</span>-&#x27; invoked with arguments [<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>] in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+Function trace:&#x27;-test_multiply/<span class="hljs-number">2</span>-<span class="hljs-keyword">fun</span>-<span class="hljs-number">0</span>-&#x27;/<span class="hljs-number">3</span> returned <span class="hljs-number">8</span> in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+Function trace:&#x27;-test_multiply/<span class="hljs-number">2</span>-<span class="hljs-keyword">fun</span>-<span class="hljs-number">0</span>-&#x27; invoked with arguments [<span class="hljs-number">3</span>,<span class="hljs-number">8</span>,<span class="hljs-number">4</span>] in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+Function trace:&#x27;-test_multiply/<span class="hljs-number">2</span>-<span class="hljs-keyword">fun</span>-<span class="hljs-number">0</span>-&#x27;/<span class="hljs-number">3</span> returned <span class="hljs-number">12</span> in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+Function trace:test_multiply/<span class="hljs-number">2</span> returned <span class="hljs-number">12</span> in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+Process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt; sent message <span class="hljs-number">12</span> to process &lt;<span class="hljs-number">0.85</span>.<span class="hljs-number">0</span>&gt;
+Function trace:loop invoked with arguments [] in process &lt;<span class="hljs-number">0.89</span>.<span class="hljs-number">0</span>&gt;
+
+<span class="hljs-comment">% 关闭跟踪</span>
+<span class="hljs-number">6</span>&gt; erlang:trace(all, <span class="hljs-literal">false</span>, [call, send, &#x27;<span class="hljs-keyword">receive</span>&#x27;]).</code></pre></div>
+
+<h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><p>Recon是Fred Hebert大神开发的一个开源库，其中包含很多模块用来对Erlang系统的生产环境进行诊断。其中的一个模块就是recon_trace，它的文档很好的概括了它的功能。</p>
+<blockquote>
+<p>  recon_trace可以在生产环境中安全跟踪单一Erlang节点上的函数调用，其中功能包括：<br>    · 比dbg或者trace BIFs更易使用的接口<br>    · 防呆设计（例如不小心跟踪了整个节点上所有的调用）<br>    · 使用的跟踪事件计数或者限速进行安全保护<br>    · 更好的日志格式<br>    · recon_trace</p>
+</blockquote>
+<p>用<code>rebar3</code>可以很简单的使用recon，只需要加入的<code>deps</code>配置</p>
+<div class="code-wrapper"><pre><code class="hljs erlang">&#123;deps, [&#123;recon, <span class="hljs-string">&quot;2.5.1&quot;</span>&#125;]&#125;.</code></pre></div>
+
+<h4 id="核心函数-recon-trace-calls-x2F-2-3"><a href="#核心函数-recon-trace-calls-x2F-2-3" class="headerlink" title="核心函数 recon_trace:calls&#x2F;2-3"></a>核心函数 recon_trace:calls&#x2F;2-3</h4><div class="code-wrapper"><pre><code class="hljs erlang"><span class="hljs-number">1</span>&gt; recon_trace:calls(&#123;trace, &#x27;_&#x27;, <span class="hljs-keyword">fun</span>(_) -&gt; return_trace() <span class="hljs-keyword">end</span>&#125;, <span class="hljs-number">100</span>, [&#123;scope, local&#125;]).
+<span class="hljs-comment">%% Erlang shell 调用，默认输出为 时间 调用者PID，Module:function + 各种信息。</span>
+<span class="hljs-number">2</span>&gt; trace:test().
+
+<span class="hljs-number">17</span>:<span class="hljs-number">23</span>:<span class="hljs-number">56.767032</span> &lt;<span class="hljs-number">0.725</span>.<span class="hljs-number">0</span>&gt; trace:test()
+
+<span class="hljs-number">17</span>:<span class="hljs-number">23</span>:<span class="hljs-number">56.767126</span> &lt;<span class="hljs-number">0.725</span>.<span class="hljs-number">0</span>&gt; trace:test/<span class="hljs-number">0</span> --&gt; <span class="hljs-string">&quot;I am Test&quot;</span>
+<span class="hljs-string">&quot;I am Test&quot;</span>
+<span class="hljs-number">3</span>&gt; self().
+&lt;<span class="hljs-number">0.725</span>.<span class="hljs-number">0</span>&gt;
+<span class="hljs-number">4</span>&gt; spawn(<span class="hljs-keyword">fun</span>() -&gt; trace:test()<span class="hljs-keyword">end</span>).
+
+<span class="hljs-number">17</span>:<span class="hljs-number">24</span>:<span class="hljs-number">31.623102</span> &lt;<span class="hljs-number">0.732</span>.<span class="hljs-number">0</span>&gt; trace:test()
+&lt;<span class="hljs-number">0.732</span>.<span class="hljs-number">0</span>&gt;
+
+<span class="hljs-number">17</span>:<span class="hljs-number">24</span>:<span class="hljs-number">31.623191</span> &lt;<span class="hljs-number">0.732</span>.<span class="hljs-number">0</span>&gt; trace:test/<span class="hljs-number">0</span> --&gt; <span class="hljs-string">&quot;I am Test&quot;</span>
+<span class="hljs-comment">%% 停止监控</span>
+<span class="hljs-number">5</span>&gt; recon_trace:clear().</code></pre></div>
+
+<h4 id="opt参数"><a href="#opt参数" class="headerlink" title="opt参数"></a>opt参数</h4><div class="code-wrapper"><pre><code class="hljs erlang">-type pidspec<span class="hljs-params">()</span> :: all | existing | new | recon:pid_term<span class="hljs-params">()</span>.
+ [&#123;pid, pidspec() | [pidspec(), ...]&#125; |
+     &#123;timestamp, formatter | trace&#125; |
+     &#123;args, args | arity&#125; |
+     &#123;io_server, pid() | atom()&#125; |
+     &#123;formatter, formatterfun()&#125; |
+     return_to |
+     &#123;return_to, boolean()&#125; |
+     &#123;scope, global | local&#125;].</code></pre></div>
+<ul>
+<li><code>pid</code>与<code>erlang:trace</code>的pid一样</li>
+<li><code>args</code>控制监控什么类型的参数，可以是0-255的数字，表示监控参数为x个参数的函数，或者match才匹配例如：’_’。又或者是一个过滤函数自定义想要监控的参数。</li>
+<li><code>formatter</code> 自定义输出格式的函数，建议从recon_trace:format&#x2F;1里面抄一下然后再自行改动。</li>
+<li><code>scope</code> 只能是<code>global</code>和<code>local</code>，与<code>erlang:trace_pattern/3</code>的<code>global</code>和<code>local</code>一样。</li>
+<li><a target="_blank" rel="noopener" href="http://ferd.github.io/recon/recon_trace.html#content">其他更多参数解释</a></li>
+</ul>
+<p><code>recon_trace</code>的使用非常简单，几乎只需要用到有2个接口<code>calls/2-3</code>和<code>clear</code>，分别负责启动监控和停止监控。不过我个人觉得输出有点丑，而且停止监控一下只能停止全部有点傻逼。所以自己写了一个模块处理一下。</p>
+<div class="code-wrapper"><pre><code class="hljs erlang"><span class="hljs-keyword">-module</span><span class="hljs-params">(tracer)</span>.
+<span class="hljs-keyword">-include_lib</span><span class="hljs-params">(<span class="hljs-string">&quot;stdlib/include/ms_transform.hrl&quot;</span>)</span>.
+<span class="hljs-comment">%% API</span>
+<span class="hljs-keyword">-export</span><span class="hljs-params">([</span>
+<span class="hljs-params">    watch/<span class="hljs-number">1</span>,</span>
+<span class="hljs-params">    watch/<span class="hljs-number">2</span>,</span>
+<span class="hljs-params">    watch/<span class="hljs-number">3</span>,</span>
+<span class="hljs-params">    watch/<span class="hljs-number">4</span>,</span>
+<span class="hljs-params">    clear/<span class="hljs-number">0</span>,</span>
+<span class="hljs-params">    clear/<span class="hljs-number">1</span>,</span>
+<span class="hljs-params">    clear/<span class="hljs-number">2</span></span>
+<span class="hljs-params">])</span>.
+
+<span class="hljs-comment">%% ===================== test recon_trace =====================================</span>
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod)</span> -&gt;</span>
+    watch(Mod, &#x27;_&#x27;, all, &#123;<span class="hljs-number">50</span>, <span class="hljs-number">100</span>&#125;).
+
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod, Max)</span> <span class="hljs-title">when</span> <span class="hljs-title">is_integer</span><span class="hljs-params">(Max)</span> -&gt;</span>
+    watch(Mod, &#x27;_&#x27;, all, Max);
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod, &#123;_, _&#125;=Max)</span> -&gt;</span>
+    watch(Mod, &#x27;_&#x27;, all, Max);
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod, Func)</span> -&gt;</span>
+    watch(Mod, Func, all, &#123;<span class="hljs-number">50</span>, <span class="hljs-number">100</span>&#125;).
+
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod, Func, &#123;_, _&#125;=Max)</span> -&gt;</span>
+    watch(Mod, Func, all, Max);
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod, Func, Max)</span> <span class="hljs-title">when</span> <span class="hljs-title">is_integer</span><span class="hljs-params">(Max)</span> -&gt;</span>
+    watch(Mod, Func, all, Max);
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod, Func, PID)</span> <span class="hljs-title">when</span> <span class="hljs-title">is_pid</span><span class="hljs-params">(PID)</span> <span class="hljs-title">orelse</span> PID=:=<span class="hljs-title">all</span> <span class="hljs-title">orelse</span> PID=:=<span class="hljs-title">new</span> <span class="hljs-title">orelse</span> PID=:=<span class="hljs-title">existing</span> -&gt;</span>
+    watch(Mod, Func, PID, &#123;<span class="hljs-number">50</span>, <span class="hljs-number">100</span>&#125;).
+
+<span class="hljs-function"><span class="hljs-title">watch</span><span class="hljs-params">(Mod, Func, PID, Max)</span> -&gt;</span>
+    recon_trace:calls(&#123;Mod, Func, match_spec()&#125;, Max, [&#123;scope, local&#125;, &#123;formatter, fun format/1&#125;, &#123;pid, PID&#125;]).
+
+<span class="hljs-function"><span class="hljs-title">match_spec</span><span class="hljs-params">()</span> -&gt;</span>
+    dbg:fun2ms(<span class="hljs-keyword">fun</span>(_) -&gt; message(caller()), return_trace(), exception_trace() <span class="hljs-keyword">end</span>).
+
+<span class="hljs-function"><span class="hljs-title">clear</span><span class="hljs-params">()</span> -&gt;</span>
+    recon_trace:clear().
+
+<span class="hljs-function"><span class="hljs-title">clear</span><span class="hljs-params">(Mod)</span> -&gt;</span>
+    erlang:trace_pattern(&#123;Mod,&#x27;_&#x27;,&#x27;_&#x27;&#125;, false, [local,meta,call_count,call_time]),
+    erlang:trace_pattern(&#123;Mod,&#x27;_&#x27;,&#x27;_&#x27;&#125;, false, []), 
+    ok.
+
+<span class="hljs-function"><span class="hljs-title">clear</span><span class="hljs-params">(Mod, Func)</span> -&gt;</span>
+    erlang:trace_pattern(&#123;Mod,Func,&#x27;_&#x27;&#125;, false, [local,meta,call_count,call_time]),
+    erlang:trace_pattern(&#123;Mod,Func,&#x27;_&#x27;&#125;, false, []),
+    ok.
+<span class="hljs-comment">%% copy from recon_trace:format/1</span>
+<span class="hljs-function"><span class="hljs-title">format</span><span class="hljs-params">(TraceMsg)</span> -&gt;</span>
+    &#123;Type, Pid, &#123;_, &#123;Hour,Min,Sec&#125;&#125;, TraceInfo&#125; = extract_info(TraceMsg),
+    &#123;HeadStr, FormatStr, FormatArgs&#125; = <span class="hljs-keyword">case</span> &#123;Type, TraceInfo&#125; <span class="hljs-keyword">of</span>
+        <span class="hljs-comment">%% &#123;trace, Pid, &#x27;receive&#x27;, Msg&#125;</span>
+        &#123;&#x27;<span class="hljs-keyword">receive</span>&#x27;, [Msg]&#125; -&gt;
+            &#123;&quot;==Recv=======&quot;, &quot;&lt; ~99999p&quot;, [Msg]&#125;;
+        %% &#123;trace, Pid, send, Msg, To&#125;
+        &#123;send, [Msg, To]&#125; -&gt;
+            &#123;&quot;==Send=======&quot;, &quot; &gt; ~99999p: ~99999p&quot;, [To, Msg]&#125;;
+        %% &#123;trace, Pid, send_to_non_existing_process, Msg, To&#125;
+        &#123;send_to_non_existing_process, [Msg, To]&#125; -&gt;
+            &#123;&quot;==Send=======&quot;, &quot; &gt; (non_existent) ~99999p: ~99999p&quot;, [To, Msg]&#125;;
+        %% &#123;trace, Pid, call, &#123;M, F, Args&#125;&#125;
+        &#123;call, [&#123;M,F,Args&#125;]&#125; -&gt;
+            &#123;&quot;==Call=======&quot;, &quot;~99999p:~99999p/~99999p &lt;-- ~99999p&quot;, [M,F,erlang:length(Args),Args]&#125;;
+        %% &#123;trace, Pid, call, &#123;M, F, Args&#125;, Msg&#125;
+        &#123;call, [&#123;M,F,Args&#125;, Msg]&#125; -&gt;
+            &#123;&quot;==Call=======&quot;, &quot;~99999p:~99999p/~99999p &lt;-- ~99999p @~99999p&quot;, [M,F,erlang:length(Args),Args, Msg]&#125;;
+        %% &#123;trace, Pid, return_to, &#123;M, F, Arity&#125;&#125;
+        &#123;return_to, [&#123;M,F,Arity&#125;]&#125; -&gt;
+            &#123;&quot;==Return To==&quot;, &quot; &#x27;--&gt; ~<span class="hljs-number">99999</span>p:~<span class="hljs-number">99999</span>p/~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [M,F,Arity]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, return_from, &#123;M, F, Arity&#125;, ReturnValue&#125;</span>
+<span class="hljs-string">        &#123;return_from, [&#123;M,F,Arity&#125;, Return]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Return=====<span class="hljs-string">&quot;, &quot;</span>~<span class="hljs-number">99999</span>p:~<span class="hljs-number">99999</span>p/~<span class="hljs-number">99999</span>p --&gt; ~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [M,F,Arity, Return]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, exception_from, &#123;M, F, Arity&#125;, &#123;Class, Value&#125;&#125;</span>
+<span class="hljs-string">        &#123;exception_from, [&#123;M,F,Arity&#125;, &#123;Class,Val&#125;]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Exception!=<span class="hljs-string">&quot;, &quot;</span>~<span class="hljs-number">99999</span>p:~<span class="hljs-number">99999</span>p/~<span class="hljs-number">99999</span>p &#123;~<span class="hljs-number">99999</span>p,~<span class="hljs-number">99999</span>p&#125;<span class="hljs-string">&quot;, [M,F,Arity, Class, Val]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, spawn, Spawned, &#123;M, F, Args&#125;&#125;</span>
+<span class="hljs-string">        &#123;spawn, [Spawned, &#123;M,F,Args&#125;]&#125;  -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Spawn======<span class="hljs-string">&quot;, &quot;</span>spawned ~<span class="hljs-number">99999</span>p as ~<span class="hljs-number">99999</span>p:~<span class="hljs-number">99999</span>p~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [Spawned, M, F, Args]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, exit, Reason&#125;</span>
+<span class="hljs-string">        &#123;exit, [Reason]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Exit!======<span class="hljs-string">&quot;, &quot;</span>EXIT ~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [Reason]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, link, Pid2&#125;</span>
+<span class="hljs-string">        &#123;link, [Linked]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Link=======<span class="hljs-string">&quot;, &quot;</span>link(~<span class="hljs-number">99999</span>p)<span class="hljs-string">&quot;, [Linked]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, unlink, Pid2&#125;</span>
+<span class="hljs-string">        &#123;unlink, [Linked]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Unlink=====<span class="hljs-string">&quot;, &quot;</span>unlink(~<span class="hljs-number">99999</span>p)<span class="hljs-string">&quot;, [Linked]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, getting_linked, Pid2&#125;</span>
+<span class="hljs-string">        &#123;getting_linked, [Linker]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Get Link===<span class="hljs-string">&quot;, &quot;</span>getting linked by ~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [Linker]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, getting_unlinked, Pid2&#125;</span>
+<span class="hljs-string">        &#123;getting_unlinked, [Unlinker]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Get Unlink=<span class="hljs-string">&quot;, &quot;</span>getting unlinked by ~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [Unlinker]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, register, RegName&#125;</span>
+<span class="hljs-string">        &#123;register, [Name]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Register===<span class="hljs-string">&quot;, &quot;</span>registered as ~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [Name]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, unregister, RegName&#125;</span>
+<span class="hljs-string">        &#123;unregister, [Name]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Register===<span class="hljs-string">&quot;, &quot;</span>no longer registered as ~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [Name]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, in, &#123;M, F, Arity&#125; | 0&#125;</span>
+<span class="hljs-string">        &#123;in, [&#123;M,F,Arity&#125;]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==In=========<span class="hljs-string">&quot;, &quot;</span>scheduled in for ~<span class="hljs-number">99999</span>p:~<span class="hljs-number">99999</span>p/~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [M,F,Arity]&#125;;</span>
+<span class="hljs-string">        &#123;in, [0]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==In=========<span class="hljs-string">&quot;, &quot;</span>scheduled in<span class="hljs-string">&quot;, []&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, out, &#123;M, F, Arity&#125; | 0&#125;</span>
+<span class="hljs-string">        &#123;out, [&#123;M,F,Arity&#125;]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Out========<span class="hljs-string">&quot;, &quot;</span>scheduled out from ~<span class="hljs-number">99999</span>p:~<span class="hljs-number">99999</span>p/~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [M, F, Arity]&#125;;</span>
+<span class="hljs-string">        &#123;out, [0]&#125; -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Out========<span class="hljs-string">&quot;, &quot;</span>scheduled out<span class="hljs-string">&quot;, []&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, gc_start, Info&#125;</span>
+<span class="hljs-string">        &#123;gc_start, [Info]&#125; -&gt;</span>
+<span class="hljs-string">            HeapSize = proplists:get_value(heap_size, Info),</span>
+<span class="hljs-string">            OldHeapSize = proplists:get_value(old_heap_size, Info),</span>
+<span class="hljs-string">            MbufSize = proplists:get_value(mbuf_size, Info),</span>
+<span class="hljs-string">            &#123;&quot;</span>==GC Start===<span class="hljs-string">&quot;, &quot;</span>gc beginning -- heap ~<span class="hljs-number">99999</span>p bytes<span class="hljs-string">&quot;,</span>
+<span class="hljs-string">                [HeapSize + OldHeapSize + MbufSize]&#125;;</span>
+<span class="hljs-string">        %% &#123;trace, Pid, gc_end, Info&#125;</span>
+<span class="hljs-string">        &#123;gc_end, [Info]&#125; -&gt;</span>
+<span class="hljs-string">            HeapSize = proplists:get_value(heap_size, Info),</span>
+<span class="hljs-string">            OldHeapSize = proplists:get_value(old_heap_size, Info),</span>
+<span class="hljs-string">            MbufSize = proplists:get_value(mbuf_size, Info),</span>
+<span class="hljs-string">            &#123;&quot;</span>==GC End=====<span class="hljs-string">&quot;, &quot;</span>gc finished -- heap ~<span class="hljs-number">99999</span>p bytes<span class="hljs-string">&quot;,</span>
+<span class="hljs-string">                [HeapSize + OldHeapSize + MbufSize]&#125;;</span>
+<span class="hljs-string">        _ -&gt;</span>
+<span class="hljs-string">            &#123;&quot;</span>==Unknown====<span class="hljs-string">&quot;, &quot;</span>unknown trace type ~<span class="hljs-number">99999</span>p -- ~<span class="hljs-number">99999</span>p<span class="hljs-string">&quot;, [Type, TraceInfo]&#125;</span>
+<span class="hljs-string">    end,</span>
+<span class="hljs-string">    io_lib:format(HeadStr ++ &quot;</span>~<span class="hljs-number">99999</span>p:~<span class="hljs-number">99999</span>p:~<span class="hljs-number">9.6</span>.<span class="hljs-number">0</span>f ~<span class="hljs-number">99999</span>p <span class="hljs-string">&quot; ++ FormatStr ++ &quot;</span>~n<span class="hljs-string">&quot;,</span>
+<span class="hljs-string">        [Hour, Min, Sec, Pid] ++ FormatArgs).</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">extract_info(TraceMsg) -&gt;</span>
+<span class="hljs-string">    case tuple_to_list(TraceMsg) of</span>
+<span class="hljs-string">        [trace_ts, Pid, Type | Info] -&gt;</span>
+<span class="hljs-string">            &#123;TraceInfo, [Timestamp]&#125; = lists:split(length(Info)-1, Info),</span>
+<span class="hljs-string">            &#123;Type, Pid, to_hms(Timestamp), TraceInfo&#125;;</span>
+<span class="hljs-string">        [trace, Pid, Type | TraceInfo] -&gt;</span>
+<span class="hljs-string">            &#123;Type, Pid, to_hms(os:timestamp()), TraceInfo&#125;</span>
+<span class="hljs-string">    end.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">to_hms(Stamp = &#123;_, _, Micro&#125;) -&gt;</span>
+<span class="hljs-string">    &#123;&#123;Y, Mo, D&#125;,&#123;H, M, Secs&#125;&#125; = calendar:now_to_local_time(Stamp),</span>
+<span class="hljs-string">    Seconds = Secs rem 60 + (Micro / 1000000),</span>
+<span class="hljs-string">    &#123;&#123;Y,Mo,D&#125;, &#123;H,M,Seconds&#125;&#125;;</span>
+<span class="hljs-string">to_hms(_) -&gt;</span>
+<span class="hljs-string">    &#123;&#123;0,0,0&#125;, &#123;0,0,0&#125;&#125;.</span>
+<span class="hljs-string"></span></code></pre></div>
+
+<h3 id="Erlang中其它跟踪调试模块"><a href="#Erlang中其它跟踪调试模块" class="headerlink" title="Erlang中其它跟踪调试模块"></a>Erlang中其它跟踪调试模块</h3><p>这里依然还有好几个Erlang自身携带的可以用于跟踪调试的模块。我在这篇博文中并不打算详细介绍，也许将来的博文会介绍他们。他们分别是</p>
+<p><a target="_blank" rel="noopener" href="https://www.erlang.org/doc/man/dbg.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk">dbg</a> Erlang自带的跟踪模块。dbg是一个字符界面的跟踪器，通常它只是将采集到的数据发送到shell中。它是<code>runtime_tools</code>应用的一部分，如果我们想在应用中使用dbg，就需要确保我们已经包含了<code>runtime_tools</code>。<br><a target="_blank" rel="noopener" href="http://erlang.org/doc/man/et.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk">et</a> 事件跟踪。用于记录任意事件。可以使用记录的事件生成序列。<br><a target="_blank" rel="noopener" href="http://erlang.org/doc/man/ttb.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk">ttb</a> 跟踪构建工具。用于在分布式系统上创建跟踪。依赖dbg并且提供了很多简介的方法创建跟踪，并在分布式系统上进行跟踪。<br><a target="_blank" rel="noopener" href="http://erlang.org/doc/man/dyntrace.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk">dyntrace</a> 这是个捐赠模块，它提供了使用类似<code>dtrace</code>这种外部工具来进行动态跟踪的接口。<br><a target="_blank" rel="noopener" href="http://erlang.org/doc/man/seq_trace.html?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk">seq_trace</a> 用于跟踪进程间消息传输的跟踪模块。<br><a href="">erl_tracer</a> 用与实现自己跟踪器的behavior。</p>
+<h3 id="跟踪调试库"><a href="#跟踪调试库" class="headerlink" title="跟踪调试库"></a>跟踪调试库</h3><p>还有很多开源第三方的调试和跟踪调试库。这里介绍几个比较知名的库。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/massemanet/redbug?utm_source=ttalk.im&utm_medium=website&utm_campaign=Tech%2520Talk">redbug</a> 一个和Erlang跟踪函数交互的工具。它具有一些内建的安全特性，如只使用跟踪函数功能的安全子集，当数据量过大的时候自动退出，并且可以在跟踪一段时间或接收了一定数量的跟踪事件后自动退出。<br>一个使用Erlang跟踪BIF且具有界面的Erlang，Elixir和LFE调试器。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Erlang trace追踪调用</div>
+      <div>https://qiil.github.io/2022/12/09/Erlang-trace追踪调用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>QSY</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年12月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-nc"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/26/%E4%B9%A0%E8%BF%91%E5%B9%B3%E6%80%BB%E4%B9%A6%E8%AE%B0%E9%87%8D%E8%A6%81%E8%AE%B2%E8%AF%9D%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" title="习近平总书记重要讲话思维导图">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">习近平总书记重要讲话思维导图</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/09/Erlang-Recon%E7%B2%97%E6%B5%85%E7%AC%94%E8%AE%B0/" title="Erlang Recon粗浅笔记">
+                        <span class="hidden-mobile">Erlang Recon粗浅笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> Qill <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

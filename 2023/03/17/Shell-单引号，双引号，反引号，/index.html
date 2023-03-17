@@ -16,22 +16,23 @@
   <meta name="author" content="QSY">
   <meta name="keywords" content="QSY qill">
   
-    <meta name="description" content="今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。 实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分">
+    <meta name="description" content="基础说明 单引号&#39;str&#39;：把单引号内所有的字符都识别为字符串，特殊含义字符都不会识别 双引号&quot;str&quot;；双引号在单引号的基础上能识别$（参数替换）和 &#96;（命令替换） 反引号&#96;str&#96;：会把反引号内的内容当做命令先执行  例子 单引号不识别特殊含义字符 A&#x3D;pan echo &amp;#x27;I have a $A&amp;#x27; I have an $A  # 单引号内">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实习半个月的感觉">
-<meta property="og:url" content="https://qiil.github.io/2017/08/09/%E5%AE%9E%E4%B9%A0%E5%8D%8A%E4%B8%AA%E6%9C%88%E7%9A%84%E6%84%9F%E8%A7%89/">
+<meta property="og:title" content="Shell 单引号，双引号，反引号，&#39;&#39; &quot;&quot; &#96;&#96;">
+<meta property="og:url" content="https://qiil.github.io/2023/03/17/Shell-%E5%8D%95%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8C%E5%BC%95%E5%8F%B7%EF%BC%8C%E5%8F%8D%E5%BC%95%E5%8F%B7%EF%BC%8C/">
 <meta property="og:site_name" content="一起闷声发大财吧">
-<meta property="og:description" content="今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。 实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分">
+<meta property="og:description" content="基础说明 单引号&#39;str&#39;：把单引号内所有的字符都识别为字符串，特殊含义字符都不会识别 双引号&quot;str&quot;；双引号在单引号的基础上能识别$（参数替换）和 &#96;（命令替换） 反引号&#96;str&#96;：会把反引号内的内容当做命令先执行  例子 单引号不识别特殊含义字符 A&#x3D;pan echo &amp;#x27;I have a $A&amp;#x27; I have an $A  # 单引号内">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-08-09T09:36:04.000Z">
-<meta property="article:modified_time" content="2022-12-07T09:36:04.000Z">
+<meta property="article:published_time" content="2023-03-17T02:45:52.000Z">
+<meta property="article:modified_time" content="2023-03-17T03:41:08.222Z">
 <meta property="article:author" content="QSY">
-<meta property="article:tag" content="QSY qill">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Shell">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>实习半个月的感觉 - 一起闷声发大财吧</title>
+  <title>Shell 单引号，双引号，反引号，&#39;&#39; &#34;&#34; `` - 一起闷声发大财吧</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="实习半个月的感觉"></span>
+            <span id="subtitle" data-typed-text="Shell 单引号，双引号，反引号，&#39;&#39; &#34;&#34; ``"></span>
           
         </div>
 
@@ -207,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2017-08-09 17:36" pubdate>
-          2017年8月9日 下午
+        <time datetime="2023-03-17 10:45" pubdate>
+          2023年3月17日 上午
         </time>
       </span>
     
@@ -219,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          903 字
+          1.8k 字
         
       </span>
     
@@ -230,7 +231,7 @@
         
         
         
-          10 分钟
+          19 分钟
         
       </span>
     
@@ -270,106 +271,6 @@
 <div class="category-list">
   
   
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="人生经历"
-        id="heading-6fc1f2ea008dc19f2aaceaf1b4eabc60" role="tab" data-toggle="collapse" href="#collapse-6fc1f2ea008dc19f2aaceaf1b4eabc60"
-        aria-expanded="true"
-      >
-        人生经历
-        <span class="list-group-count">(8)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-6fc1f2ea008dc19f2aaceaf1b4eabc60"
-           role="tabpanel" aria-labelledby="heading-6fc1f2ea008dc19f2aaceaf1b4eabc60">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2022/09/05/%E8%BF%99%E7%AE%97%E4%B8%8D%E7%AE%97%E5%A4%95%E9%98%B3%E6%97%A0%E9%99%90%E5%A5%BD%EF%BC%9F/" title="这算不算夕阳无限好？"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">这算不算夕阳无限好？</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/08/29/%E8%B0%A2%E8%B0%A2%E4%BD%A0%E6%98%8E%E5%93%A5/" title="谢谢，你明哥！"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">谢谢，你明哥！</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/08/09/%E5%AE%9E%E4%B9%A0%E5%8D%8A%E4%B8%AA%E6%9C%88%E7%9A%84%E6%84%9F%E8%A7%89/" title="实习半个月的感觉"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">实习半个月的感觉</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/18/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" title="《搏击俱乐部》-关于精神病的一些思考"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《搏击俱乐部》-关于精神病的一些思考</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/17/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E4%B8%8E%E5%86%85%E5%BF%83%E9%82%AA%E6%81%B6%E7%9A%84%E6%88%98%E4%BA%89/" title="《搏击俱乐部》-与内心邪恶的战争"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《搏击俱乐部》-与内心邪恶的战争</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/06/%E3%80%8A%E6%83%85%E4%B9%A6%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/" title="《情书》读后感"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《情书》读后感</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/04/%E3%80%8Ato-the-moon%E3%80%8B%E6%B8%B8%E7%8E%A9%E5%90%8E%E6%84%9F/" title="《to the moon》游玩后感"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">《to the moon》游玩后感</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2017/06/04/SCNU%E6%AF%95%E4%B8%9A%E7%94%9F%E8%B5%A0%E5%AD%97%E6%B4%BB%E5%8A%A8%E8%A7%82%E5%AD%97%E6%9C%89%E6%84%9F/" title="SCNU毕业生赠字活动观字有感"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">SCNU毕业生赠字活动观字有感</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
 </div>
 
 
@@ -383,17 +284,71 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">实习半个月的感觉</h1>
+            <h1 style="display: none">Shell 单引号，双引号，反引号，&#39;&#39; &#34;&#34; ``</h1>
             
             
               <div class="markdown-body">
                 
-                <p>今晚终于能够初步了解Vue的入门知识了，之前看Vue这个东西不知道怎么的就是看得很头晕，但内心明明知道Vue的前端知识应该很好学才对的呀，真是奇了怪了，现在终于是看懂了，可算是扬眉吐气了。</p>
-<p>实习半个月来，我已经看完了sails.js的大部分文档、懂得了什么是RESTful、什么是前后端分离、见识了Waterline的ORM、领略了controller、service、config、police的分层开发模式、接手了明哥留给我的KPI系统、看完了C后台的所有内容。看上去其实很多东西，但是我意识到我的时间还是很少。因为，我的毕设还没动手，我还不懂ES6的代码规范，我需要学会egg.js的框架知识以用于之后新版的C后台的开发，我需要熟悉async，promise等控制异步的模块，现在我自己的node知识只能说是半桶水，有很多原理我自己还是不清楚，我还需要快速地熟练mongodb的操作。</p>
-<p>或许这些可以慢慢来，但是在这互联网的时代，我自己深刻地意识到自己的压力，我或许想要发展成一个node工程师，然后再学习技术然后发展成一个数据处理或者数据挖掘清晰的python工程师，然后平时可以干干“坏事”。或许我是一个比较幸运的人，我一路走来，还有之后的路我都看到了困难与机会，我需要时刻给自己充电。</p>
-<p>但是这一周，过了三天了，每天从公司回来我都觉得很困，很累呀，真是蛋疼。在公司里面坐着的那张椅子是软垫的，坐得我的腰很辛苦，我都一度以为我的身体开始发虚了，难道真的是撸多了？今天晚上怒跑了华师一圈加上运动厂两圈，然后脖子终于舒服一点了。但是坐久了，腰还是一样，看来要加快健身的日程了。</p>
-<p>昨天和肥航逛了一个晚上，我发现了他对工作有点逃避，其实我似乎对新的东西也有着很多的逃避心里，就像现在的实习，我还不是因为我堂哥有个推荐我的机会我才会来面试的嘛，不然我肯定会拖很久才去实习的，不过在实习的时候我也很幸运，也学到了很多，怎么说呢，我现在的感觉就是一天真的事太短了点，现在已经是00.25分了，写道这里已经用了25分钟，在之前我还答应了猪猪，我写完这个，然后去睡觉的，但是一直停不了笔，真是蛋疼。</p>
-<p>后面还有挑战，继续加油吧！！</p>
+                <h3 id="基础说明"><a href="#基础说明" class="headerlink" title="基础说明"></a>基础说明</h3><ul>
+<li>单引号<code>&#39;str&#39;</code>：把单引号内所有的字符都识别为字符串，特殊含义字符都不会识别</li>
+<li>双引号<code>&quot;str&quot;</code>；双引号在单引号的基础上能识别<code>$</code>（参数替换）和 <code>`</code>（命令替换）</li>
+<li>反引号<code>`str`</code>：会把反引号内的内容当做命令先执行</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
+<li><p>单引号不识别特殊含义字符</p>
+<div class="code-wrapper"><pre><code class="hljs bash">A=pan
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;I have a $A&#x27;</span>
+I have an <span class="hljs-variable">$A</span>
+
+<span class="hljs-comment"># 单引号内的反引号</span>
+<span class="hljs-built_in">mkdir</span> ~/test_quotation_marks &amp;&amp; <span class="hljs-built_in">touch</span> ~/test_quotation_marks/apostrophe &amp;&amp; <span class="hljs-built_in">touch</span> ~/test_quotation_marks/double_quotes &amp;&amp; <span class="hljs-built_in">touch</span> ~/test_quotation_marks/backticks
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;`ls ~/test_quotation_marks`&#x27;</span>
+`<span class="hljs-built_in">ls</span> ~/test_quotation_marks`</code></pre></div></li>
+<li><p>双引号能识别特殊含义字符</p>
+<div class="code-wrapper"><pre><code class="hljs bash">A=pan
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;I have a <span class="hljs-variable">$A</span>&quot;</span>
+I have a pan</code></pre></div>
+</li>
+<li><p>反引号（命令执行）</p>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> ~/test_quotation_marks &amp;&amp; <span class="hljs-built_in">touch</span> ~/test_quotation_marks/apostrophe &amp;&amp; <span class="hljs-built_in">touch</span> ~/test_quotation_marks/double_quotes &amp;&amp; <span class="hljs-built_in">touch</span> ~/test_quotation_marks/backticks
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;`ls ~/test_quotation_marks`&quot;</span>
+apostrophe
+double_quotes
+backticks</code></pre></div></li>
+</ul>
+<h3 id="综上所述"><a href="#综上所述" class="headerlink" title="综上所述"></a>综上所述</h3><ul>
+<li>单引号与双引号的使用场景类似，都是需要字符串作为参数时使用，主要是一个能解析一个不能解析，具体看字符串内容的双引号数量和参数解析需求而选择使用不同的引号包裹。</li>
+<li>反应号里面的内容会立即执行，所以用在字符串参数中时需要注意这一点。</li>
+</ul>
+<h3 id="一个很骚的例子"><a href="#一个很骚的例子" class="headerlink" title="一个很骚的例子"></a>一个很骚的例子</h3><ul>
+<li><p>拼接字符串参数，并把字符串作为ssh命令的参数送到远端去执行。</p>
+</li>
+<li><p>前提准备，把自己的公钥放进authorith_keys，以便可以ssh链接自己。</p>
+</li>
+<li><p>先看脚本</p>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">## game_cmd</span>
+<span class="hljs-comment"># 前提准备</span>
+<span class="hljs-built_in">cat</span> ~/.ssh/is_rsa.pub &gt;&gt; ~/.ssh/authorith_keys
+
+PARAMS=axww
+RUN_NODE_KILL_CMD=<span class="hljs-string">&#x27;</span>
+<span class="hljs-string">    NEED_KILL_PID=`ps -&#x27;</span><span class="hljs-variable">$&#123;PARAMS&#125;</span><span class="hljs-string">&#x27; | grep ps | grep &#x27;</span><span class="hljs-variable">$&#123;PARAMS&#125;</span><span class="hljs-string">&#x27; | awk &#x27;</span><span class="hljs-string">&quot;&#x27;&quot;</span><span class="hljs-string">&#x27;&#123;print $1&#125;&#x27;</span><span class="hljs-string">&quot;&#x27;&quot;</span><span class="hljs-string">&#x27;`</span>
+<span class="hljs-string">    echo &quot;查询进程命令：ps -&#x27;</span><span class="hljs-variable">$&#123;PARAMS&#125;</span><span class="hljs-string">&#x27; | grep ps | grep &#x27;</span><span class="hljs-variable">$&#123;PARAMS&#125;</span><span class="hljs-string">&#x27;其结果为：&quot;</span>
+<span class="hljs-string">    ps -&#x27;</span><span class="hljs-variable">$&#123;PARAMS&#125;</span><span class="hljs-string">&#x27; | grep ps | grep &#x27;</span><span class="hljs-variable">$&#123;PARAMS&#125;</span><span class="hljs-string">&#x27;</span>
+<span class="hljs-string">    echo $NEED_KILL_PID</span>
+<span class="hljs-string">    echo &quot;杀死ps --&#x27;</span><span class="hljs-variable">$&#123;PARAMS&#125;</span><span class="hljs-string">&#x27;进程：$NEED_KILL_PID&quot;</span>
+<span class="hljs-string">    echo &quot;开个玩笑，根本不用杀&quot;</span>
+<span class="hljs-string">&#x27;</span>
+
+ssh -p 22 -o StrictHostKeyChecking=no root@127.0.0.1 <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;RUN_NODE_KILL_RE_UP_CMD&#125;</span>&quot;</span></code></pre></div></li>
+<li><p>一些解析</p>
+<ul>
+<li><code>RUN_NODE_KILL_CMD</code>是一串字符串，是由好多个字符串拼接而成的。</li>
+<li>里面的<code>$&#123;PARAMS&#125;</code>其实是单纯参数读取，因为前后都加了一个单引号<code>&#39;$&#123;PARAMS&#125;&#39;</code>承上启下了而已。</li>
+<li><code>NEED_KILL_PID</code>后面是由一个反引号包裹的命令获取一个进程ID，因为有单引号包裹，所以在本机当成了ssh命令的字符串参数，但到了目的机却可以执行。</li>
+</ul>
+</li>
+</ul>
 
                 
               </div>
@@ -402,27 +357,15 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E4%BA%BA%E7%94%9F%E7%BB%8F%E5%8E%86/" class="category-chain-item">人生经历</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
+        <a href="/tags/Linux/">#Linux</a>
+      
+        <a href="/tags/Shell/">#Shell</a>
+      
     </div>
-  
   
 </div>
 
@@ -432,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>实习半个月的感觉</div>
-      <div>https://qiil.github.io/2017/08/09/实习半个月的感觉/</div>
+      <div>Shell 单引号，双引号，反引号，&#39;&#39; &#34;&#34; ``</div>
+      <div>https://qiil.github.io/2023/03/17/Shell-单引号，双引号，反引号，/</div>
     </div>
     <div class="license-meta">
       
@@ -445,7 +388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2017年8月9日</div>
+          <div>2023年3月17日</div>
         </div>
       
       
@@ -489,18 +432,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2017/08/29/%E8%B0%A2%E8%B0%A2%E4%BD%A0%E6%98%8E%E5%93%A5/" title="谢谢，你明哥！">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">谢谢，你明哥！</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2017/06/18/%E3%80%8A%E6%90%8F%E5%87%BB%E4%BF%B1%E4%B9%90%E9%83%A8%E3%80%8B-%E5%85%B3%E4%BA%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/" title="《搏击俱乐部》-关于精神病的一些思考">
-                        <span class="hidden-mobile">《搏击俱乐部》-关于精神病的一些思考</span>
+                      <a href="/2023/02/23/MySQL8-0%E8%AE%BE%E7%BD%AE%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81/" title="MySQL8.0设置简单密码的方法">
+                        <span class="hidden-mobile">MySQL8.0设置简单密码的方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
