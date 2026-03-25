@@ -19,15 +19,15 @@
   <meta name="author" content="QSY">
   <meta name="keywords" content="QSY qill">
   
-    <meta name="description" content="一个破html，省一点买本子的钱：公务员速算练习器">
+    <meta name="description" content="原来只是随手写的一个小 HTML，想着能省一点买本子的钱。现在把它重新整理了一遍，做成了一个更像样的在线速算练习器： 公务员速算练习器 对应源码仓库： QiIL&#x2F;gwy_calc_practic 现在这版不再只是把题目堆在一个页面里，而是拆成了完整的三段流程：  配置页：选择考试模式、题目数量、计时方式 考试页：正式答题，支持顺序计时和倒计时 总结页：查看成绩、错题和历史记录  练习模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="公务员速算练习器">
 <meta property="og:url" content="https://qiil.github.io/2023/03/17/%E5%85%AC%E5%8A%A1%E5%91%98%E9%80%9F%E7%AE%97%E7%BB%83%E4%B9%A0%E5%99%A8/">
 <meta property="og:site_name" content="一起闷声发大财吧">
-<meta property="og:description" content="一个破html，省一点买本子的钱：公务员速算练习器">
+<meta property="og:description" content="原来只是随手写的一个小 HTML，想着能省一点买本子的钱。现在把它重新整理了一遍，做成了一个更像样的在线速算练习器： 公务员速算练习器 对应源码仓库： QiIL&#x2F;gwy_calc_practic 现在这版不再只是把题目堆在一个页面里，而是拆成了完整的三段流程：  配置页：选择考试模式、题目数量、计时方式 考试页：正式答题，支持顺序计时和倒计时 总结页：查看成绩、错题和历史记录  练习模式">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-17T05:53:21.000Z">
-<meta property="article:modified_time" content="2026-03-25T03:28:49.048Z">
+<meta property="article:modified_time" content="2026-03-25T07:06:53.957Z">
 <meta property="article:author" content="QSY">
 <meta property="article:tag" content="行测">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          25 字
+          510 字
         
       </span>
     
@@ -337,7 +337,7 @@
         
         
         
-          1 分钟
+          6 分钟
         
       </span>
     
@@ -442,7 +442,38 @@
             
               <div class="markdown-body">
                 
-                <p>一个破html，省一点买本子的钱：<a href="https://qiil.github.io/gwy_calc_practic/">公务员速算练习器</a></p>
+                <p>原来只是随手写的一个小 HTML，想着能省一点买本子的钱。现在把它重新整理了一遍，做成了一个更像样的在线速算练习器：</p>
+<p><a href="https://qiil.github.io/gwy_calc_practic/">公务员速算练习器</a></p>
+<p>对应源码仓库：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/QiIL/gwy_calc_practic">QiIL&#x2F;gwy_calc_practic</a></p>
+<p>现在这版不再只是把题目堆在一个页面里，而是拆成了完整的三段流程：</p>
+<ul>
+<li>配置页：选择考试模式、题目数量、计时方式</li>
+<li>考试页：正式答题，支持顺序计时和倒计时</li>
+<li>总结页：查看成绩、错题和历史记录</li>
+</ul>
+<p>练习模式目前包含：</p>
+<ul>
+<li>加法</li>
+<li>减法</li>
+<li>乘法</li>
+<li>除法</li>
+</ul>
+<p>并且补了一些更适合实际训练的小功能：</p>
+<ul>
+<li>可以选择顺序计时，做完再统一出总结</li>
+<li>也可以选择倒计时，到点直接交卷</li>
+<li>可以控制答案是每题输入后立即显示，还是整场做完以后统一看</li>
+<li>总结页会展示错题回看和最近的成绩记录</li>
+</ul>
+<p>题目生成逻辑也顺手修了一下，尽量避免一些没意义的边界题，例如：</p>
+<ul>
+<li>两位数题目不会莫名其妙跑出三位数</li>
+<li>减法默认不会生成一堆负数题</li>
+<li>除法“求前几位”这种题型会尽量保证题意稳定</li>
+</ul>
+<p>这次重构基本也是一次 AI 协作实验。页面结构、样式、流程梳理和一部分实现，是我和 AI 一起反复改出来的。说白了，就是我提需求和方向，AI 帮我快速搭页面、补逻辑、改交互，再由我来决定取舍和继续调整。</p>
+<p>如果你也在刷行测数量关系，或者只是想练一练心算，拿来热身应该还挺方便。</p>
 
                 
               </div>
