@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>有AI，写博客有意思多了</title>
+    <link href="/2026/04/13/%E6%9C%89AI%EF%BC%8C%E5%86%99%E5%8D%9A%E5%AE%A2%E6%9C%89%E6%84%8F%E6%80%9D%E5%A4%9A%E4%BA%86/"/>
+    <url>/2026/04/13/%E6%9C%89AI%EF%BC%8C%E5%86%99%E5%8D%9A%E5%AE%A2%E6%9C%89%E6%84%8F%E6%80%9D%E5%A4%9A%E4%BA%86/</url>
+    
+    <content type="html"><![CDATA[<p><strong>Codex</strong>。</p><p>现在有了 AI，写博客这件事一下子变得有意思多了。</p><p>以前我写东西，经常是脑子里先有一些零碎的片段，但真要把它们组织成一篇能读的文章，就没那么轻松。很多时候不是没东西可写，而是脑海里的内容太碎了：这里想到一个画面，那里想到一个设定，另一边又只有一种模模糊糊的情绪。真要自己慢慢把这些东西补成完整文章，其实挺费劲的。</p><p>现在有了 AI，它就能帮我补充很多内容。</p><p>这里说的“补充”，不是替我凭空发明我根本没想过的东西，而是帮我把本来已经有的那些想法，整理得更顺、更连贯。比如加上一些关联语句、连接句子，让原本零零散散的故事和片段变得完整起来，有前后承接，也有一点起伏。</p><p>就像前面那篇《7层岛屿》，其实我脑海里一开始只有几个核心的东西：</p><ul><li>七层岛屿这个概念；</li><li>每一层大概是什么样子；</li><li>主角无意间接触到真相一角的起点；</li><li>以及那种“开始追寻秘密”的感觉。</li></ul><p>原本这些内容更像是一些画面和感觉，不太像一篇完整文章。但借助 AI 之后，它帮我补了很多连接词、过渡句，也帮我把故事讲得更顺了。最后出来的效果，就是它不只是一个零散设定，而是更像一个好看的故事，也更像一个别人能一眼看懂的世界观设定。</p><p>而且不只是文字，AI 甚至还能顺手给文章配图。像《7层岛屿》那篇，除了帮我把故事补得更完整，它还可以根据那种悬疑世界观的感觉，生成一张合适的封面图或者首页图。这样一来，一篇文章从内容到配图，基本都能更快地成型。</p><p>当然，写出来之后会稍微长一点。</p><p>不过我现在反而觉得，这也不一定是什么缺点。因为有些内容本来就需要展开一点，读者才更容易进入那个画面里。尤其像梦境、悬疑设定、世界观这种东西，如果太短，可能反而只剩下一个点子，看不出味道。</p><p>除了帮我写文章本身，AI 还有一个很实用的地方，就是它能帮我处理博客里的整理工作。</p><p>比如这次，我就直接让 AI 帮我一次性把所有文章的分类，替换成新的分类方案。标签也是同理。这样一来，我管理博客文章就方便很多了。</p><p>我原本二十多篇文章，用了不少不同的分类。时间一长，分类就会越来越散，看起来也不够统一。现在我只要告诉 AI，我想把哪些分类聚合成一个新分类，它就很快帮我完成了。改完之后还能继续帮我检查、提交、发布，整个过程比我自己一篇篇去改高效太多了。</p><p>真是太方便了吧。</p><p>可能有人会问，这是什么 AI 做到的。</p><p>我是直接在 <code>codex</code> 上做的。</p><p>这么一看，<code>codex</code> 还真不一定只拿来写代码，拿来写博客、整理博客、维护博客，也一样很好用，甚至会让整个写作过程都变得更有参与感一点。</p><p>以前会觉得“想写，但懒得整理”；现在更像是“先把想法扔出来，再慢慢和 AI 一起把它变成文章”。</p><p>这种感觉，确实挺有意思。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>日记随笔</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>7层岛屿</title>
     <link href="/2026/04/13/7%E5%B1%82%E5%B2%9B%E5%B1%BF/"/>
     <url>/2026/04/13/7%E5%B1%82%E5%B2%9B%E5%B1%BF/</url>
@@ -63,7 +82,7 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>coding</category>
       
     </categories>
     
@@ -115,7 +134,7 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>coding</category>
       
     </categories>
     
@@ -180,7 +199,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -232,7 +251,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -257,7 +276,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -282,7 +301,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
@@ -307,7 +326,7 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>coding</category>
       
     </categories>
     
@@ -334,7 +353,7 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>coding</category>
       
     </categories>
     
@@ -361,7 +380,7 @@
     
     <categories>
       
-      <category>编程其他</category>
+      <category>coding</category>
       
     </categories>
     
@@ -386,7 +405,7 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>coding</category>
       
     </categories>
     
@@ -438,7 +457,7 @@
     
     <categories>
       
-      <category>编程其他</category>
+      <category>coding</category>
       
     </categories>
     
@@ -463,7 +482,7 @@
     
     <categories>
       
-      <category>编程其他</category>
+      <category>coding</category>
       
     </categories>
     
@@ -488,7 +507,7 @@
     
     <categories>
       
-      <category>软件</category>
+      <category>coding</category>
       
     </categories>
     
@@ -513,7 +532,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -542,7 +561,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -569,7 +588,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -596,7 +615,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -623,7 +642,7 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>coding</category>
       
     </categories>
     
@@ -650,7 +669,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -677,7 +696,7 @@
     
     <categories>
       
-      <category>操作系统</category>
+      <category>coding</category>
       
     </categories>
     
@@ -702,7 +721,7 @@
     
     <categories>
       
-      <category>Erlang</category>
+      <category>coding</category>
       
     </categories>
     
@@ -729,7 +748,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
@@ -748,7 +767,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
@@ -767,7 +786,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
@@ -792,7 +811,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
@@ -817,7 +836,7 @@
     
     <categories>
       
-      <category>算法</category>
+      <category>coding</category>
       
     </categories>
     
@@ -842,7 +861,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
@@ -869,7 +888,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
@@ -896,7 +915,7 @@
     
     <categories>
       
-      <category>人生经历</category>
+      <category>日记随笔</category>
       
     </categories>
     
